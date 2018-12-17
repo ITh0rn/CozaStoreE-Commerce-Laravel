@@ -11,5 +11,5 @@
 |
 */
 
-Route::view('/', 'zieta/app');
+Route::view('/', 'layout/app');
 Route::get('/home', 'ContainController@home')->name('home');
