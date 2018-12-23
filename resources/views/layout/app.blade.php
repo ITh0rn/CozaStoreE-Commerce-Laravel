@@ -580,6 +580,7 @@
 	</script>
 	<!--===============================================================================================-->
 	<script src="{{URL::asset('js/main.js')}}"></script>
+	<script src="{{URL::asset('js/GenderFilter.js')}}"></script>
 </body>
 </html>
 

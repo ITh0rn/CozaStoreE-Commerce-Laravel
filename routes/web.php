@@ -12,4 +12,5 @@
 */
 
 Route::view('/', 'layout/app');
-Route::get('/home', 'ContainController@home')->name('home');
+//Route::get('/home', 'ContainController@home')->name('home');
+Route::get('/home', 'ProductController@show');
