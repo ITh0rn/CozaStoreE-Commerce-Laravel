@@ -127,7 +127,7 @@
 
 
     /*==================================================================
-    [ Isotope ]*/
+  /*  [ Isotope ]
     var $topeContainer = $('.isotope-grid');
     var $filter = $('.filter-tope-group');
 
@@ -165,7 +165,7 @@
 
             $(this).addClass('how-active1');
         });
-    });
+    }); */
 
     /*==================================================================
     [ Filter / Search product ]*/
@@ -187,29 +187,6 @@
             $('.js-show-filter').removeClass('show-filter');
             $('.panel-filter').slideUp(400);
         }    
-    });
-
-
-
-
-    /*==================================================================
-    [ Cart ]*/
-    $('.js-show-cart').on('click',function(){
-        $('.js-panel-cart').addClass('show-header-cart');
-    });
-
-    $('.js-hide-cart').on('click',function(){
-        $('.js-panel-cart').removeClass('show-header-cart');
-    });
-
-    /*==================================================================
-    [ Cart ]*/
-    $('.js-show-sidebar').on('click',function(){
-        $('.js-sidebar').addClass('show-sidebar');
-    });
-
-    $('.js-hide-sidebar').on('click',function(){
-        $('.js-sidebar').removeClass('show-sidebar');
     });
 
     /*==================================================================

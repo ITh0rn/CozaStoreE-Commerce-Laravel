@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('type');
+            $table->idCart('idCart')->references('id')->on('carts');
         });
     }
 

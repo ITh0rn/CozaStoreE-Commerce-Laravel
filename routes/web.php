@@ -11,6 +11,11 @@
 |
 */
 
-Route::view('/', 'layout/app');
-//Route::get('/home', 'ContainController@home')->name('home');
-Route::get('/home', 'ProductController@show');
+Auth::routes();
+Route::get('/', 'ProductController@show')->name('coza');
+Route::get('/filter', 'ProductController@filter');
+Route::get('/search', 'ProductController@search');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/cart', 'CartItemsController@getUserCart');
+Route::get('/addtocart', 'ProductController@addtocart')->name('addcart')->middleware('auth');
+Route::get('/listacarrello', 'ProductController@showcart')->name('listacart');

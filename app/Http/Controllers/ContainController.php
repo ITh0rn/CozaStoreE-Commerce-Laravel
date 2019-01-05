@@ -8,6 +8,6 @@ class ContainController extends Controller
 {
     public function home(){
         $data = [];
-        return view('Contents/home', $data);
+        return view('Contents.productlist', $data);
     }
 }
