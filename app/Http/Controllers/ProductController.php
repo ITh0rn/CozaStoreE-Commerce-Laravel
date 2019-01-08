@@ -47,13 +47,13 @@ class ProductController extends Controller
     public function addToCart(Request $request){
 
         $cart = Session::get('cart');
-
         if ($cart) {
-            foreach ($cart as $cartproduct) {
-                if ($cartproduct['id'] == $request->id) {
-                    $cartproduct['qty']++;
-                }
-            }
+
+            if(in_array($request->id, $cart)){
+                $cart[$request->id]["qty"]++;
+                Session::put('cart', $cart);
+                Session::flash('success','barang berhasil ditambah ke keranjang!');
+            } else {
 
             $productcart = DB::table('products')->where('id', $request->id)->get();
             $cart[$productcart[0]->id] = array(
@@ -66,7 +66,11 @@ class ProductController extends Controller
 
             Session::put('cart', $cart);
             Session::flash('success','barang berhasil ditambah ke keranjang!');
-        }  else {
+
+              }
+        }
+
+        else {
 
             $productcart1 = DB::table('products')->where('id', $request->id)->get();
             $cart1 = array();
@@ -88,7 +92,11 @@ class ProductController extends Controller
 
         if($request->ajax()) {
             $products = Session::get('cart');
-            return view('Contents/cartlist')->with('products', $products);
+            $qty = 0;
+            foreach ($products as $prodotti){
+                $qty += $prodotti["qty"];
+            }
+            return view('Contents/cartlist')->with('products', $products)->with('prezzo', $qty);
         }
     }
 

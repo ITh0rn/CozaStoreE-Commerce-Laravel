@@ -13,7 +13,10 @@
                         </a>
 
                         <span class="header-cart-item-info">
-								{{$product["prezzo"]}}
+								Prezzo: € {{$product["prezzo"]}}
+							</span>
+                        <span class="header-cart-item-info">
+								Numero pezzi: {{1}}
 							</span>
                     </div>
                 </li>
@@ -22,7 +25,7 @@
             @endif
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Total: $75.00
+                    Totale: {{$prezzo}}
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">
