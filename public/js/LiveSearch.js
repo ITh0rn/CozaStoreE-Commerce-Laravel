@@ -19,8 +19,9 @@ $(document).ready(function(){
                     $('#product_div').hide().html(data).fadeToggle(1500);
                     console.log(data);
                 },
-                error: function () {
-                    alert('AJAX error');
+                error: function (data) {
+                    alert(data['errore']);
+
                 }
             });
         }

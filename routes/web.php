@@ -17,5 +17,5 @@ Route::get('/filter', 'ProductController@filter');
 Route::get('/search', 'ProductController@search');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart', 'CartItemsController@getUserCart');
-Route::get('/addtocart', 'ProductController@addtocart')->name('addcart')->middleware('auth');
+Route::get('/addtocart', 'ProductController@addToCart')->name('addcart');
 Route::get('/listacarrello', 'ProductController@showcart')->name('listacart');

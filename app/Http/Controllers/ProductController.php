@@ -37,28 +37,57 @@ class ProductController extends Controller
             $terms = $request->get('name');
             $productlive = DB::table('products')->where('nome', 'like' , '%' . $terms .'%')->get();
             if ($productlive){
-                return view('Contents/productlist')->with('product', $productlive);
+                return Response()->json(view('Contents/productlist')->with('product', $productlive)->render());
             }
             else return response()->json(['errore' => 'errore']);
         }
 
     }
 
-    public function addtocart(Request $request){
+    public function addToCart(Request $request){
 
-        $prodotto = DB::table('products')->where('id', $request->get('id'))->get();
-        $product = $prodotto[0];
-        $oldcart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldcart);
-        $cart->add($product, $product->id);
-        $request->session()->put('cart', $cart);
+        $cart = Session::get('cart');
 
+        if ($cart) {
+            foreach ($cart as $cartproduct) {
+                if ($cartproduct['id'] == $request->id) {
+                    $cartproduct['qty']++;
+                }
+            }
+
+            $productcart = DB::table('products')->where('id', $request->id)->get();
+            $cart[$productcart[0]->id] = array(
+                "id" => $productcart[0]->id,
+                "nome_prodotto" => $productcart[0]->nome,
+                "immagine_path" => $productcart[0]->img_dir,
+                "prezzo" => $productcart[0]->price,
+                "qty" => 1,
+            );
+
+            Session::put('cart', $cart);
+            Session::flash('success','barang berhasil ditambah ke keranjang!');
+        }  else {
+
+            $productcart1 = DB::table('products')->where('id', $request->id)->get();
+            $cart1 = array();
+            $cart1[$productcart1[0]->id] = array(
+                "id" => $productcart1[0]->id,
+                "nome_prodotto" => $productcart1[0]->nome,
+                "immagine_path" => $productcart1[0]->img_dir,
+                "prezzo" => $productcart1[0]->price,
+                "qty" => 1,
+            );
+
+            Session::put('cart', $cart1);
+            Session::flash('success','barang berhasil ditambah ke keranjang!');
+
+                }
     }
 
     public function showcart(Request $request){
 
         if($request->ajax()) {
-            $products = Product::all();
+            $products = Session::get('cart');
             return view('Contents/cartlist')->with('products', $products);
         }
     }
