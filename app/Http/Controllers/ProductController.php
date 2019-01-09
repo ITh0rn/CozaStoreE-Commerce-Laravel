@@ -48,11 +48,11 @@ class ProductController extends Controller
 
         $cart = Session::get('cart');
         if ($cart) {
-
-            if(in_array($request->id, $cart)){
-                $cart[$request->id]["qty"]++;
+            if($this->ExistMultidimensional($cart, $request->id)){
+                $cart[$request->id]['qty'] += 1;
                 Session::put('cart', $cart);
-                Session::flash('success','barang berhasil ditambah ke keranjang!');
+                Session::flash('success','Elemento aggiornato correttamente');
+
             } else {
 
             $productcart = DB::table('products')->where('id', $request->id)->get();
@@ -65,13 +65,12 @@ class ProductController extends Controller
             );
 
             Session::put('cart', $cart);
-            Session::flash('success','barang berhasil ditambah ke keranjang!');
+            Session::flash('success','Elemento inserito correttamente');
 
               }
         }
 
         else {
-
             $productcart1 = DB::table('products')->where('id', $request->id)->get();
             $cart1 = array();
             $cart1[$productcart1[0]->id] = array(
@@ -83,7 +82,7 @@ class ProductController extends Controller
             );
 
             Session::put('cart', $cart1);
-            Session::flash('success','barang berhasil ditambah ke keranjang!');
+            Session::flash('success','Elemento inserito correttamente');
 
                 }
     }
@@ -92,12 +91,21 @@ class ProductController extends Controller
 
         if($request->ajax()) {
             $products = Session::get('cart');
-            $qty = 0;
+            $price = 0;
             foreach ($products as $prodotti){
-                $qty += $prodotti["qty"];
+                $price += $prodotti["prezzo"] * $prodotti['qty'];
             }
-            return view('Contents/cartlist')->with('products', $products)->with('prezzo', $qty);
+            return view('Contents/cartlist')->with('products', $products)->with('prezzo', $price);
         }
+    }
+
+    public function ExistMultidimensional($cart, $id){
+        foreach($cart as $item){
+            if ($item['id'] == $id){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

@@ -32,12 +32,11 @@ $('.js-show-cart').click(function(e){
         type: "GET",
         dataType: "html",
         success: function(data) {
-            alert('funge');
-        $('.header-cart-title').after(data);
+            console.log('funziona, prodotto Inserito');
+            $('.header-cart-content').html(data);
         },
         error: function(data) {
-            alert('non va');
-            console.log(data);
+            console.log('Errore inserimento');
         }
     });
 });

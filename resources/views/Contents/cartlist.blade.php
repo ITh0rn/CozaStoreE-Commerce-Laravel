@@ -1,5 +1,4 @@
- <div class="header-cart-content flex-w js-pscroll">
-     @if($products)
+ @if($products)
          @foreach($products as $product)
             <ul class="header-cart-wrapitem w-full">
                 <li class="header-cart-item flex-w flex-t m-b-12">
@@ -16,7 +15,7 @@
 								Prezzo: € {{$product["prezzo"]}}
 							</span>
                         <span class="header-cart-item-info">
-								Numero pezzi: {{1}}
+								Numero pezzi: {{$product["qty"]}}
 							</span>
                     </div>
                 </li>
@@ -25,7 +24,7 @@
             @endif
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Totale: {{$prezzo}}
+                    Totale: $ {{$prezzo}}
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">
@@ -38,4 +37,3 @@
                     </a>
                 </div>
             </div>
-        </div>
