@@ -476,7 +476,7 @@
 	<!--<script src="{{URL::asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>  Filtro per il filtraggio degli items  -->
 	<!--===============================================================================================-->
 	<script src="{{URL::asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
-	<!--<script>
+	<script>
         $('.js-addwish-b2').on('click', function(e){
             e.preventDefault();
         });
@@ -511,7 +511,7 @@
             });
         });
 
-	</script> -->
+	</script>
 	<!--===============================================================================================-->
 	<script src="{{URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 	<script>
@@ -533,6 +533,7 @@
 	<script src="{{URL::asset('js/main.js')}}"></script>
 	<script src="{{URL::asset('js/GenderFilter.js')}}"></script>
 	<script src="{{URL::asset('js/LiveSearch.js')}}"></script>
+	<script src="{{URL::asset('js/cart.js')}}"></script>
 </body>
 </html>
 

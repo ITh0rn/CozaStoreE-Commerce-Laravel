@@ -47,44 +47,44 @@ class ProductController extends Controller
     public function addToCart(Request $request){
 
         $cart = Session::get('cart');
-        if ($cart) {
-            if($this->ExistMultidimensional($cart, $request->id)){
-                $cart[$request->id]['qty'] += 1;
-                Session::put('cart', $cart);
-                Session::flash('success','Elemento aggiornato correttamente');
+        if($request->ajax()) {
+            if ($cart) {
+                if ($this->ExistMultidimensional($cart, $request->get('id'))) {
+                    $cart[$request->get('id')]['qty'] += 1;
+                    Session::put('cart', $cart);
+                    Session::flash('success', 'Elemento aggiornato correttamente');
 
-            } else {
+                } else {
 
-            $productcart = DB::table('products')->where('id', $request->id)->get();
-            $cart[$productcart[0]->id] = array(
-                "id" => $productcart[0]->id,
-                "nome_prodotto" => $productcart[0]->nome,
-                "immagine_path" => $productcart[0]->img_dir,
-                "prezzo" => $productcart[0]->price,
-                "qty" => 1,
-            );
+                    $productcart = DB::table('products')->where('id', $request->get('id'))->get();
+                    $cart[$productcart[0]->id] = array(
+                        "id" => $productcart[0]->id,
+                        "nome_prodotto" => $productcart[0]->nome,
+                        "immagine_path" => $productcart[0]->img_dir,
+                        "prezzo" => $productcart[0]->price,
+                        "qty" => 1,
+                    );
 
-            Session::put('cart', $cart);
-            Session::flash('success','Elemento inserito correttamente');
-
-              }
-        }
-
-        else {
-            $productcart1 = DB::table('products')->where('id', $request->id)->get();
-            $cart1 = array();
-            $cart1[$productcart1[0]->id] = array(
-                "id" => $productcart1[0]->id,
-                "nome_prodotto" => $productcart1[0]->nome,
-                "immagine_path" => $productcart1[0]->img_dir,
-                "prezzo" => $productcart1[0]->price,
-                "qty" => 1,
-            );
-
-            Session::put('cart', $cart1);
-            Session::flash('success','Elemento inserito correttamente');
+                    Session::put('cart', $cart);
+                    Session::flash('success', 'Elemento inserito correttamente');
 
                 }
+            } else {
+                $productcart1 = DB::table('products')->where('id', $request->get('id'))->get();
+                $cart1 = array();
+                $cart1[$productcart1[0]->id] = array(
+                    "id" => $productcart1[0]->id,
+                    "nome_prodotto" => $productcart1[0]->nome,
+                    "immagine_path" => $productcart1[0]->img_dir,
+                    "prezzo" => $productcart1[0]->price,
+                    "qty" => 1,
+                );
+
+                Session::put('cart', $cart1);
+                Session::flash('success', 'Elemento inserito correttamente');
+
+            }
+        }
     }
 
     public function showcart(Request $request){
