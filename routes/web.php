@@ -19,3 +19,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart', 'CartItemsController@getUserCart');
 Route::get('/addtocart', 'ProductController@addToCart');
 Route::get('/listacarrello', 'ProductController@showcart')->name('listacart');
+Route::get('/{Utente}/carrello', 'ProductController@Carrello')->name('carrello');

@@ -109,8 +109,9 @@
     });
 
 
-    /*==================================================================
-    [ Show / hide modal search ]*/
+    /*==================================================================*/
+
+    /*[ Show / hide modal search ]*/
     $('.js-show-modal-search').on('click', function(){
         $('.modal-search-header').addClass('show-modal-search');
         $(this).css('opacity','0');
@@ -124,23 +125,9 @@
     $('.container-search-header').on('click', function(e){
         e.stopPropagation();
     });
+    /*==================================================================*/
 
-
-    /*==================================================================
-  /*  [ Isotope ]
-    var $topeContainer = $('.isotope-grid');
-    var $filter = $('.filter-tope-group');
-
-    // filter items on button click
-    $filter.each(function () {
-        $filter.on('click', 'button', function () {
-            var filterValue = $(this).attr('data-filter');
-            $topeContainer.isotope({filter: filterValue});
-        });
-        
-    });
-
-    // init Isotope
+    /* Evidenzia filtro selezionato */
     $(window).on('load', function () {
         var $grid = $topeContainer.each(function () {
             $(this).isotope({
@@ -165,7 +152,7 @@
 
             $(this).addClass('how-active1');
         });
-    }); */
+    });
 
     /*==================================================================
     [ Filter / Search product ]*/

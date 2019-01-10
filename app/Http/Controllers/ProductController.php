@@ -6,9 +6,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Product as Product;
 use DB;
-use Psy\Util\Json;
 use Session;
-use App\Cart;
 
 class ProductController extends Controller
 {
@@ -16,7 +14,7 @@ class ProductController extends Controller
 
         $product = Product::all();
         $prodotti = null;
-        return view('Contents/cozahome')->with('product', $product)->with('products', $prodotti);
+        return view('layout/cozahome')->with('product', $product)->with('products', $prodotti);
 
     }
 
@@ -94,6 +92,7 @@ class ProductController extends Controller
             $price = 0;
             foreach ($products as $prodotti){
                 $price += $prodotti["prezzo"] * $prodotti['qty'];
+                Session::put('price', $price);
             }
             return view('Contents/cartlist')->with('products', $products)->with('prezzo', $price);
         }
@@ -106,6 +105,12 @@ class ProductController extends Controller
             }
         }
         return false;
+    }
+
+    public function Carrello($nome){
+        $cart = Session::get('cart');
+        $price = Session::get('price');
+        return view('Contents/carrello')->with('prodotti', $cart)->with('prezzo', $price);
     }
 
 }
