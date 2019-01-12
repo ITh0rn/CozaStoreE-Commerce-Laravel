@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="block2-txt-child2 flex-r p-t-3">
-                    <a value='{{$product->id}}' class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                    <a value='{{$product->id}}' class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" id="btnwish">
                         <img class="icon-heart1 dis-block trans-04" src="{{asset('img/icons/icon-heart-01.png')}}" alt="ICON">
                         <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('img/icons/icon-heart-02.png')}}">
                     </a>

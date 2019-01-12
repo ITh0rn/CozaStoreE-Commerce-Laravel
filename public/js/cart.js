@@ -1,7 +1,13 @@
+/* Filtro per aggiunta dei prodotti nella Wishlist e per la gestione grafica del Pop-up */
 $(document).ready(function(){
-    $('.js-addwish-b2').click(function(e){
+    $('#product_div').on('click', '#btnwish' ,function(e){
         e.preventDefault();
+        $nome = $(this).parent().parent().parent().parent().find('.js-name-b2').text();
         $value = $(this).attr('value');
+        $(this).click(false);
+        console.log($value);
+        $(this).addClass('js-addedwish-b2');
+        swal( $nome, "Aggiunto alla Wishlist", "success");
         console.log($value);
         $.ajax({
             url : "/addtocart",
@@ -11,32 +17,3 @@ $(document).ready(function(){
     });
 });
 
-$('.js-addwish-b2').each(function(){
-    var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-    $(this).on('click', function(){
-        swal(nameProduct, "Aggiunto alla Wishlist", "success");
-
-        $(this).addClass('js-addedwish-b2');
-        $(this).off('click');
-    });
-});
-
-$('.js-addwish-detail').each(function(){
-    var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-    $(this).on('click', function(){
-        swal(nameProduct, "Aggiunto alla Wishlist", "success");
-
-        $(this).addClass('js-addedwish-detail');
-        $(this).off('click');
-    });
-});
-
-/*---------------------------------------------*/
-
-$('.js-addcart-detail').each(function(){
-    var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-    $(this).on('click', function(){
-        swal(nameProduct, "is added to cart !", "success");
-    });
-});

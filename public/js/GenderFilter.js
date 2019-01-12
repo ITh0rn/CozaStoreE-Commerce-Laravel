@@ -9,7 +9,7 @@ $(document).ready(function(){
             data: {'type': $value},
             dataType: "json",
             success: function(data) {
-                $('#product_div').hide().html(data).fadeToggle(1000);
+                $('#product_div').hide().html(data).fadeToggle(1300);
             },
             error: function() {
                 alert('AJAX error');

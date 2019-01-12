@@ -245,7 +245,7 @@
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
+					<input class="plh3" type="text" name="search" placeholder="Cerca...">
 				</form>
 			</div>
 		</div>
