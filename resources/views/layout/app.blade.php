@@ -13,7 +13,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/animate/animate.css')}}">
 <!--===============================================================================================-->
@@ -82,7 +82,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo">
+					<a href="{{route('coza')}}" class="logo">
 						<img src="{{asset('img/icons/logo-01.png')}}" alt="IMG-LOGO">
 					</a>
 
@@ -117,9 +117,14 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
+
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
 							<i class="zmdi zmdi-search"></i>
 						</div>
+
+						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<i class="zmdi zmdi-account-o"></i>
+						</a>
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="1">
 							<i class="zmdi zmdi-shopping-cart"></i>
@@ -128,6 +133,7 @@
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="3">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
+
 					</div>
 				</nav>
 			</div>
@@ -153,6 +159,10 @@
 				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+					<i class="zmdi zmdi-perm-identity"></i>
+				</div>
 			</div>
 
 			<!-- Button show menu -->
@@ -267,31 +277,31 @@
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Categories
+						Categorie
 					</h4>
 
 					<ul>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+								Donna
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+								Uomo
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
+								Scarpe
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+								Orologi
 							</a>
 						</li>
 					</ul>
@@ -299,25 +309,25 @@
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Help
+						Aiuto
 					</h4>
 
 					<ul>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
+								Traccia Ordini
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns
+								Ritorna
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
+								Spedizioni
 							</a>
 						</li>
 
@@ -426,7 +436,6 @@
                 minimumResultsForSearch: 20,
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
-            alert('sdsd');
         })
 	</script>
 	<!--===============================================================================================-->
@@ -458,42 +467,6 @@
 	<!--<script src="{{URL::asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>  Filtro per il filtraggio degli items  -->
 	<!--===============================================================================================-->
 	<script src="{{URL::asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
-	<script>
-        $('.js-addwish-b2').on('click', function(e){
-            e.preventDefault();
-        });
-
-        $('.js-addwish-b2').each(function(){
-            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-            $(this).on('click', function(){
-                swal(nameProduct, "is added to wishlist !", "success");
-
-                $(this).addClass('js-addedwish-b2');
-                $(this).off('click');
-            });
-        });
-
-        $('.js-addwish-detail').each(function(){
-            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-            $(this).on('click', function(){
-                swal(nameProduct, "is added to wishlist !", "success");
-
-                $(this).addClass('js-addedwish-detail');
-                $(this).off('click');
-            });
-        });
-
-        /*---------------------------------------------*/
-
-        $('.js-addcart-detail').each(function(){
-            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-            $(this).on('click', function(){
-                swal(nameProduct, "is added to cart !", "success");
-            });
-        });
-
-	</script>
 	<!--===============================================================================================-->
 	<script src="{{URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 	<script>
@@ -511,11 +484,11 @@
             })
         });
 	</script>
-	<!--===============================================================================================-->
+	<script src="{{URL::asset('js/cart.js')}}"></script>
 	<script src="{{URL::asset('js/main.js')}}"></script>
 	<script src="{{URL::asset('js/GenderFilter.js')}}"></script>
 	<script src="{{URL::asset('js/LiveSearch.js')}}"></script>
-	<script src="{{URL::asset('js/cart.js')}}"></script>
+	<!--===============================================================================================-->
 </body>
 </html>
 

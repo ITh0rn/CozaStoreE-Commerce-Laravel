@@ -781,6 +781,9 @@
 .zmdi-shopping-cart:before {
   content: '\f1cb';
 }
+.zmdi-perm-identity:before {
+  content: '\f1cb';
+}
 .zmdi-sign-in:before {
   content: '\f1cc';
 }
