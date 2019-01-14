@@ -180,11 +180,11 @@
                         Tutti Prodotti
                     </button>
 
-                    <button type="button" id="FilterButton" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women" value="female">
+                    <button type="button" id="FilterButton" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women" value="donna">
                         Donna
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men" value="male">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men" value="uomo">
                         Uomo
                     </button>
 
