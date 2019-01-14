@@ -1,4 +1,4 @@
-//Filtering Products for Womans
+/* Filtra i prodotti per (Uomo, Donna ecc) */
 $(document).ready(function(){
     $('.stext-106').click(function(e){
         e.preventDefault();

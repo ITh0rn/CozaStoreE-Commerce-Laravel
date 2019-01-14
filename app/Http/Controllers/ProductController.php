@@ -107,10 +107,5 @@ class ProductController extends Controller
         return false;
     }
 
-    public function Carrello($nome){
-        $cart = Session::get('cart');
-        $price = Session::get('price');
-        return view('Contents/carrello')->with('prodotti', $cart)->with('prezzo', $price);
-    }
 
 }

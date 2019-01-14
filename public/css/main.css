@@ -1527,13 +1527,13 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 button.mfp-arrow-right {
-  background-image: url(../images/icons/icon-next.png);
+  background-image: url(../img/icons/icon-next.png);
   background-position: center center;
   background-repeat: no-repeat;
 }
 
 button.mfp-arrow-left {
-  background-image: url(../images/icons/icon-prev.png);
+  background-image: url(../img/icons/icon-prev.png);
   background-position: center center;
   background-repeat: no-repeat;
 }
