@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('type');
-            $table->idCart('idCart')->references('id')->on('carts');
         });
     }
 

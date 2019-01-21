@@ -35,7 +35,7 @@ $('.js-show-cart').click(function(e){
             console.log('funziona, prodotto Inserito');
             $('.header-cart-content').html(data);
         },
-        error: function(data) {
+        error: function() {
             console.log('Errore inserimento');
         }
     });

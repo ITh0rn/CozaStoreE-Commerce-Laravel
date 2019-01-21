@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
 
-                                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                <button value='{{$prodotto[0]->id}}' class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                     Aggiungi al Carrello
                                 </button>
                             </div>
@@ -241,7 +241,7 @@
                                     <!-- Review -->
                                     <div class="flex-w flex-t p-b-68">
                                         <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                            <img src="images/avatar-01.jpg" alt="AVATAR">
+                                            <img src="{{asset('img/avatar-01.jpg')}}" alt="AVATAR">
                                         </div>
 
                                         <div class="size-207">

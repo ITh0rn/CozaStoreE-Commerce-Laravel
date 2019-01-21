@@ -48,7 +48,7 @@ class ProductController extends Controller
         if($request->ajax()) {
             if ($cart) {
                 if ($this->ExistMultidimensional($cart, $request->get('id'))) {
-                    $cart[$request->get('id')]['qty'] += 1;
+                    $cart[$request->get('id')]['qty'] += $request->get('num');
                     Session::put('cart', $cart);
                     Session::flash('success', 'Elemento aggiornato correttamente');
 
@@ -60,7 +60,7 @@ class ProductController extends Controller
                         "nome_prodotto" => $productcart[0]->nome,
                         "immagine_path" => $productcart[0]->img_dir,
                         "prezzo" => $productcart[0]->price,
-                        "qty" => 1,
+                        "qty" => $request->get('num'),
                     );
 
                     Session::put('cart', $cart);
@@ -75,7 +75,7 @@ class ProductController extends Controller
                     "nome_prodotto" => $productcart1[0]->nome,
                     "immagine_path" => $productcart1[0]->img_dir,
                     "prezzo" => $productcart1[0]->price,
-                    "qty" => 1,
+                    "qty" => $request->get('num'),
                 );
 
                 Session::put('cart', $cart1);
@@ -105,6 +105,17 @@ class ProductController extends Controller
             }
         }
         return false;
+    }
+
+    public function  getnumberCart(Request $request){
+        $cart = Session::get('cart');
+        $count = 0;
+        if($cart){
+            foreach($cart as $prodotto){
+                $count += 1;
+            }
+        }
+        return Response()->json(['count' => $count]);
     }
 
 

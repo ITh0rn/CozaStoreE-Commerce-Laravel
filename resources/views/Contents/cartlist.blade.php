@@ -7,7 +7,7 @@
                     </div>
 
                     <div class="header-cart-item-txt p-t-8">
-                        <a href="{{route('dettaglio', ["nome_prodotto" => $product->nome, "id_prodotto" => $product->id])}}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                        <a href="{{route('dettaglio', ["nome_prodotto" => $product["nome_prodotto"], "id_prodotto" => $product["id"]])}}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
                             {{$product["nome_prodotto"]}}
                         </a>
 
