@@ -107,7 +107,7 @@ class ProductController extends Controller
         return false;
     }
 
-    public function  getnumberCart(Request $request){
+    public function getnumberCart(Request $request){
         $cart = Session::get('cart');
         $count = 0;
         if($cart){
@@ -116,6 +116,15 @@ class ProductController extends Controller
             }
         }
         return Response()->json(['count' => $count]);
+    }
+
+    public function eliminaprodcart(Request $request){
+        if ($request->ajax()){
+            $cart = Session::get('cart');
+            unset($cart[$request->get('id')]);
+            Session::put('cart', $cart);
+            return Response()->json(["msg" => ["Eliminato"]]);
+        }
     }
 
 

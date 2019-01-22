@@ -1,4 +1,5 @@
 @extends ('layout.app')
+@section('pageTitle', $prodotto[0]->nome)
 @section ('content')
 
     <!-- breadcrumb -->
@@ -53,7 +54,7 @@
                     </h4>
 
                     <span class="mtext-106 cl2">
-							{{$prodotto[0]->price}}
+							€ {{$prodotto[0]->price}}
 						</span>
 
                     <p class="stext-102 cl3 p-t-23">

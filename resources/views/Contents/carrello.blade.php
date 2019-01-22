@@ -1,5 +1,18 @@
 @extends ('layout.app')
+@section('pageTitle', 'Carrello')
 @section ('content')
+<div class="container">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            <a href="{{route('coza')}}" class="stext-109 cl8 hov-cl1 trans-04">
+                Home
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <span class="stext-109 cl4">
+				Carrello
+			</span>
+        </div>
+    </div>
 <form class="bg0 p-t-75 p-b-85">
     <div class="container">
         <div class="row">
@@ -18,7 +31,7 @@
                                 @foreach($prodotti as $prodotto)
                             <tr class="table_row">
                                 <td class="column-1">
-                                    <div class="how-itemcart1">
+                                    <div class="how-itemcart1" value="{{$prodotto["id"]}}">
                                         <img src="{{URL::asset('img/'.$prodotto["immagine_path"])}}" alt="IMG">
                                     </div>
                                 </td>

@@ -2,7 +2,7 @@
          @foreach($products as $product)
             <ul class="header-cart-wrapitem w-full">
                 <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
+                    <div class="header-cart-item-img" value="{{$product["id"]}}">
                         <img src="{{URL::asset('img/'.$product["immagine_path"])}}" alt="IMG">
                     </div>
 

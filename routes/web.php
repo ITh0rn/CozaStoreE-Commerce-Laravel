@@ -22,3 +22,4 @@ Route::get('/listacarrello', 'ProductController@showcart')->name('listacart');
 Route::get('/{Utente}/carrello', 'ContainController@Carrello')->name('carrello');
 Route::get('/{Prodotto}/dettaglio', 'ContainController@DettaglioProdotto')->name('dettaglio');
 Route::get('/getnumberitemcart', 'ProductController@getnumberCart');
+Route::get('/eliminaprodottocarrello', 'ProductController@eliminaprodcart');
