@@ -27,4 +27,8 @@ class ContainController extends Controller
             return view('Contents.dettaglioprodotto')->with('dettaglio', $images)->with('prodotto', $prodotto);
 
     }
+
+    public function ChiSiamo(){
+        return view('Contents/chisiamo');
+    }
 }

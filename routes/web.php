@@ -23,4 +23,8 @@ Route::get('/{Utente}/carrello', 'ContainController@Carrello')->name('carrello')
 Route::get('/{Prodotto}/dettaglio', 'ContainController@DettaglioProdotto')->name('dettaglio');
 Route::get('/getnumberitemcart', 'ProductController@getnumberCart');
 Route::get('/eliminaprodottocarrello', 'ProductController@eliminaprodcart');
+<<<<<<< HEAD
 Route::get('/modificanumitems', 'ProductController@modificanumitems');
+=======
+Route::get('/chisiamo', 'ContainController@ChiSiamo')->name('chisiamo');
+>>>>>>> ffae3469ee91b58395b9ccd484fc8c8d1bd3fcaf
