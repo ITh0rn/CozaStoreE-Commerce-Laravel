@@ -106,7 +106,7 @@
 							</li>
 
 							<li>
-								<a href="about.html">Chi siamo</a>
+								<a href="{{ route('chisiamo') }}" class="flex-c-m trans-04 p-lr-25">Chi siamo</a>
 							</li>
 
 							<li>
