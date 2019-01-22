@@ -90,7 +90,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="index.html">Home</a>
+								<a href="{{route('coza')}}">Home</a>
 							</li>
 
 							<li>

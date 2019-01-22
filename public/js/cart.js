@@ -107,4 +107,29 @@ $(document).ready(function(){
     });
 });
 
+/*Aggiornamento Carrelo view Carrello.blade*/
+$(document).ready(function() {
+    $('.js-cartupdate').on('click', function(e){
+        e.preventDefault();
+        $('.table_row').each(function () {
+            $num = $(this).find('.num-product').val();
+            $id = $(this).find('.how-itemcart1').attr('value');
+            console.log($num, $id);
+            $.ajax({
+                url: '/modificanumitems',
+                type: "GET",
+                data: {'id': $id, 'num': $num},
+            });
+        });
+        location.reload();
+    });
+    $.ajax({
+        url: '/getnumberitemcart',
+        type: "GET",
+        succes: function (data) {
+
+        }
+    })
+});
+
 
