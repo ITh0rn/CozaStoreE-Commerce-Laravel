@@ -122,8 +122,27 @@ class ProductController extends Controller
         if ($request->ajax()){
             $cart = Session::get('cart');
             unset($cart[$request->get('id')]);
+            $price = 0;
+            foreach ($cart as $prodotto){
+                $price += $prodotto['qty'] * $prodotto['prezzo'];
+            }
+            Session::put('price', $price);
             Session::put('cart', $cart);
             return Response()->json(["msg" => ["Eliminato"]]);
+        }
+    }
+
+    public function modificanumitems(Request $request){
+        if($request->ajax()){
+            $cart = Session::get('cart');
+            $cart[$request->get('id')]['qty'] = $request->get('num');
+            Session::put('cart', $cart);
+            $prezzo = 0;
+            foreach ($cart = Session::get('cart') as $prodotto){
+                $prezzo += $prodotto['qty'] * $prodotto['prezzo'];
+            }
+            Session::put('price', $prezzo);
+            Response()->json(["data" => "funziona"]);
         }
     }
 

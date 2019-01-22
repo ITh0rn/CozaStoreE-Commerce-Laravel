@@ -66,9 +66,9 @@
                             </div>
                         </div>
 
-                        <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+                        <button class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 js-cartupdate">
                             Aggiorna Carrello
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="size-209">
-								<span class="mtext-110 cl2">
+								<span class="mtext-110 cl2 js-price-total">
 									€ {{$prezzo}}
 								</span>
                         </div>
@@ -140,13 +140,17 @@
                     <div class="flex-w flex-t p-t-27 p-b-33">
                         <div class="size-208">
 								<span class="mtext-101 cl2">
-									Total:
+									Totale:
 								</span>
                         </div>
 
                         <div class="size-209 p-t-1">
 								<span class="mtext-110 cl2">
-									$79.65
+                                    @if($prezzo != 0)
+									$ {{$prezzo + 15}}
+                                        @else
+                                        $ {{0}}
+                                        @endif
 								</span>
                         </div>
                     </div>
