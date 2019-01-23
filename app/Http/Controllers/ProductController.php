@@ -21,14 +21,18 @@ class ProductController extends Controller
     public function filter(Request $request){
 
         if($request->ajax()) {
-            $product1 = DB::table('products')->where('gender', $request->get('type'))->get();
-            if ($product1){
-                return Response()->json(view('Contents/productlist')->with('product', $product1)->render());
+            $value = $request->get('type');
+            if($value == "all"){
+                 $product1 = Product::all();
             }
-            else return response()->json(['errore' => 'errore']);
+            else {
+                $product1 = DB::table('products')->where('gender', $request->get('type'))->get();
+
+            }
+            return Response()->json(view('Contents/productlist')->with('product', $product1)->render());
+            }
         }
 
-    }
 
     public function search(Request $request){
         if($request->ajax()){
