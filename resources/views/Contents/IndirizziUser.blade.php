@@ -11,15 +11,10 @@
         <th class="column-5">Civico</th>
     </tr>
     <tr class="table_row">
-        <td class="column-1">
-            <div class="how-itemcart1">
-                <!--<img alt="IMG">-->
-            </div>
-        </td>
+        <td class="column-1"></td>
         <td class="column-2"></td>
         <td class="column-3"></td>
-        <td class="column-4">
-        </td>
+        <td class="column-4"></td>
         <td class="column-5"></td>
     </tr>
 </table>

@@ -26,14 +26,12 @@ Route::get('/eliminaprodottocarrello', 'ProductController@eliminaprodcart');
 Route::get('/chi-siamo', 'ContainController@ChiSiamo')->name('chisiamo');
 Route::get('/modificanumitems', 'ProductController@modificanumitems');
 Route::get('/chisiamo', 'ContainController@ChiSiamo')->name('chisiamo');
-<<<<<<< HEAD
 Route::get('/Profilo', 'ContainController@getprofile')->name('profilo');
 Route::get('/contatti', 'ContainController@Contatti')->name('contatti');
 Route::get('/shop', 'ProductController@Shop')->name('shop');
-=======
 Route::get('/Profilo', 'ContainController@getprofile')->name('profilo')->middleware('auth');
 Route::get('/contatti', 'ContainController@Contatti')->name('contatti');
 Route::get('/ordini', 'UserController@ordini')->name('ordini');
 Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
-
->>>>>>> 4fed28624a325a3f258028825d2084fd518d20e0
+Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
+Route::get('/userinfo', 'UserController@userinfo')->name('userinfo');
