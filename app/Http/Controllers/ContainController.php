@@ -32,12 +32,11 @@ class ContainController extends Controller
         return view('Contents/chisiamo');
     }
 
-<<<<<<< HEAD
     public function getprofile(){
         return view('Contents/Profile');
-=======
+    }
+
     public function Contatti(){
         return view('Contents/contatti');
->>>>>>> 4e9d0a85349d9e3f23da125c47a9b474348f0090
     }
 }
