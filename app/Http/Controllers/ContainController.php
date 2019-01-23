@@ -31,4 +31,8 @@ class ContainController extends Controller
     public function ChiSiamo(){
         return view('Contents/chisiamo');
     }
+
+    public function getprofile(){
+        return view('Contents/Profile');
+    }
 }

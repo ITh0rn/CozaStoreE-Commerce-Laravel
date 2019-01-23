@@ -122,7 +122,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+						<a href="{{route('profilo')}}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 							<i class="zmdi zmdi-account-o"></i>
 						</a>
 
