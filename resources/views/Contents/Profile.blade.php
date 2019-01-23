@@ -20,19 +20,19 @@
 
                             <ul>
                                 <li class="">
-                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4 js-dati-utente">
                                         Modifica Dati
                                     </a>
                                 </li>
 
                                 <li class="bor18">
-                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4 js-miei-ordini">
                                         I Miei Ordini
                                     </a>
                                 </li>
 
                                 <li class="bor18">
-                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4 js-indirizzi">
                                         Indirizzi
                                     </a>
                                 </li>
@@ -45,28 +45,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="m-l-40 p-l-40 m-t-15">
-                        <table class="table-profile p-t-30">
-                            <tr class="table_head">
-                                <th class="column-1">N° Ordine</th>
-                                <th class="column-2"></th>
-                                <th class="column-3">Prodotti</th>
-                                <th class="column-4">Sconto</th>
-                                <th class="column-5">Totale</th>
-                            </tr>
-                                    <tr class="table_row">
-                                        <td class="column-1">
-                                            <div class="how-itemcart1">
-                                                <!--<img alt="IMG">-->
-                                            </div>
-                                        </td>
-                                        <td class="column-2"></td>
-                                        <td class="column-3"></td>
-                                        <td class="column-4">
-                                        </td>
-                                        <td class="column-5"></td>
-                                    </tr>
-                        </table>
+                    <div class="m-l-50 p-l-40 m-t-15 js-profilo-utente">
                     </div>
                 </div>
             </div>

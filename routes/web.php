@@ -26,6 +26,8 @@ Route::get('/eliminaprodottocarrello', 'ProductController@eliminaprodcart');
 Route::get('/chi-siamo', 'ContainController@ChiSiamo')->name('chisiamo');
 Route::get('/modificanumitems', 'ProductController@modificanumitems');
 Route::get('/chisiamo', 'ContainController@ChiSiamo')->name('chisiamo');
-Route::get('/Profilo', 'ContainController@getprofile')->name('profilo');
+Route::get('/Profilo', 'ContainController@getprofile')->name('profilo')->middleware('auth');
 Route::get('/contatti', 'ContainController@Contatti')->name('contatti');
+Route::get('/ordini', 'UserController@ordini')->name('ordini');
+Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
 
