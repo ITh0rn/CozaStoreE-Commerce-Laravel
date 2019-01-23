@@ -40,4 +40,16 @@ class ContainController extends Controller
         return view('Contents/contatti');
     }
 
+    public function ResoGratuito(){
+        return view('Contents/resogratuito');
+    }
+
+    public function Spedizione(){
+        return view('Contents/spedizione');
+    }
+
+    public function FAQs(){
+        return view('Contents/FAQs');
+    }
+
 }

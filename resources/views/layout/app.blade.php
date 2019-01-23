@@ -49,7 +49,7 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{ route('FAQs') }}" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
 						</a>
 						<li class="active-menu">
@@ -282,25 +282,25 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04" data-filter=".women" value="donna">
 								Donna
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								Uomo
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								Scarpe
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								Orologi
 							</a>
 						</li>
@@ -314,25 +314,25 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="https://www.17track.net/it" class="stext-107 cl7 hov-cl1 trans-04">
 								Traccia Ordini
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Ritorna
+							<a href="{{ route('resogratuito') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Reso Gratuito
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Spedizioni
+							<a href="{{ route('spedizione') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Spedizione
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ route('FAQs') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								FAQs
 							</a>
 						</li>
