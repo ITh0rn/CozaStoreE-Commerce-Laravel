@@ -39,4 +39,5 @@ class ContainController extends Controller
     public function Contatti(){
         return view('Contents/contatti');
     }
+
 }

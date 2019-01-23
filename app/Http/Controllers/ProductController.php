@@ -12,10 +12,26 @@ class ProductController extends Controller
 {
     public function show(){
 
-        $product = Product::all();
+        $product = DB::table('products')->orderBy('id', 'desc')->take(12)->get();
         $prodotti = null;
         return view('layout/cozahome')->with('product', $product)->with('products', $prodotti);
 
+    }
+
+    /*
+    public static function showall(){
+
+        $product = Product::all();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+
+    }
+    */
+    public function Shop(){
+
+        $product = DB::table('products')->get();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
     }
 
     public function filter(Request $request){
