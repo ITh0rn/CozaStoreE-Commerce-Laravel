@@ -33,7 +33,12 @@ Route::get('/Profilo', 'ContainController@getprofile')->name('profilo')->middlew
 Route::get('/contatti', 'ContainController@Contatti')->name('contatti');
 Route::get('/ordini', 'UserController@ordini')->name('ordini');
 Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
+<<<<<<< HEAD
 Route::get('/reso-gratuito', 'ContainController@ResoGratuito')->name('resogratuito');
 Route::get('/spedizione', 'ContainController@Spedizione')->name('spedizione');
 Route::get('/FAQs', 'ContainController@FAQs')->name('FAQs');
 
+=======
+Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
+Route::get('/userinfo', 'UserController@userinfo')->name('userinfo');
+>>>>>>> ce159aa8b2e235fadf72bcd526fda4ff3b3c1d52

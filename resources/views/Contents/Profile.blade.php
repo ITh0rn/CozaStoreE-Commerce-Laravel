@@ -45,7 +45,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="m-l-50 p-l-40 m-t-15 js-profilo-utente">
+                    <div class="m-l-64 p-l-20 m-t-15 js-profilo-utente">
                     </div>
                 </div>
             </div>
