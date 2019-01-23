@@ -1689,6 +1689,12 @@ button.mfp-close {
     margin-top: 0;
 }
 
+/*////////////////*/
+
+.side-menu {
+  border-right: 1px solid #e6e6e6;;
+}
+
 
 /*//////////////////////////////////////////////////////////////////
 [ Filter ]*/
@@ -1906,9 +1912,26 @@ input.num-product::-webkit-inner-spin-button {
   overflow: auto;
   border-left: 1px solid #e6e6e6;
   border-right: 1px solid #e6e6e6;
+  width: auto;
+
 }
 
-.table-shopping-cart {
+.wrap-table-profile {
+  overflow: auto;
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+  width: auto;
+
+
+}
+
+.table-shopping-cart  {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px;
+}
+
+table-shopping-cart  {
   border-collapse: collapse;
   width: 100%;
   min-width: 680px;
@@ -1917,6 +1940,9 @@ input.num-product::-webkit-inner-spin-button {
 .table-shopping-cart tr {
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+
 }
 
 .table-shopping-cart .column-1 {
@@ -1973,6 +1999,93 @@ input.num-product::-webkit-inner-spin-button {
   color: #555;
   line-height: 1.6;
 }
+
+/*//////////////////////////////////////////////////////////////////
+[ Table Shopping Cart ]*/
+
+.wrap-table-profile {
+  overflow: auto;
+  width: auto;
+
+}
+
+
+.table-profile  {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px;
+}
+
+table-profile  {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px;
+}
+
+.table-profile tr {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+
+}
+
+.table-profile .column-1 {
+  width: 133px;
+  padding-left: 50px;
+}
+
+.table-profile .column-2 {
+  width: 220px;
+  font-size: 15px;
+}
+
+.table-profile .column-3 {
+  width: 120px;
+  font-size: 16px;
+}
+
+.table-profile .column-4 {
+  width: 145px;
+  text-align: right;
+}
+
+.table-profile .column-5 {
+  width: 172px;
+  padding-right: 50px;
+  text-align: right;
+  font-size: 16px;
+}
+
+.table-profile .table_row {
+  height: 120px;
+}
+
+.table-profile .table_row td {
+  padding-bottom: 20px;
+}
+
+.table-profile .table_row td.column-1 {
+  padding-bottom: 30px;
+}
+
+.table-profile .table_head th {
+  font-family: Poppins-Bold;
+  font-size: 13px;
+  color: #555;
+  text-transform: uppercase;
+  line-height: 1.6;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.table-profile td {
+  font-family: Poppins-Regular;
+  color: #555;
+  line-height: 1.6;
+}
+
+
 
 
 

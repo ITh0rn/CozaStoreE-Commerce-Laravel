@@ -488,6 +488,7 @@
 	<script src="{{URL::asset('js/main.js')}}"></script>
 	<script src="{{URL::asset('js/GenderFilter.js')}}"></script>
 	<script src="{{URL::asset('js/LiveSearch.js')}}"></script>
+	<script src="{{URL::asset('js/profile.js')}}"></script>
 	<!--===============================================================================================-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWBrD6ra6p1Ql04E6GAa4zHb884hybV9c&callback=initMap"
 			async defer></script>
