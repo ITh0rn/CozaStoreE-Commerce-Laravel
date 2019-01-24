@@ -102,7 +102,7 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="{{ route('blog') }}" class="flex-c-m trans-04 p-lr-25">Blog</a>
 							</li>
 
 							<li>

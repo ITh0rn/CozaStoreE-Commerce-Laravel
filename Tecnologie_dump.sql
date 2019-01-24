@@ -217,3 +217,13 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-01-22 16:42:51
+
+DROP TABLE IF EXISTS `articoli`;
+CREATE TABLE `articolo` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `img_dir` varchar(255)  NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `IDutente` varchar(255) NOT NULL,
+  constraint articolo_utente foreign key (IDutente) references users(ID) on update cascade
+)
