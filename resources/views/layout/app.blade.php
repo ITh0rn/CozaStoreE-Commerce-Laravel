@@ -489,8 +489,17 @@
 	<script src="{{URL::asset('js/GenderFilter.js')}}"></script>
 	<script src="{{URL::asset('js/LiveSearch.js')}}"></script>
 	<script src="{{URL::asset('js/profile.js')}}"></script>
+	<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('google_map'), {
+          center: {lat: 42.028528, lng: 13.425751},
+          zoom: 8
+        });
+      }
+    </script>
 	<!--===============================================================================================-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWBrD6ra6p1Ql04E6GAa4zHb884hybV9c&callback=initMap"
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBq7gUuC_A9LdVf0_HGomR6Gymh7Ed5mP4&callback=initMap"
 			async defer></script>
 	<script src="js/map-custom.js"></script>
 	<!--===============================================================================================-->
