@@ -87,7 +87,7 @@
                             <ul>
                                 <li class="flex-w flex-t p-b-30">
                                     <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                        <img src="images/product-min-01.jpg" alt="PRODUCT">
+                                        <img src="{{asset('img/product-min-01.jpg')}}" alt="PRODUCT">
                                     </a>
 
                                     <div class="size-215 flex-col-t p-t-8">
@@ -103,7 +103,7 @@
 
                                 <li class="flex-w flex-t p-b-30">
                                     <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                        <img src="images/product-min-02.jpg" alt="PRODUCT">
+                                        <img src="{{asset('img/product-min-02.jpg')}}" alt="PRODUCT">
                                     </a>
 
                                     <div class="size-215 flex-col-t p-t-8">
@@ -119,7 +119,7 @@
 
                                 <li class="flex-w flex-t p-b-30">
                                     <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                        <img src="images/product-min-03.jpg" alt="PRODUCT">
+                                        <img src="{{asset('img/product-min-03.jpg')}}" alt="PRODUCT">
                                     </a>
 
                                     <div class="size-215 flex-col-t p-t-8">
@@ -269,4 +269,6 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 @endsection

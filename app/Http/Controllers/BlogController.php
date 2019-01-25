@@ -9,12 +9,16 @@ use DB;
 
 class BlogController extends Controller
 {
-//$blog = DB::table('products')->orderBy('id', 'desc')->take(12)->get();
-//$blogs = null;
    public function show()
    {
        $blog = DB::table('blogs')->orderBy('id', 'desc')->get();
+       $user = DB::table('users')->get();
        $blogs = null;
-       return view('Contents/blog')->with('blog', $blog)->with('blogs', $blogs)->with('user', $user);
+       $rowsUtente = null;
+       $rowUtente = DB::table('blogs')
+           ->rightjoin('users', 'blogs.IDusers', '=', 'users.id')
+           ->select('users.name')
+           ->get();
+       return view('Contents/blog', compact('blog','blogs', 'user', 'rowUtente'));
    }
 }
