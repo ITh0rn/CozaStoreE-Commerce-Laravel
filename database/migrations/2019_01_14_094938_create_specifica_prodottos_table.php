@@ -15,7 +15,7 @@ class CreateSpecificaProdottosTable extends Migration
     {
         Schema::create('specifica_prodottos', function (Blueprint $table) {
             $table->primary('id');
-            $table->img_dir('img_dir');
+            $table->string('img_dir');
             $table->foreign('id_prodotto')
                 ->references('id')->on('products')
                 ->onDelete('cascade');

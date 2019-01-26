@@ -40,3 +40,8 @@ Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
 Route::get('/userinfo', 'UserController@userinfo')->name('userinfo');
 Route::get('/blog', 'BlogController@show')->name('blog');
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
