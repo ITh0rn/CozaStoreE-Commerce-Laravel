@@ -26,10 +26,9 @@ Route::get('/eliminaprodottocarrello', 'ProductController@eliminaprodcart');
 Route::get('/chi-siamo', 'ContainController@ChiSiamo')->name('chisiamo');
 Route::get('/modificanumitems', 'ProductController@modificanumitems');
 Route::get('/chisiamo', 'ContainController@ChiSiamo')->name('chisiamo');
-Route::get('/Profilo', 'ContainController@getprofile')->name('profilo');
+Route::get('/admin')->name('Admin');
 Route::get('/contatti', 'ContainController@Contatti')->name('contatti');
 Route::get('/shop', 'ProductController@Shop')->name('shop');
-Route::get('/Profilo', 'ContainController@getprofile')->name('profilo')->middleware('auth');
 Route::get('/contatti', 'ContainController@Contatti')->name('contatti');
 Route::get('/ordini', 'UserController@ordini')->name('ordini');
 Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
@@ -40,8 +39,14 @@ Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
 Route::get('/userinfo', 'UserController@userinfo')->name('userinfo');
 Route::get('/blog', 'BlogController@show')->name('blog');
 
+//Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/Profilo', 'ContainController@getprofile')->name('profilo');
+});
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Specifica_prodotto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Nexmo\Response;
 use Session;
 use DB;
 
@@ -33,7 +35,11 @@ class ContainController extends Controller
     }
 
     public function getprofile(){
-        return view('Contents/Profile');
+
+        if (!(Auth::user()->hasRole('admin'))){
+            return view('Contents/Profile');
+        }
+        else return redirect('/admin');
     }
 
     public function Contatti(){
