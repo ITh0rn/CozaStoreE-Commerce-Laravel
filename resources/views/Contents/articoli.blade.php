@@ -18,7 +18,7 @@
 
         <div class="p-t-32">
             <h4 class="p-b-15">
-                <a href="blog-detail.html" class="ltext-108 cl2 hov-cl1 trans-04">
+                <a href="{{ route('dettaglioarticoli') }}" class="ltext-108 cl2 hov-cl1 trans-04">
                     {{$blog->nome}}
                 </a>
             </h4>
@@ -46,8 +46,8 @@
 										</span>
 									</span>
 
-                <a href="blog-detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
-                    Continue Reading
+                <a href="#" onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+                    Continua a leggere
 
                     <i class="fa fa-long-arrow-right m-l-9"></i>
                 </a>

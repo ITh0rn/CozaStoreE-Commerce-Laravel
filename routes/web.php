@@ -39,4 +39,5 @@ Route::get('/FAQs', 'ContainController@FAQs')->name('FAQs');
 Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
 Route::get('/userinfo', 'UserController@userinfo')->name('userinfo');
 Route::get('/blog', 'BlogController@show')->name('blog');
+Route::get('/blog-detail', 'BlogController@DettaglioArticoli')->name('dettaglioarticoli');
 

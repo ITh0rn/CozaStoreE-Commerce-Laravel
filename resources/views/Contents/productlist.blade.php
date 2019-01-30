@@ -1,3 +1,5 @@
+@section('pageTitle', 'Blog')
+@section ('blog')
 
 @foreach($product as $product)
     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -17,8 +19,8 @@
                     </a>
 
                     <span class="stext-105 cl3">
-									{{'€'.$product->price}}
-								</span>
+                        {{'€'.$product->price}}
+                    </span>
                 </div>
 
                 <div class="block2-txt-child2 flex-r p-t-3">
@@ -31,4 +33,6 @@
         </div>
     </div>
 @endforeach
+
+@endsection
 

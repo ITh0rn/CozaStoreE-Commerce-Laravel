@@ -16,7 +16,7 @@
                 <div class="col-md-8 col-lg-9 p-b-80">
                     <div class="p-r-45 p-r-0-lg">
 
-                        @include('Contents.articoli')
+                        @yield('blog')
 
                         <!-- Pagination -->
                         <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">

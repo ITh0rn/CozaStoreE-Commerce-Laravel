@@ -21,4 +21,15 @@ class BlogController extends Controller
            ->get();
        return view('Contents/blog', compact('blog','blogs', 'user', 'rowUtente'));
    }
+
+    public function DettaglioArticoli(Request $request){
+        $blog = DB::table('blogs')->where('id', $request->get('id_articolo'))->get();
+        $user = DB::table('users')->get();
+        $blogs = null;
+        $rowsUtente = null;
+        $rowUtente = DB::table('users')->where('id', $request->get('id_user'))->select('name')->get();
+        return view('Contents/blog', compact('blog','blogs', 'user', 'rowUtente'));
+
+
+    }
 }
