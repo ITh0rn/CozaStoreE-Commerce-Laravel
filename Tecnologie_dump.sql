@@ -218,12 +218,23 @@ UNLOCK TABLES;
 
 -- Dump completed on 2019-01-22 16:42:51
 
-DROP TABLE IF EXISTS `articoli`;
-CREATE TABLE `articolo` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `img_dir` varchar(255)  NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `IDutente` varchar(255) NOT NULL,
-  constraint articolo_utente foreign key (IDutente) references users(ID) on update cascade
-)
+DROP TABLE IF EXISTS article;
+DROP TABLE IF EXISTS blogs;
+CREATE TABLE blogs(
+  ID integer unsigned not null primary key auto_increment,
+  nome varchar(255) not null,
+  img_dir varchar(255) NOT NULL,
+  description varchar(255) NOT NULL,
+  data_inserimento timestamp,
+  IDusers integer unsigned NOT NULL,
+  constraint articolo_users foreign key(IDusers) references users(ID) on update cascade
+);
+
+LOCK TABLES `blogs` WRITE;
+/*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('1', '8 Inspiring Ways to Wear Dresses in the Winter', 'blog-04.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-02-02 00:00:01', '1');
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('2', 'The Great Big List of Men’s Gifts for the Holidays', 'blog-05.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-02-01 00:00:01', '2');
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('3', '5 Winter-to-Spring Fashion Trends to Try Now', 'blog-06.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-01-01 00:00:01', '1');
+/*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

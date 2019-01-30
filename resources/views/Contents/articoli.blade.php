@@ -1,3 +1,5 @@
+@extends ('Contents.blog')
+@section('blog')
 
 @foreach($blog as $blog)
     <!-- item blog -->
@@ -55,3 +57,4 @@
         </div>
     </div>
 @endforeach
+@endsection

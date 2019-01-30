@@ -19,7 +19,7 @@ class BlogController extends Controller
            ->rightjoin('users', 'blogs.IDusers', '=', 'users.id')
            ->select('users.name')
            ->get();
-       return view('Contents/blog', compact('blog','blogs', 'user', 'rowUtente'));
+       return view('Contents/articoli', compact('blog','blogs', 'user', 'rowUtente'));
    }
 
     public function DettaglioArticoli(Request $request){
@@ -28,7 +28,7 @@ class BlogController extends Controller
         $blogs = null;
         $rowsUtente = null;
         $rowUtente = DB::table('users')->where('id', $request->get('id_user'))->select('name')->get();
-        return view('Contents/blog', compact('blog','blogs', 'user', 'rowUtente'));
+        return view('Contents/dettaglioarticoli', compact('blog','blogs', 'user', 'rowUtente'));
 
 
     }
