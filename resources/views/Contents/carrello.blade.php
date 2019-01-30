@@ -32,7 +32,7 @@
                             <tr class="table_row">
                                 <td class="column-1">
                                     <div class="how-itemcart1" value="{{$prodotto["id"]}}">
-                                        <img src="{{URL::asset('img/'.$prodotto["immagine_path"])}}" alt="IMG">
+                                        <img src="{{asset('storage/'.$prodotto["immagine_path"])}}" alt="IMG">
                                     </div>
                                 </td>
                                 <td class="column-2">{{$prodotto["nome_prodotto"]}}</td>

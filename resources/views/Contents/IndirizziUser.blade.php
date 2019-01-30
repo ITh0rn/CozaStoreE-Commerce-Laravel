@@ -28,27 +28,27 @@
     <div class="row p-b-25 p-t-10">
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="name">Città*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="city" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="name">Provincia*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="province" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="name">CAP*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="cap" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="email">Via*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="address" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="email">Civico*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="civic" type="text">
         </div>
     </div>
 

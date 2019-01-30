@@ -3,7 +3,7 @@
             <ul class="header-cart-wrapitem w-full">
                 <li class="header-cart-item flex-w flex-t m-b-12">
                     <div class="header-cart-item-img" value="{{$product["id"]}}">
-                        <img src="{{URL::asset('img/'.$product["immagine_path"])}}" alt="IMG">
+                        <img src="{{asset('storage/'.$product["immagine_path"])}}" alt="IMG">
                     </div>
 
                     <div class="header-cart-item-txt p-t-8">
