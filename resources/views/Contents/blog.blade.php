@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="col-md-4 col-lg-3 p-b-80">
-                    <div class="side-menu">
+                    <div>
                         <div class="bor17 of-hidden pos-relative">
                             <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text" name="search" placeholder="Search">
 
