@@ -8,8 +8,13 @@ use App\Product as Product;
 use DB;
 use Session;
 
-class ProductController extends Controller
-{
+class ProductController extends Controller{
+
+    public function index(){
+        return $product = Product::all();
+    }
+
+
     public function show(){
 
         $product = DB::table('products')->orderBy('id', 'desc')->take(12)->get();

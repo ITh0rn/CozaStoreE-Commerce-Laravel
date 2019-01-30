@@ -6,7 +6,7 @@
         <!-- Block2 -->
         <div class="block2">
             <div class="block2-pic hov-img0">
-                <img src="{{asset('img/'.$product->img_dir)}}" alt="IMAGE">
+                <img src="{{asset('storage/'.$product->img_dir)}}" alt="IMAGE">
                 <button href="#" onclick="window.location='{{ route('dettaglio', ["nome_prodotto" => $product->nome, "id_prodotto" => $product->id])}}'" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                     Dettagli
                 </button>
