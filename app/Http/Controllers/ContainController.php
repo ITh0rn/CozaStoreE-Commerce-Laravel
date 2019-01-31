@@ -25,8 +25,17 @@ class ContainController extends Controller
     public function DettaglioProdotto(Request $request){
 
             $images = DB::table('specifica_prodottos')->where('id_prodotto', $request->get('id_prodotto'))->get();
-            $prodotto = DB::table('products')->where('id', $request->get('id_prodotto'))->get();
-            return view('Contents.dettaglioprodotto')->with('dettaglio', $images)->with('prodotto', $prodotto);
+            $prodotto = DB::table('products')
+            ->where('products.id', $request->get('id_prodotto'))
+            ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
+            ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
+            ->get();
+            $taglie = DB::table('taglie_prodottis')->where('product_id', $request->get('id_prodotto'))
+                ->join('taglies', 'taglies.id', '=', 'taglie_prodottis.taglie_id')
+                ->select('taglia')
+                ->get();
+            $productcart = DB::table('products')->where('id', $request->get('id_prodotto'))->select('id')->get();
+            return view('Contents.dettaglioprodotto', compact('images', 'prodotto', 'productcart', 'taglie'));
 
     }
 

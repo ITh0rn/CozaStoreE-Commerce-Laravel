@@ -4,17 +4,18 @@ $(document).ready(function(){
         e.preventDefault();
         $nome = $(this).parent().parent().parent().parent().find('.js-name-detail').text();
         $value = $(this).attr('value');
+        $taglia = $('#taglieselct').val();
         $numb = $('.num-product').val();
+        $color = $('#colorselect').val();
         $(this).click(false);
-        console.log($value);
-        console.log($numb);
+        console.log($color);
         $(this).addClass('js-addedwish-b2');
         swal( $nome, "Aggiunto Al Carrello", "success");
         console.log($value);
         $.ajax({
             url : "/addtocart",
-            type: "GET",
-            data: {'id': $value, 'num': $numb}
+            type: "POST",
+            data: {'id': $value, 'num': $numb, 'color': $color, 'taglia': $taglia}
         });
         $.ajax({
             url : '/getnumberitemcart',

@@ -19,6 +19,13 @@ class CreateProductsTable extends Migration
             $table->string('nome');
             $table->string('gender');
             $table->integer('price');
+            $table->unsignedInteger('id_subcategoria')->references('id')->on('sub_categories');
+            $table->string('mini_descrizione');
+            $table->string('grande_descrizione');
+            $table->string('colore');
+            $table->string('dimensione');
+            $table->string('peso');
+            $table->string('materiale');
         });
     }
 
