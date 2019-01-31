@@ -15,6 +15,16 @@
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
+            <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+                {{$prodotto[0]->nome_categoria}}
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+                {{$prodotto[0]->nome_sub}}
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
             <span class="stext-109 cl4">
 				{{$prodotto[0]->nome}}
 			</span>
@@ -31,7 +41,7 @@
                         <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                         <div class="slick3 gallery-lb">
-                            @foreach($dettaglio as $image)
+                            @foreach($images as $image)
                             <div class="item-slick3" data-thumb="{{asset('storage/'.$image->img_dir)}}">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="{{asset('storage/'.$image->img_dir)}}" alt="IMG-PRODUCT">
@@ -58,9 +68,8 @@
 						</span>
 
                     <p class="stext-102 cl3 p-t-23">
-                        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+                        {{$prodotto[0]->mini_descrizione}}
                     </p>
-
                     <!--  -->
                     <div class="p-t-33">
                         <div class="flex-w flex-r-m p-b-10">
@@ -91,10 +100,7 @@
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="time">
                                         <option>Seleziona Colore</option>
-                                        <option>Rosso</option>
-                                        <option>Blue</option>
-                                        <option>Bianco</option>
-                                        <option>Grigio</option>
+                                        <option>{{$prodotto[0]->colore}}</option>
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -102,8 +108,13 @@
                         </div>
 
                         <div class="flex-w flex-r-m p-b-10">
+
+                            <div class="size-203 flex-c-m respon6 p-b-100">
+                                Quantità
+                            </div>
+
                             <div class="size-204 flex-w flex-m respon6-next">
-                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                <div class="wrap-num-product flex-w m-r-20 m-t-10 m-b-60">
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
                                     </div>
@@ -115,7 +126,7 @@
                                     </div>
                                 </div>
 
-                                <button value='{{$prodotto[0]->id}}' class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                <button value='{{$productcart[0]->id}}' class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                     Aggiungi al Carrello
                                 </button>
                             </div>
@@ -170,7 +181,7 @@
                     <div class="tab-pane fade show active" id="description" role="tabpanel">
                         <div class="how-pos2 p-lr-15-md">
                             <p class="stext-102 cl6">
-                                Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
+                              {{$prodotto[0]->grande_descrizione}}
                             </p>
                         </div>
                     </div>
@@ -182,41 +193,41 @@
                                 <ul class="p-lr-28 p-lr-15-sm">
                                     <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Weight
+												Peso
 											</span>
 
                                         <span class="stext-102 cl6 size-206">
-												0.79 kg
+												{{$prodotto[0]->peso}} kg
 											</span>
                                     </li>
 
                                     <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Dimensions
+												Dimensioni
 											</span>
 
                                         <span class="stext-102 cl6 size-206">
-												110 x 33 x 100 cm
+												{{$prodotto[0]->dimensione}} cm
 											</span>
                                     </li>
 
                                     <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Materials
+												Materiale
 											</span>
 
                                         <span class="stext-102 cl6 size-206">
-												60% cotton
+												{{$prodotto[0]->materiale}}
 											</span>
                                     </li>
 
                                     <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Color
+												Colori
 											</span>
 
                                         <span class="stext-102 cl6 size-206">
-												Black, Blue, Grey, Green, Red, White
+												{{$prodotto[0]->colore}}
 											</span>
                                     </li>
 
@@ -327,7 +338,7 @@
 			</span>
 
         <span class="stext-107 cl6 p-lr-25">
-				Categoria: Jacket, Men
+				Categoria: {{$prodotto[0]->nome_categoria}}/{{ $prodotto[0]->nome_sub}}
 			</span>
     </div>
 </section>
