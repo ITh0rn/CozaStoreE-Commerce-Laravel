@@ -236,7 +236,7 @@
 											</span>
 
                                         <span class="stext-102 cl6 size-206">
-												XL, L, M, S
+
 											</span>
                                     </li>
                                 </ul>
