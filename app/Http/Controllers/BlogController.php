@@ -11,15 +11,13 @@ class BlogController extends Controller
 {
    public function show()
    {
-       $blog = DB::table('blogs')->orderBy('id', 'desc')->get();
-       $user = DB::table('users')->get();
-       $blogs = null;
-       $rowsUtente = null;
-       $rowUtente = DB::table('blogs')
-           ->rightjoin('users', 'blogs.IDusers', '=', 'users.id')
-           ->select('users.name')
+       //$blog = DB::table('blogs')->orderBy('id', 'desc')->get();
+       //$user = DB::table('users')->get();
+       //$blogs = null;
+       $rowUtente = DB::table('users')
+           ->join('blogs', 'blogs.IDusers', '=', 'users.id')
            ->get();
-       return view('Contents/articoli', compact('blog','blogs', 'user', 'rowUtente'));
+       return view('Contents/articoli', compact('rowUtente', 'rowUtente'));
    }
 
     public function DettaglioArticoli(Request $request){

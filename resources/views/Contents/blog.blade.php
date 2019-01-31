@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-lg-9 p-b-80">
-                    <div class="p-r-45 p-r-0-lg">
+                    <div class="p-r-45 p-l-20 p-r-0-lg">
 
                         @yield('blog')
 
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-3 p-b-80">
+                <div class="col-md-4 col-lg-3 p-r-40 p-b-80">
                     <div>
                         <div class="bor17 of-hidden pos-relative">
                             <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text" name="search" placeholder="Search">

@@ -1,7 +1,7 @@
 @extends ('Contents.blog')
 @section('blog')
 
-@foreach($blog as $blog)
+@foreach($rowUtente as $blog)
     <!-- item blog -->
     <div class="p-b-63">
         <a href="blog-detail.html" class="hov-img0 how-pos5-parent">
@@ -33,7 +33,7 @@
 									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
 										<span>
 											<span class="cl4">
-                                                By {{$rowUtente[$blog->IDusers]->name}}
+                                                By {{$blog->name}}
                                             </span>
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
@@ -48,11 +48,9 @@
 										</span>
 									</span>
 
-                <a href="#" onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+                <button onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
                     Continua a leggere
-
-                    <i class="fa fa-long-arrow-right m-l-9"></i>
-                </a>
+                </button>
             </div>
         </div>
     </div>
