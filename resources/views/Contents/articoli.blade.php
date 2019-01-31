@@ -1,4 +1,4 @@
-@extends ('Contents.blog')
+@extends('Contents.blog')
 @section('blog')
 
 @foreach($rowUtente as $blog)
