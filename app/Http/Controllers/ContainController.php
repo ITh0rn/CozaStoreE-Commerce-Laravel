@@ -30,8 +30,12 @@ class ContainController extends Controller
             ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
             ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
             ->get();
+            $taglie = DB::table('taglie_prodottis')->where('product_id', $request->get('id_prodotto'))
+                ->join('taglies', 'taglies.id', '=', 'taglie_prodottis.taglie_id')
+                ->select('taglia')
+                ->get();
             $productcart = DB::table('products')->where('id', $request->get('id_prodotto'))->select('id')->get();
-            return view('Contents.dettaglioprodotto', compact('images', 'prodotto', 'productcart'));
+            return view('Contents.dettaglioprodotto', compact('images', 'prodotto', 'productcart', 'taglie'));
 
     }
 

@@ -79,12 +79,11 @@
 
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
+                                    <select id="taglieselct" class="js-select2" name="time">
                                         <option>Seleziona Taglia</option>
-                                        <option>S</option>
-                                        <option>M</option>
-                                        <option>L</option>
-                                        <option>XL</option>
+                                        @foreach($taglie as $taglia)
+                                        <option>{{$taglia->taglia}}</option>
+                                            @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -98,7 +97,7 @@
 
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
+                                    <select class="js-select2" id="colorselect" name="time">
                                         <option>Seleziona Colore</option>
                                         <option>{{$prodotto[0]->colore}}</option>
                                     </select>

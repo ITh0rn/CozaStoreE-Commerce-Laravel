@@ -14,7 +14,9 @@ class CreateTaglieProdottisTable extends Migration
     public function up()
     {
         Schema::create('taglie_prodottis', function (Blueprint $table) {
-            $table->unsignedInteger('id_subcategoria')->references('id')->on('sub_categories');
+            $table->increments('id');
+            $table->unsignedInteger('product_id')->references('id')->on('products');
+            $table->unsignedInteger('taglie_id')->references('id')->on('taglies');
         });
     }
 
