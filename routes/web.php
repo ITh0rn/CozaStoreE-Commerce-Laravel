@@ -39,6 +39,8 @@ Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
 Route::get('/userinfo', 'UserController@userinfo')->name('userinfo');
 Route::get('/blog', 'BlogController@show')->name('blog');
 Route::get('/blog-detail', 'BlogController@DettaglioArticoli')->name('dettaglioarticoli');
+Route::get('/blog-', 'BlogController@DataArticoli')->name('data');
+
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {
