@@ -16,7 +16,8 @@ class BlogController extends Controller
            ->join('blogs', 'blogs.IDusers', '=', 'users.id')
            ->orderBy('blogs.id', 'DESC')
            ->get();
-       $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) as anno from blogs group by mese, anno');
+       $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
+                  as anno from blogs group by mese, anno');
        return view('Contents/articoli', compact('rowUtente', 'rowUtente', 'data'));
    }
 
@@ -27,8 +28,10 @@ class BlogController extends Controller
         $rowsUtente = null;
         $rowUtente = DB::table('users')->where('id', $request->get('id_user'))->select('name')->get();
         $comment = DB::table('comments')->where('idblogs', $request->get('id_articolo'))->get();
+        $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
+                  as anno from blogs group by mese, anno');
         $comments = null;
-        return view('Contents/dettaglioarticoli', compact('blog','blogs', 'user', 'rowUtente', 'comment', 'comments'));
+        return view('Contents/dettaglioarticoli', compact('blog','blogs', 'user', 'rowUtente', 'comment', 'comments', 'data'));
 
 
     }
