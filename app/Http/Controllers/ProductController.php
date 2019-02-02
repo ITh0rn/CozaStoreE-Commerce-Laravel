@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product as Product;
 use DB;
 use Session;
+use Validator;
 
 class ProductController extends Controller{
 
@@ -169,6 +170,24 @@ class ProductController extends Controller{
             Session::put('price', $prezzo);
             Response()->json(["data" => "funziona"]);
         }
+    }
+
+    public function prova(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'colore' => 'required|string|not_in:Seleziona Colore',
+            'taglia' => 'required|string|not_in:Seleziona Taglia'
+        ]);
+
+
+        if ($validator->passes()) {
+
+
+            return response()->json(['success'=>'Added new records.']);
+        }
+
+
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
 

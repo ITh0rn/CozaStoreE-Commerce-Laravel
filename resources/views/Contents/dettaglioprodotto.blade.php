@@ -108,7 +108,7 @@
 
                         <div class="flex-w flex-r-m p-b-10">
 
-                            <div class="size-203 flex-c-m respon6 p-b-100">
+                            <div class="size-203 flex-c-m respon6 p-b-180">
                                 Quantità
                             </div>
 
@@ -125,9 +125,15 @@
                                     </div>
                                 </div>
 
+                                <div class="alert alert-danger print-error-msg" style="display:none">
+                                    <ul></ul>
+                                </div>
+
+                             <div class="p-t-80">
                                 <button value='{{$productcart[0]->id}}' class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                     Aggiungi al Carrello
                                 </button>
+                             </div>
                             </div>
                         </div>
                     </div>

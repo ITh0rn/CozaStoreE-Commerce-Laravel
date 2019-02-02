@@ -17,7 +17,7 @@ Route::get('/filter', 'ProductController@filter');
 Route::get('/search', 'ProductController@search');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart', 'CartItemsController@getUserCart');
-Route::post('/addtocart', 'ProductController@addToCart');
+Route::get('/addtocart', 'ProductController@addToCart');
 Route::get('/listacarrello', 'ProductController@showcart')->name('listacart');
 Route::get('/{Utente}/carrello', 'ContainController@Carrello')->name('carrello');
 Route::get('/{Prodotto}/dettaglio', 'ContainController@DettaglioProdotto')->name('dettaglio');
@@ -39,6 +39,7 @@ Route::get('/indirizzi', 'UserController@indirizzi')->name('indirizzi');
 Route::get('/userinfo', 'UserController@userinfo')->name('userinfo');
 Route::get('/blog', 'BlogController@show')->name('blog');
 Route::get('/blog-detail', 'BlogController@DettaglioArticoli')->name('dettaglioarticoli');
+Route::post('/prova', 'ProductController@prova');
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {

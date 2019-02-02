@@ -8,20 +8,17 @@ $(document).ready(function(){
         $numb = $('.num-product').val();
         $color = $('#colorselect').val();
         $(this).click(false);
-        console.log($color);
         $(this).addClass('js-addedwish-b2');
         swal( $nome, "Aggiunto Al Carrello", "success");
-        console.log($value);
         $.ajax({
             url : "/addtocart",
-            type: "POST",
+            type: "GET",
             data: {'id': $value, 'num': $numb, 'color': $color, 'taglia': $taglia}
         });
         $.ajax({
             url : '/getnumberitemcart',
             type: "GET",
             success: function(data) {
-                console.log(data);
                 $('.js-show-cart').attr('data-notify', data['count']);
             }
         });
@@ -131,6 +128,32 @@ $(document).ready(function() {
 
         }
     })
+});
+
+$(document).ready(function(){
+    $('.js-addcart-detail').click(function(e){
+        e.preventDefault();
+        $taglia = $('#taglieselct').val().toString();
+        $color = $('#colorselect').val().toString();
+        console.log($taglia, $color);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url : "/prova",
+            type: "POST",
+            data: {'colore': $color, 'taglia': $taglia},
+            success: function (data) {
+                $(".print-error-msg").find("ul").html('');
+                $.each( data.error, function( key, value ) {
+                    $('.print-error-msg').find('ul').append('<li>'+value+'</li>');
+                    $('.print-error-msg').css('display','block');
+                });
+            }
+        });
+    });
 });
 
 

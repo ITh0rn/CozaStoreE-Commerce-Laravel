@@ -4,7 +4,9 @@
 	<title>@yield('pageTitle') - CozaStore</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{URL::asset('img/icons/favicon.png')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
