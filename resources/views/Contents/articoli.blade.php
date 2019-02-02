@@ -4,7 +4,7 @@
 @foreach($rowUtente as $blog)
     <!-- item blog -->
     <div class="p-b-63">
-        <a href="blog-detail.html" class="hov-img0 how-pos5-parent">
+        <a href="#" onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="hov-img0 how-pos5-parent">
             <img src="{{asset('img/'.$blog->img_dir)}}" alt="IMG-BLOG">
 
             <div class="flex-col-c-m size-123 bg9 how-pos5">
@@ -44,7 +44,7 @@
 										</span>
 
 										<span>
-											8 Comments
+											Commenti
 										</span>
 									</span>
 
