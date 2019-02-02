@@ -70,6 +70,17 @@ class ProductController extends Controller{
 
     public function addToCart(Request $request){
 
+        $validator = Validator::make($request->all(), [
+            'colore' => 'required|string|not_in:Seleziona Colore',
+            'taglia' => 'required|string|not_in:Seleziona Taglia',
+            'num' => 'required|integer|not_in:0'
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
+
         $cart = Session::get('cart');
         if($request->ajax()) {
             if ($cart) {
@@ -171,24 +182,5 @@ class ProductController extends Controller{
             Response()->json(["data" => "funziona"]);
         }
     }
-
-    public function prova(Request $request){
-
-        $validator = Validator::make($request->all(), [
-            'colore' => 'required|string|not_in:Seleziona Colore',
-            'taglia' => 'required|string|not_in:Seleziona Taglia'
-        ]);
-
-
-        if ($validator->passes()) {
-
-
-            return response()->json(['success'=>'Added new records.']);
-        }
-
-
-        return response()->json(['error'=>$validator->errors()->all()]);
-    }
-
 
 }

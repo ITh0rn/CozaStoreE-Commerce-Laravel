@@ -2,18 +2,40 @@
 $(document).ready(function(){
     $('.js-addcart-detail').click(function(e){
         e.preventDefault();
-        $nome = $(this).parent().parent().parent().parent().find('.js-name-detail').text();
+        $nome = $(this).parent().parent().parent().parent().parent().find('.js-name-detail').text();
+        console.log($nome);
         $value = $(this).attr('value');
         $taglia = $('#taglieselct').val();
         $numb = $('.num-product').val();
         $color = $('#colorselect').val();
-        $(this).click(false);
-        $(this).addClass('js-addedwish-b2');
-        swal( $nome, "Aggiunto Al Carrello", "success");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
             url : "/addtocart",
-            type: "GET",
-            data: {'id': $value, 'num': $numb, 'color': $color, 'taglia': $taglia}
+            type: "POST",
+            data: {'id': $value, 'num': $numb, 'colore': $color, 'taglia': $taglia},
+            success: function (data) {
+                console.log($nome);
+                if($.isEmptyObject(data.error)){
+                    $(".print-error-msg").css('display', 'none');
+                    $(this).click(false);
+                    $(this).addClass('js-addedwish-b2');
+                    swal( $nome, "Aggiunto Al Carrello", "success");
+                }
+                else {
+                    $(".print-error-msg").find("ul").html('');
+                    $.each(data.error, function (key, value) {
+                        $('.print-error-msg').find('ul').append('<li>' + value + '</li>');
+                        $('.print-error-msg').css('display', 'block');
+                    });
+                }
+            },
+            error: function () {
+              console.log('errore');
+            }
         });
         $.ajax({
             url : '/getnumberitemcart',
@@ -128,32 +150,6 @@ $(document).ready(function() {
 
         }
     })
-});
-
-$(document).ready(function(){
-    $('.js-addcart-detail').click(function(e){
-        e.preventDefault();
-        $taglia = $('#taglieselct').val().toString();
-        $color = $('#colorselect').val().toString();
-        console.log($taglia, $color);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url : "/prova",
-            type: "POST",
-            data: {'colore': $color, 'taglia': $taglia},
-            success: function (data) {
-                $(".print-error-msg").find("ul").html('');
-                $.each( data.error, function( key, value ) {
-                    $('.print-error-msg').find('ul').append('<li>'+value+'</li>');
-                    $('.print-error-msg').css('display','block');
-                });
-            }
-        });
-    });
 });
 
 
