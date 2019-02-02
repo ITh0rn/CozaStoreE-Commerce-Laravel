@@ -44,7 +44,7 @@
 										</span>
 
 										<span>
-											Commenti
+											{{ $blog->num }} Commenti
 										</span>
 									</span>
 

@@ -12,14 +12,16 @@ class BlogController extends Controller
 {
    public function show()
    {
-       $rowUtente = DB::table('users')
-           ->join('blogs', 'blogs.IDusers', '=', 'users.id')
-           ->orderBy('blogs.id', 'DESC')
-           ->get();
-       //$numComments = DB::table('blogs')->join('comments', 'comments.IDblogs', '=', 'blogs.id')->count('*', 'as', 'numComments');
+       $rowUtente = DB::select('select blogs.data_inserimento, blogs.nome, blogs.description, users.name, users.id, blogs.IDusers, blogs.id as ID, blogs.img_dir, 
+                                count(comments.id) as num 
+                                from blogs 
+                                left join comments on comments.IDblogs=blogs.id 
+                                left join users on users.id=blogs.IDusers 
+                                group by blogs.id
+                                order by blogs.id desc');
        $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
                   as anno from blogs group by mese, anno');
-       return view('Contents/articoli', compact('rowUtente', 'rowUtente', 'data'));
+       return view('Contents/articoli', compact('rowUtente', 'rowUtente', 'data', 'numComm'));
    }
 
     public function DettaglioArticoli(Request $request){

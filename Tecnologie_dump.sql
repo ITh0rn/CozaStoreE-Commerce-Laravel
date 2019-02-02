@@ -218,7 +218,6 @@ UNLOCK TABLES;
 
 -- Dump completed on 2019-01-22 16:42:51
 
-DROP TABLE IF EXISTS article;
 DROP TABLE IF EXISTS blogs;
 CREATE TABLE blogs(
   ID integer unsigned not null primary key auto_increment,
@@ -232,9 +231,31 @@ CREATE TABLE blogs(
 
 LOCK TABLES `blogs` WRITE;
 /*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
-INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('1', '8 Inspiring Ways to Wear Dresses in the Winter', 'blog-04.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-02-02 00:00:01', '1');
-INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('2', 'The Great Big List of Men’s Gifts for the Holidays', 'blog-05.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-02-01 00:00:01', '2');
-INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('3', '5 Winter-to-Spring Fashion Trends to Try Now', 'blog-06.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-01-01 00:00:01', '1');
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('1', '8 Inspiring Ways to Wear Dresses in the Winter', 'blog-04.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-01-21 00:00:01', '1');
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('2', 'The Great Big List of Men’s Gifts for the Holidays', 'blog-05.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-01-31 00:00:01', '2');
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('3', '5 Winter-to-Spring Fashion Trends to Try Now', 'blog-06.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-02-02 00:00:01', '1');
 /*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+drop table if exists comments;
+create table comments(
+	ID integer unsigned not null primary key auto_increment,
+    commento text not null,
+    nome varchar(32) not null,
+    email varchar(32) not null,
+    stelle enum('1','2','3','4','5') not null,
+    IDusers integer unsigned not null,
+    IDblogs integer unsigned not null,
+    constraint recensione_blogs foreign key (IDblogs) references blogs(ID) on update cascade,
+    constraint recensione_users foreign key (IDusers) references users(ID) on update cascade
+);
+
+alter table `comments` disable keys;
+INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('1', 'Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos', 'Ariana Grande', 'email@email.com', '5', '1', '1');
+INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('2', 'Sopra la terra le squille suonano il mattutino. Passa una nuvola candida e sola. L’Italia! L’Italia che vola! che passa in alto con tutte l’anime nostre com’una sola grande anima!', 'Giovanni Pascoli', 'email@email.com', '2', '2', '2');
+INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('3', 'Sempre caro mi fu quest’ermo colle, E questa siepe, che da tanta parte Dell’ultimo orizzonte il guardo esclude. Ma sedendo e mirando, interminati Spazi di là da quella, e sovrumani Silenzi, e profondissima quiete Io nel pensier mi fingo; ove per poco Il cor non si spaura. E come il vento Odo stormir tra queste piante, io quello Infinito silenzio a questa voce Vo comparando: e mi sovvien l’eterno,  E le morte stagioni, e la presente E viva, e il suon di lei. Così tra questa Immensità s’annega il pensier mio: E il naufragar m’è dolce in questo mare.', 'Giacomo Leopardi', 'email3@email.com', '4', '3', '3');
+alter table `comments` enable keys;
+
+
+select count(*) as num from blogs inner join comments where comments.IDblogs=blogs.id group by blogs.id
