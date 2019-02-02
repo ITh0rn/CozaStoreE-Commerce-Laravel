@@ -127,7 +127,7 @@
 
                         <div class="p-t-55">
                             <h4 class="mtext-112 cl2 p-b-20">
-                                Archive
+                                Archivio
                             </h4>
 
                             <ul>
