@@ -108,12 +108,12 @@
 
                         <div class="flex-w flex-r-m p-b-10">
 
-                            <div class="size-203 flex-c-m respon6 p-b-180">
+                            <div class="size-203 flex-c-m respon6">
                                 Quantità
                             </div>
 
-                            <div class="size-204 flex-w flex-m respon6-next">
-                                <div class="wrap-num-product flex-w m-r-20 m-t-10 m-b-60">
+                            <div class="size-204 respon6-next">
+                                <div class="wrap-num-product flex-w m-r-20">
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
                                     </div>
@@ -124,16 +124,21 @@
                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="alert alert-danger print-error-msg" style="display:none">
-                                    <ul></ul>
-                                </div>
+                            <div class ="flex-col-c-m">
 
-                             <div class="p-t-80">
+                            <div class="alert alert-danger print-error-msg" style="visibility: hidden">
+                                <ul></ul>
+                            </div>
+
+                            <div class="respon6 flex-c-m">
                                 <button value='{{$productcart[0]->id}}' class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                     Aggiungi al Carrello
                                 </button>
-                             </div>
+                            </div>
+
                             </div>
                         </div>
                     </div>

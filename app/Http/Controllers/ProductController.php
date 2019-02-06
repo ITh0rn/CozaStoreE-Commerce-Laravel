@@ -71,9 +71,9 @@ class ProductController extends Controller{
     public function addToCart(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'colore' => 'required|string|not_in:Seleziona Colore',
             'taglia' => 'required|string|not_in:Seleziona Taglia',
-            'num' => 'required|integer|not_in:0'
+            'colore' => 'required|string|not_in:Seleziona Colore',
+            'quantità' => 'required|integer|not_in:0'
         ]);
 
 
@@ -85,7 +85,7 @@ class ProductController extends Controller{
         if($request->ajax()) {
             if ($cart) {
                 if ($this->ExistMultidimensional($cart, $request->get('id'))) {
-                    $cart[$request->get('id')]['qty'] += $request->get('num');
+                    $cart[$request->get('id')]['qty'] += $request->get('quantità');
                     Session::put('cart', $cart);
                     Session::flash('success', 'Elemento aggiornato correttamente');
 
@@ -97,7 +97,7 @@ class ProductController extends Controller{
                         "nome_prodotto" => $productcart[0]->nome,
                         "immagine_path" => $productcart[0]->img_dir,
                         "prezzo" => $productcart[0]->price,
-                        "qty" => $request->get('num'),
+                        "qty" => $request->get('quantità'),
                     );
 
                     Session::put('cart', $cart);
@@ -112,7 +112,7 @@ class ProductController extends Controller{
                     "nome_prodotto" => $productcart1[0]->nome,
                     "immagine_path" => $productcart1[0]->img_dir,
                     "prezzo" => $productcart1[0]->price,
-                    "qty" => $request->get('num'),
+                    "qty" => $request->get('quantità'),
                 );
 
                 Session::put('cart', $cart1);

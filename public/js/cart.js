@@ -16,11 +16,11 @@ $(document).ready(function(){
         $.ajax({
             url : "/addtocart",
             type: "POST",
-            data: {'id': $value, 'num': $numb, 'colore': $color, 'taglia': $taglia},
+            data: {'id': $value, 'quantità': $numb, 'colore': $color, 'taglia': $taglia},
             success: function (data) {
                 console.log($nome);
                 if($.isEmptyObject(data.error)){
-                    $(".print-error-msg").css('display', 'none');
+                    $(".print-error-msg").css('visibility', 'hidden');
                     $(this).click(false);
                     $(this).addClass('js-addedwish-b2');
                     swal( $nome, "Aggiunto Al Carrello", "success");
@@ -29,12 +29,9 @@ $(document).ready(function(){
                     $(".print-error-msg").find("ul").html('');
                     $.each(data.error, function (key, value) {
                         $('.print-error-msg').find('ul').append('<li>' + value + '</li>');
-                        $('.print-error-msg').css('display', 'block');
+                        $('.print-error-msg').css('visibility', 'visible');
                     });
                 }
-            },
-            error: function () {
-              console.log('errore');
             }
         });
         $.ajax({
