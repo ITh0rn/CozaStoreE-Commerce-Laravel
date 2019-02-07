@@ -145,14 +145,16 @@ class ProductController extends Controller{
     }
 
     public function getnumberCart(Request $request){
-        $cart = Session::get('cart');
-        $count = 0;
-        if($cart){
-            foreach($cart as $prodotto){
-                $count += 1;
+        if($request->ajax()) {
+            $cart = Session::get('cart');
+            $count = 0;
+            if ($cart) {
+                foreach ($cart as $prodotto) {
+                    $count += 1;
+                }
             }
+            return Response()->json(['count' => $count]);
         }
-        return Response()->json(['count' => $count]);
     }
 
     public function eliminaprodcart(Request $request){

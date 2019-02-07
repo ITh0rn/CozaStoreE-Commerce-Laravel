@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('img_dir');
             $table->string('nome');
             $table->string('gender');
-            $table->integer('price');
+            $table->float('price');
             $table->unsignedInteger('id_subcategoria')->references('id')->on('sub_categories');
             $table->string('mini_descrizione');
             $table->string('grande_descrizione');

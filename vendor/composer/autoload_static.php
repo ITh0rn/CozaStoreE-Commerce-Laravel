@@ -530,6 +530,7 @@ class ComposerStaticInit0ca6059117713ffa6b2a2e2e05c5a2fa
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\SpecificaProdottoController' => __DIR__ . '/../..' . '/app/Http/Controllers/SpecificaProdottoController.php',
         'App\\Http\\Controllers\\TaglieController' => __DIR__ . '/../..' . '/app/Http/Controllers/TaglieController.php',
+        'App\\Http\\Controllers\\TaglieProdottiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TaglieProdottiController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

@@ -16,6 +16,7 @@ class CreateSpecificaProdottosTable extends Migration
         Schema::create('specifica_prodottos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('img_dir');
+            $table->unsignedInteger('id_prodotto')->nullable(false);
             $table->foreign('id_prodotto')
                 ->references('id')->on('products')
                 ->onDelete('cascade')

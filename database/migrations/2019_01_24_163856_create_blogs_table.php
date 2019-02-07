@@ -17,8 +17,11 @@ class CreateBlogsTable extends Migration
             $table->increments('id');
             $table->string('img_dir');
             $table->string('description');
-            $table->timestamps('data_inserimento');
-            $table->unsignedInteger('IDusers')->references('id')->on('users');
+            $table->unsignedInteger('IDusers')->nullable(false);
+            $table->foreign('IDusers')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
