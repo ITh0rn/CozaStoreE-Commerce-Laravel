@@ -35,7 +35,8 @@ class ContainController extends Controller
                 ->select('taglia')
                 ->get();
             $productcart = DB::table('products')->where('id', $request->get('id_prodotto'))->select('id')->get();
-            return view('Contents.dettaglioprodotto', compact('images', 'prodotto', 'productcart', 'taglie'));
+            $comment = DB::table('product_comments')->where('id_prodotto', $request->get('id_prodotto'))->Paginate(3);
+            return view('Contents.dettaglioprodotto', compact('images', 'prodotto', 'productcart', 'taglie', 'comment'));
 
     }
 

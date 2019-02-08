@@ -494,6 +494,7 @@
 	<script src="{{URL::asset('js/GenderFilter.js')}}"></script>
 	<script src="{{URL::asset('js/LiveSearch.js')}}"></script>
 	<script src="{{URL::asset('js/profile.js')}}"></script>
+	<script src="{{URL::asset('js/comments.js')}}"></script>
 	<script>
       var map;
       function initMap() {

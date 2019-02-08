@@ -259,8 +259,9 @@
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                <div class="p-b-30 flex-col-c-m m-lr-15-sm">
+                                <div class="p-b-30 flex-col-c-m m-lr-15-sm js-comments">
                                     <!-- Review -->
+                                    @foreach($comment as $comm)
                                     <div class="flex-w flex-t p-b-68">
                                         <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
                                             <img src="{{asset('img/avatar-01.jpg')}}" alt="AVATAR">
@@ -282,24 +283,12 @@
                                             </div>
 
                                             <p class="stext-102 cl6">
-                                                Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
+                                                {{$comm->commento}}
                                             </p>
                                         </div>
                                     </div>
-
-                                        <div class="">
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination justify-content-center">
-                                                <li class="page-item disabled">
-                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Precedente</a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#">Successivo</a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                        </div>
+                                    @endforeach
+                                    {{ $comment->links() }}
 
                                     </div>
 

@@ -52,4 +52,9 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::get('/ajax', function (){
+    $comment = DB::table('product_comments')->where('id_prodotto', 1)->Paginate(3);
+    return view('Contents.comments', compact('comment'));
+});
+
 
