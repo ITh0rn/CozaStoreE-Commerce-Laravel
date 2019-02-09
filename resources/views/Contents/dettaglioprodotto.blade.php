@@ -262,7 +262,7 @@
                                 <div class="p-b-30 flex-col-c-m m-lr-15-sm js-comments">
                                     <!-- Review -->
                                     @foreach($comment as $comm)
-                                    <div class="flex-w flex-t p-b-68">
+                                    <div class="flex-w flex-t p-b-68 js-comment-div-start" style="min-width: 100%">
                                         <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
                                             <img src="{{asset('img/avatar-01.jpg')}}" alt="AVATAR">
                                         </div>
@@ -270,15 +270,15 @@
                                         <div class="size-207">
                                             <div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														Ariana Grande
+														{{$comm->name}}
 													</span>
 
-                                                <span class="fs-18 cl11">
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star-half"></i>
+                                                <span class="fs-18 cl11 js-startcomment" value="{{$comm->voto}}">
+														<i class="zmdi zmdi-star-outline"></i>
+														<i class="zmdi zmdi-star-outline"></i>
+														<i class="zmdi zmdi-star-outline"></i>
+														<i class="zmdi zmdi-star-outline"></i>
+														<i class="zmdi zmdi-star-outline"></i>
 													</span>
                                             </div>
 

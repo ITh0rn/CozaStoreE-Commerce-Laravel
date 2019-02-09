@@ -53,7 +53,9 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/ajax', function (){
-    $comment = DB::table('product_comments')->where('id_prodotto', 1)->Paginate(3);
+    $comment = DB::table('product_comments')->where('id_prodotto', 1)
+        ->join('users', 'users.id', '=', 'product_comments.id_utente')
+        ->Paginate(3);
     return view('Contents.comments', compact('comment'));
 });
 

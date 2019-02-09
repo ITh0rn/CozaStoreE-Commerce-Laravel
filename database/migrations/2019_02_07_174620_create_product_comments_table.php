@@ -22,6 +22,11 @@ class CreateProductCommentsTable extends Migration
                 ->onUpdate('cascade');
             $table->string('commento');
             $table->enum('voto', ['1','2','3','4','5']);
+            $table->unsignedInteger('id_utente')->nullable(false);
+            $table->foreign('id_utente')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
