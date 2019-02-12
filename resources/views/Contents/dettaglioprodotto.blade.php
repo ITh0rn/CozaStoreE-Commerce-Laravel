@@ -298,11 +298,15 @@
                                             Aggiungi una Recensione
                                         </h5>
 
-                                        <p class="stext-102 cl6">
+                                        <p class="stext-102 cl6 p-b-20">
                                            Fai sapere agli altri utenti come hai trovato il prodotto!
                                         </p>
 
-                                        <div class="flex-w flex-m p-t-50 p-b-23">
+                                        <div class="alert alert-danger print-error-msg-review" style="visibility: hidden">
+                                            <ul></ul>
+                                        </div>
+
+                                        <div class="flex-w flex-m p-t-20 p-b-23">
 												<span class="stext-102 cl3 m-r-16">
 													Il tuo voto
 												</span>

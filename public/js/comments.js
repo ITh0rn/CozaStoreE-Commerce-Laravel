@@ -57,12 +57,21 @@ $(document).ready(function () {
           data : {'idprod': $idprod, 'comment': $idcommento, 'voto': $voto},
           success: function (data) {
               if($.isEmptyObject(data.error)){
-                  console.log('Funziona');
-                  location.reload();
+                  swal({
+                      title: "Commento Inserito",
+                      text: "Grazie per la collaborazione",
+                      icon: "success",
+                      button: false,
+                      timer: 1500
+                  }).then(() => {
+                      location.reload();
+                  });
               }
               else {
+                  $(".print-error-msg-review").find("ul").html('');
                   $.each(data.error, function (key, value) {
-                      console.log(value);
+                      $('.print-error-msg-review').find('ul').append('<li>' + value + '</li>');
+                      $('.print-error-msg-review').css('visibility', 'visible');
                   });
               }
           }

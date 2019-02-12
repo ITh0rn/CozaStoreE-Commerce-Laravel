@@ -190,10 +190,19 @@ class ProductController extends Controller{
 
     public function addreview(Request $request){
 
-        $validator = Validator::make($request->all(), [
-            'comment' => 'required|max: 255|min: 10',
+        $messsages = array(
+            'comment.required'=>'Campo commento vuoto, inserisci un commento',
+            'comment.max'=>'Puoi inserire al massimo 100 caratteri',
+            'comment.min'=>'Inserisci almeno 10 caratteri',
+            'voto.min'=>'Inserisci almeno una stella di voto',
+        );
+
+        $rules = array(
+            'comment' => 'required|max: 100|min: 10',
             'voto' => 'required|integer|min:1',
-        ]);
+        );
+
+        $validator = Validator::make($request->all(), $rules, $messsages);
 
         if(!Auth::check())
         $validator->after(function($validator) {

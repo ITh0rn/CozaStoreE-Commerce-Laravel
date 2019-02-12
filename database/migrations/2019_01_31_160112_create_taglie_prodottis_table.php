@@ -17,6 +17,14 @@ class CreateTaglieProdottisTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id')->references('id')->on('products');
             $table->unsignedInteger('taglie_id')->references('id')->on('taglies');
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('taglie_id')
+                ->references('id')->on('taglies')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
