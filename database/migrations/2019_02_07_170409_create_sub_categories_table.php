@@ -21,6 +21,7 @@ class CreateSubCategoriesTable extends Migration
                 ->references('id')->on('categories')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->unique('nome_sub', 'nome_sub');
         });
     }
 

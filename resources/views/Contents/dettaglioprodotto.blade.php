@@ -181,7 +181,7 @@
                     </li>
 
                     <li class="nav-item p-b-10">
-                        <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Recensioni (1)</a>
+                        <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Recensioni</a>
                     </li>
                 </ul>
 
@@ -299,7 +299,7 @@
                                         </h5>
 
                                         <p class="stext-102 cl6">
-                                           La tua E-mail non verrà mostrata, i campi * sono obbligatori
+                                           Effettua l'accesso al sistema, e lascia una recensione sul prodotto
                                         </p>
 
                                         <div class="flex-w flex-m p-t-50 p-b-23">
@@ -321,16 +321,6 @@
                                             <div class="col-12 p-b-5">
                                                 <label class="stext-102 cl3" for="review">La tua Recensione</label>
                                                 <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
-                                            </div>
-
-                                            <div class="col-sm-6 p-b-5">
-                                                <label class="stext-102 cl3" for="name">Nome</label>
-                                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
-                                            </div>
-
-                                            <div class="col-sm-6 p-b-5">
-                                                <label class="stext-102 cl3" for="email">*Email</label>
-                                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
                                             </div>
                                         </div>
 
