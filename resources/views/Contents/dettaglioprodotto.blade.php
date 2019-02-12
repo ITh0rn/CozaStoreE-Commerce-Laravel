@@ -299,7 +299,7 @@
                                         </h5>
 
                                         <p class="stext-102 cl6">
-                                           Effettua l'accesso al sistema, e lascia una recensione sul prodotto
+                                           Fai sapere agli altri utenti come hai trovato il prodotto!
                                         </p>
 
                                         <div class="flex-w flex-m p-t-50 p-b-23">
@@ -307,7 +307,7 @@
 													Il tuo voto
 												</span>
 
-                                            <span class="wrap-rating fs-18 cl11 pointer">
+                                            <span class="wrap-rating fs-18 cl11 pointer js-addstarreview">
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
@@ -324,7 +324,7 @@
                                             </div>
                                         </div>
 
-                                        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+                                        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 js-add-review" value="{{$productcart[0]->id}}">
                                             Invia
                                         </button>
                                     </form>

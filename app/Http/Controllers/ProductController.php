@@ -6,6 +6,9 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Product as Product;
 use DB;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\Array_;
 use Session;
 use Validator;
 
@@ -183,6 +186,29 @@ class ProductController extends Controller{
             Session::put('price', $prezzo);
             Response()->json(["data" => "funziona"]);
         }
+    }
+
+    public function addreview(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'comment' => 'required|max: 255|min: 10',
+            'voto' => 'required|integer|min:1',
+        ]);
+
+        if(!Auth::check())
+        $validator->after(function($validator) {
+            $validator->errors()->add('Auth', 'Devi essere loggato per commentare');
+        });
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
+
+        DB::table('product_comments')->insert(
+            ['id_prodotto' => $request->get('idprod'), 'commento' => $request->get('comment'), 'voto' =>
+            $request->get('voto'), 'id_utente' => Auth::user()->id]
+        );
+
     }
 
 }

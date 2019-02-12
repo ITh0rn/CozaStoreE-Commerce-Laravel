@@ -35,3 +35,37 @@ $(document).on('click', '.pagination a', function (e) {
         });
     });
 });
+
+$(document).ready(function () {
+   $('.js-add-review').on('click', function (e) {
+       e.preventDefault();
+       $idprod = $('.js-add-review').attr('value');
+       $idcommento = $('#review').val();
+       $voto = 0;
+       $('.js-addstarreview').children('i').each(function () {
+           if ($(this).attr('class') == 'item-rating pointer zmdi zmdi-star')
+               $voto += 1;
+       });
+       $.ajaxSetup({
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+       });
+       $.ajax({
+          type : "POST",
+          url : '/addreview',
+          data : {'idprod': $idprod, 'comment': $idcommento, 'voto': $voto},
+          success: function (data) {
+              if($.isEmptyObject(data.error)){
+                  console.log('Funziona');
+                  location.reload();
+              }
+              else {
+                  $.each(data.error, function (key, value) {
+                      console.log(value);
+                  });
+              }
+          }
+       });
+   })
+});
