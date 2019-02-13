@@ -1,5 +1,5 @@
 <h5 class="mtext-108 cl2 p-b-25">
-    Le tue carte:
+    Le tue opzioni di pagamento:
 </h5>
 
 <table class="table-profile p-t-30">

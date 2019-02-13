@@ -11,7 +11,11 @@ class UserController extends Controller
 {
     public function ordini(Request $request){
         if($request->ajax()){
-            return Response()->json(view('Contents/tableordini')->render());
+            $ordini = DB::table('orders')
+                ->join('addresses', 'orders.IDaddresses', '=', 'addresses.id')
+                ->where('orders.IDusers', '=', Auth::user()->id)
+                ->get();
+            return Response()->json(view('Contents/tableordini')->with('ordini', $ordini)->render());
         }
     }
 

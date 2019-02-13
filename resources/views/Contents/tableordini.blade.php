@@ -5,25 +5,22 @@
 <table class="table-profile p-t-30">
     <tr class="table_head">
         <th class="column-1">N° Ordine</th>
-        <th class="column-2"></th>
-        <th class="column-3">Prodotti</th>
-        <th class="column-4">Sconto</th>
-        <th class="column-5">Totale</th>
+        <th class="column-1">Prodotti</th>
+        <th class="column-1">Sconto</th>
+        <th class="column-1">Totale</th>
+        <th class="column-2 p-l-50">Indirizzo</th>
+        <th class="column-1">vedi di più</th>
     </tr>
-    <tr class="table_row">
-        <td class="column-1"></td>
-        <td class="column-2"></td>
-        <td class="column-3"></td>
-        <td class="column-4"></td>
-        <td class="column-5"></td>
+    @foreach($ordini as $ordini)
+    <tr href=class="table_row">
+        <td class="column-1">{{$ordini->ID}}</td>
+        <td class="column-1">{{$ordini->prodotti}}</td>
+        <td class="column-1">{{$ordini->sconto}}</td>
+        <td class="column-1">{{$ordini->totale}}</td>
+        <td class="column-1 p-b-10 p-t-10"><p>{{$ordini->citta}}, {{$ordini->provincia}} {{$ordini->cap}}</p><p>{{$ordini->via}} {{$ordini->civico}}</p></td>
+        <td class="column-2 p-r-50 p-l-50 w-133"><i class="icon-header-item hov-cl1 cl2 zmdi zmdi-assignment-o p-l-30"></i></td>
     </tr>
-    <tr class="table_head">
-        <th class="column-1">Indirizzo:</th>
-        <th class="column-2"></th>
-        <th class="column-3"></th>
-        <th class="column-4"></th>
-        <th class="column-5"></th>
-    </tr>
+    @endforeach
     <tr class="table_head">
 
     </tr>
