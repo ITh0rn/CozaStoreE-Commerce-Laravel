@@ -1,6 +1,6 @@
 /* Filtra i prodotti per (Uomo, Donna ecc) */
 $(document).ready(function(){
-    $('.stext-106').click(function(e){
+    $('.js-home-filtering').click(function(e){
         e.preventDefault();
         $value = e.target.value;
         $.ajax({
@@ -58,3 +58,92 @@ $('.js-show-sidebar').on('click',function(){
 $('.js-hide-sidebar').on('click',function(){
     $('.js-sidebar').removeClass('show-sidebar');
 });
+
+
+//Shop blade, mostra il pannello per la scelta delle categorie, regola le animazioni e lo style dei pulsanti
+
+//Categorie Femminili
+
+$('.js-show-filter-woman').on('click',function(){
+    if ($('.js-show-filter-man').hasClass('show-filter')){
+        $('.js-show-filter-man').removeClass('show-filter');
+        $('.panel-filter').slideUp(400);
+    }
+    $(this).toggleClass('show-filter');
+    $.ajax({
+        url : "/womanfilter",
+        type : "GET",
+        dataType: "json",
+        success: function (data) {
+            $('.panel-filter').html(data);
+            $('.panel-filter').slideToggle(400);
+        },
+        error: function () {
+            console.log('errore');
+        }
+    });
+});
+
+//Categorie Maschili
+
+$('.js-show-filter-man').on('click',function(){
+    if ($('.js-show-filter-woman').hasClass('show-filter')){
+        $('.js-show-filter-woman').removeClass('show-filter');
+        $('.panel-filter').slideUp(400);
+    }
+    $(this).toggleClass('show-filter');
+    $.ajax({
+        url : "/womanfilter",
+        type : "GET",
+        dataType: "json",
+        success: function (data) {
+            console.log('man success');
+            $('.panel-filter').html(data);
+            $('.panel-filter').slideToggle(400);
+        },
+        error: function () {
+            console.log('errore');
+        }
+    });
+});
+
+//Ajax carica le sotto categorie in base alla categoria principale cliccata
+$(document).on('click', '.js-scelta-categoria-filtering', function () {
+   $categoria = $(this).text();
+   $.ajax({
+        url: '/subcategoria',
+        type: "GET",
+        data: {'nome': $categoria},
+        dataType: "json",
+      success: function (data) {
+          $('.js-sub-categories-filtering').find('ul').hide().html("").fadeToggle(700);
+          $.each(data["data"], function (key, value) {
+              $('.js-sub-categories-filtering').find('ul').append('<li class="p-b-6">' +
+                  '<a href="#" class="stext-106 cl6 hov1 bor3 trans-04">'
+                  + value["nome_sub"] +
+                  '</a></li>'
+          );
+          });
+      }
+   });
+});
+
+/*$('.js-show-filter-woman').on('click',function(){
+    $(this).toggleClass('show-filter');
+    $('.panel-filter').slideToggle(400);
+
+    if($('.show-search').hasClass('show-search')) {
+        $('.show-search').removeClass('show-search');
+        $('.panel-search').slideUp(400);
+    }
+});
+
+$('.show-search').on('click',function(){
+    $(this).toggleClass('show-search');
+    $('.panel-search').slideToggle(400);
+
+    if($('.show-filter').hasClass('show-filter')) {
+        $('.show-filter').removeClass('show-filter');
+        $('.panel-filter').slideUp(400);
+    }
+});*/
