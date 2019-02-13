@@ -691,7 +691,7 @@ create table comments(
 alter table `comments` disable keys;
 INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('1', 'Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos', 'Ariana Grande', 'email@email.com', '5', '1', '1');
 INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('2', 'Sopra la terra le squille suonano il mattutino. Passa una nuvola candida e sola. L’Italia! L’Italia che vola! che passa in alto con tutte l’anime nostre com’una sola grande anima!', 'Giovanni Pascoli', 'email@email.com', '2', '2', '2');
-INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('3', 'Sempre caro mi fu quest’ermo colle, E questa siepe, che da tanta parte Dell’ultimo orizzonte il guardo esclude. Ma sedendo e mirando, interminati Spazi di là da quella, e sovrumani Silenzi, e profondissima quiete Io nel pensier mi fingo; ove per poco Il cor non si spaura. E come il vento Odo stormir tra queste piante, io quello Infinito silenzio a questa voce Vo comparando: e mi sovvien l’eterno,  E le morte stagioni, e la presente E viva, e il suon di lei. Così tra questa Immensità s’annega il pensier mio: E il naufragar m’è dolce in questo mare.', 'Giacomo Leopardi', 'email3@email.com', '4', '3', '2');
+INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('3', 'Sempre caro mi fu quest’ermo colle, E questa siepe, che da tanta parte Dell’ultimo orizzonte il guardo esclude. Ma sedendo e mirando, interminati Spazi di là da quella, e sovrumani Silenzi, e profondissima quiete Io nel pensier mi fingo; ove per poco Il cor non si spaura. E come il vento Odo stormir tra queste piante, io quello Infinito silenzio a questa voce Vo comparando: e mi sovvien l’eterno,  E le morte stagioni, e la presente E viva, e il suon di lei. Così tra questa Immensità s’annega il pensier mio: E il naufragar m’è dolce in questo mare.', 'Giacomo Leopardi', 'email3@email.com', '4', '2', '1');
 alter table `comments` enable keys;
 
 drop table if exists addresses;
@@ -706,21 +706,23 @@ create table addresses(
     constraint indirizzi_users foreign key (IDusers) references users(ID) on update cascade
 );
 
-INSERT INTO `tecnologie`.`addresses` (`ID`, `citta`, `provincia`, `cap`, `via`, `civico`, `IDusers`) VALUES ('1', 'Castel di Ieri', 'L\'Aquila', '67020', 'San pio', '9', '3');
-INSERT INTO `tecnologie`.`addresses` (`ID`, `citta`, `provincia`, `cap`, `via`, `civico`, `IDusers`) VALUES ('2', 'L\'Aquila', 'AQ', '67100', 'Corrado IV', '40', '3');
+INSERT INTO `tecnologie`.`addresses` (`ID`, `citta`, `provincia`, `cap`, `via`, `civico`, `IDusers`) VALUES ('1', 'Castel di Ieri', 'L\'Aquila', '67020', 'San pio', '9', '2');
+INSERT INTO `tecnologie`.`addresses` (`ID`, `citta`, `provincia`, `cap`, `via`, `civico`, `IDusers`) VALUES ('2', 'L\'Aquila', 'AQ', '67100', 'Corrado IV', '40', '2');
 
 
 drop table if exists orders;
 create table orders(
 	ID integer unsigned not null primary key auto_increment,
     prodotti integer not null,
-    sconto varchar(32) not null,
-    totale varchar(32) not null,
+    sconto integer not null,
+    totale float not null,
     IDusers integer unsigned not null,
     IDaddresses integer unsigned not null,
     constraint orders_users foreign key (IDusers) references users(ID) on update cascade,
     constraint orders_addresses foreign key (IDaddresses) references addresses(ID) on update cascade
 );
+
+INSERT INTO `tecnologie`.`orders` (`ID`, `prodotti`, `sconto`, `totale`, `IDusers`, `IDaddresses`) VALUES ('1', '2', '0', '69.98', '2', '1');
 
 drop table if exists boughtproducts;
 create table boughtproducts(
@@ -735,7 +737,10 @@ create table boughtproducts(
 	colore	varchar(255) NOT NULL,
 	dimensione	varchar(255) NOT NULL,
 	peso varchar(255) NOT NULL,
-	materiale varchar(255) NOT NULL
+	materiale varchar(255) NOT NULL,
+    created_at timestamp NULL DEFAULT NULL,
+	updated_at timestamp NULL DEFAULT NULL
 );
 
-select * from users
+INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`) VALUES ('1', 'products/February2019/siMxT0aqedcC8BkdUrJ5.jpg', 'Cappotto Doppiopetto', 'uomo', '39.99', '1', 'Giubbotto Lungo Doppiopetto da uomo', 'Giubbotto Lungo Doppiopetto da uomo', 'Nero', '50x50x80', '1.8', '100% Lana', '2019-02-07 17:29:00', '2019-02-07 17:31:28');
+INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`) VALUES ('2', 'products/February2019/jPv41WfFvmmnXQeZ1pXE.jpg', 'Giubbotto Velluto', 'donna', '29.99', '2', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Marrone', '40x40x60', '1.3', '100% Lana', '2019-02-09 11:47:00', '2019-02-09 11:47:38');
