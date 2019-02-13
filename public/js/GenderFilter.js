@@ -74,6 +74,7 @@ $('.js-show-filter-woman').on('click',function(){
         url : "/womanfilter",
         type : "GET",
         dataType: "json",
+        data: {'gender': 'donna'},
         success: function (data) {
             $('.panel-filter').html(data);
             $('.panel-filter').slideToggle(400);
@@ -96,6 +97,7 @@ $('.js-show-filter-man').on('click',function(){
         url : "/womanfilter",
         type : "GET",
         dataType: "json",
+        data: {'gender': 'uomo'},
         success: function (data) {
             console.log('man success');
             $('.panel-filter').html(data);
@@ -109,17 +111,23 @@ $('.js-show-filter-man').on('click',function(){
 
 //Ajax carica le sotto categorie in base alla categoria principale cliccata
 $(document).on('click', '.js-scelta-categoria-filtering', function () {
-   $categoria = $(this).text();
+    $(this).css('color', '#717fe0');
+    $(this).parent().siblings().each(function () {
+        $(this).find('a').css('color', '#888')
+    });
+    if ($('.js-show-filter-woman').hasClass('show-filter')) $gender = 'donna';
+    if ($('.js-show-filter-man').hasClass('show-filter')) $gender = 'uomo';
+    $categoria = $(this).text();
    $.ajax({
         url: '/subcategoria',
         type: "GET",
-        data: {'nome': $categoria},
+        data: {'nome': $categoria, 'gender': $gender},
         dataType: "json",
       success: function (data) {
           $('.js-sub-categories-filtering').find('ul').hide().html("").fadeToggle(700);
           $.each(data["data"], function (key, value) {
               $('.js-sub-categories-filtering').find('ul').append('<li class="p-b-6">' +
-                  '<a href="#" class="stext-106 cl6 hov1 bor3 trans-04">'
+                  '<a href="#" class="stext-106 cl6 hov1 bor3 trans-04 js-sub-product">'
                   + value["nome_sub"] +
                   '</a></li>'
           );
@@ -128,22 +136,21 @@ $(document).on('click', '.js-scelta-categoria-filtering', function () {
    });
 });
 
-/*$('.js-show-filter-woman').on('click',function(){
-    $(this).toggleClass('show-filter');
-    $('.panel-filter').slideToggle(400);
-
-    if($('.show-search').hasClass('show-search')) {
-        $('.show-search').removeClass('show-search');
-        $('.panel-search').slideUp(400);
-    }
+$(document).on('click', '.js-sub-product', function () {
+    if ($('.js-show-filter-woman').hasClass('show-filter')) $gender = 'donna';
+    if ($('.js-show-filter-man').hasClass('show-filter')) $gender = 'uomo';
+    $subcat = $(this).text();
+    $.ajax({
+        url: '/subcategoryfilter',
+        data: {'subcat': $subcat, 'gender': $gender},
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            $('#product_div').hide().html(data).fadeToggle(1300);
+        },
+        error: function () {
+            console.log('errore');
+        }
+    });
 });
 
-$('.show-search').on('click',function(){
-    $(this).toggleClass('show-search');
-    $('.panel-search').slideToggle(400);
-
-    if($('.show-filter').hasClass('show-filter')) {
-        $('.show-filter').removeClass('show-filter');
-        $('.panel-filter').slideUp(400);
-    }
-});*/

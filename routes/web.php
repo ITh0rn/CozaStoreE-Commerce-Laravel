@@ -63,5 +63,7 @@ Route::get('/ajax', function (){
 
 Route::get('/womanfilter', 'CategorieController@WomanCategories');
 Route::get('/subcategoria', 'CategorieController@SubCategorie');
+Route::get('/subcategoryfilter', 'CategorieController@SubFiltering');
+
 
 

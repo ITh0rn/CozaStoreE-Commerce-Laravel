@@ -18,7 +18,13 @@ class CategorieController extends Controller
     public function WomanCategories(Request $request)
     {
         if ($request->ajax()) {
-            $categorie = DB::table('categories')->get();
+            $categorie = DB::table('products')
+                ->select('categories.nome_categoria')
+                ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
+                ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
+                ->where('products.gender', $request->get('gender'))
+                ->groupBy('categories.nome_categoria')
+                ->get();
             return Response()->json(view('Contents/filtering')->with('categorie', $categorie)->render());
         }
     }
@@ -26,10 +32,28 @@ class CategorieController extends Controller
     public function SubCategorie(Request $request)
     {
         if ($request->ajax()) {
-            $subcategorie = DB::table('categories')->where('nome_categoria', $request->get('nome'))
-            ->join('sub_categories', 'sub_categories.id_category', '=', 'categories.id')
-            ->get();
+            $subcategorie = DB::table('products')
+                ->select('sub_categories.nome_sub')
+                ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
+                ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
+                ->where('products.gender', $request->get('gender'))
+                ->where('nome_categoria', $request->get('nome'))
+                ->groupBy('sub_categories.nome_sub')
+                ->get();
             return Response()->json(["data" => $subcategorie]);
         }
     }
+
+    public function SubFiltering(Request $request)
+    {
+        if ($request->ajax()) {
+            $filtered = DB::table('sub_categories')
+                ->join('products', 'products.id', '=', 'sub_categories.id')
+                ->where('nome_sub', $request->get('subcat'))
+                ->where('gender', $request->get('gender'))
+                ->get();
+            return Response()->json(view('Contents/productlist')->with('product', $filtered)->render());
+        }
+    }
+
 }
