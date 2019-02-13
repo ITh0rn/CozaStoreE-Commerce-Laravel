@@ -1725,6 +1725,17 @@ button.mfp-close {
 
 /*//////////////////////////////////////////////////////////////////
 [ Filter ]*/
+
+.js-show-filter-woman {
+    color: #888;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px 3px 3px 3px;
+}
+.js-show-filter-man {
+    color: #888;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px 3px 3px 3px;
+}
 .show-search .icon-search,
 .show-filter .icon-filter {display: none;}
 
@@ -1733,7 +1744,8 @@ button.mfp-close {
 
 .show-search,
 .show-filter {
-  background-color: #f2f2f2;
+  background-color: #717fe0;
+  color: #ffffff;
   border-color: #e7e7e7;
   position: relative;
 }
@@ -1746,7 +1758,7 @@ button.mfp-close {
 
   width: 14px;
   height: 14px;
-  background-color: #f2f2f2;
+  background-color: #717fe0;
   border-left: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
   

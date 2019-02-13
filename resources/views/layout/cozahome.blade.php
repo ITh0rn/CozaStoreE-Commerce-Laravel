@@ -177,27 +177,27 @@
 
             <div class="flex-w flex-sb-m p-b-52">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*" value="all">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1 js-home-filtering" data-filter="*" value="all">
                         Tutti Prodotti
                     </button>
 
-                    <button type="button" id="FilterButton" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women" value="donna">
+                    <button type="button" id="FilterButton" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 js-home-filtering" data-filter=".women" value="donna">
                         Donna
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men" value="uomo">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 js-home-filtering" data-filter=".men" value="uomo">
                         Uomo
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag" value="Bag">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 js-home-filtering" data-filter=".bag" value="Bag">
                         Borse
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes" value="Shoes">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 js-home-filtering" data-filter=".shoes" value="Shoes">
                         Scarpe
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches"  value="Watches">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 js-home-filtering" data-filter=".watches"  value="Watches">
                         Orologi
                     </button>
                 </div>
