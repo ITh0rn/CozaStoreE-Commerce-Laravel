@@ -10,19 +10,19 @@
                 <div class="item-slick1" style="background-image: url({{asset('img/slide-01.jpg')}})">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                            <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+                            <div class= data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Collezione Donna 2019
+                                     Collezione Donna 2019
 								</span>
                             </div>
 
-                            <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+                            <div class= data-delay="0">
                                 <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
                                     NUOVA STAGIONE
                                 </h2>
                             </div>
 
-                            <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
+                            <div class= data-delay="0">
                                 <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Acquista
                                 </a>
@@ -34,19 +34,19 @@
                 <div class="item-slick1" style="background-image: url({{asset('img/slide-02.jpg')}})">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                            <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
+                            <div data-delay="0">
 								<span class="ltext-101 cl2 respon2">
 									Nuova Stagione Uomo
 								</span>
                             </div>
 
-                            <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
+                            <div data-delay="0">
                                 <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
                                     Giacche e Cappotti
                                 </h2>
                             </div>
 
-                            <div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
+                            <div class= data-delay="0">
                                 <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Acquista
                                 </a>
@@ -58,19 +58,19 @@
                 <div class="item-slick1" style="background-image: url({{asset('img/slide-03.jpg')}})">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                            <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
+                            <div data-delay="0">
 								<span class="ltext-101 cl2 respon2">
 									Collezione Uomo 2019
 								</span>
                             </div>
 
-                            <div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
+                            <div class= data-delay="0">
                                 <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
                                     Nuovi Arrivi
                                 </h2>
                             </div>
 
-                            <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
+                            <div class= data-delay="0">
                                 <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Acquista
                                 </a>
