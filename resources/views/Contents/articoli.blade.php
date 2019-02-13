@@ -20,7 +20,7 @@
 
         <div class="p-t-32">
             <h4 class="p-b-15">
-                <a href="{{ route('dettaglioarticoli') }}" class="ltext-108 cl2 hov-cl1 trans-04">
+                <button onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="ltext-108 cl2 hov-cl1 trans-04">
                     {{$blog->nome}}
                 </a>
             </h4>
@@ -35,11 +35,7 @@
 											<span class="cl4">
                                                 By {{$blog->name}}
                                             </span>
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
 
-										<span>
-											StreetStyle, Fashion, Couple
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
 

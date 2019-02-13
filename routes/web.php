@@ -42,6 +42,7 @@ Route::get('/blog-detail', 'BlogController@DettaglioArticoli')->name('dettaglioa
 Route::post('/prova', 'ProductController@prova');
 Route::get('/blog-', 'BlogController@DataArticoli')->name('data');
 Route::post('/addreview', 'ProductController@addreview')->name('addreview');
+Route::get('/opzioni-di-pagamento', 'UserController@opzionidipagamento')->name('opzionidipagamento');
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {

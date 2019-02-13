@@ -17,7 +17,8 @@ class UserController extends Controller
 
     public function indirizzi(Request $request){
         if($request->ajax()){
-            return Response()->json(view('Contents/indirizziUser')->render());
+            $indirizzi = DB::table('addresses')->where('addresses.IDusers', '=', Auth::user()->id)->get();
+            return Response()->json(view('Contents/indirizziUser')->with('indirizzi', $indirizzi)->render());
         }
     }
 
@@ -25,6 +26,12 @@ class UserController extends Controller
         if($request->ajax()){
             $user = DB::table('users')->where('name', Auth::user()->name)->get();
             return Response()->json(view('Contents/userinfo')->with('user', $user)->render());
+        }
+    }
+
+    public function opzionidipagamento(Request $request){
+        if($request->ajax()){
+            return Response()->json(view('Contents/opzionidipagamento')->render());
         }
     }
 }

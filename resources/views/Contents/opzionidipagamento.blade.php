@@ -1,65 +1,52 @@
 <h5 class="mtext-108 cl2 p-b-25">
-    I tuoi indirizzi di spedizione:
+    Le tue carte:
 </h5>
 
 <table class="table-profile p-t-30">
     <tr class="table_head">
-        <th class="column-1">Città</th>
-        <th class="column-2">Provincia</th>
-        <th class="column-3">CAP</th>
-        <th class="column-4">Via</th>
-        <th class="column-5">Civico</th>
+        <th class="column-1">Nome</th>
+        <th class="column-2">Cognome</th>
+        <th class="column-3">Numero carta</th>
+        <th class="column-4">Scadenza</th>
+        <th class="column-5">Cvv</th>
     </tr>
-    @if($indirizzi!=null)
-    @foreach($indirizzi as $indirizzi)
     <tr class="table_row">
-        <td class="column-1">{{$indirizzi->citta}}</td>
-        <td class="column-2">{{$indirizzi->provincia}}</td>
-        <td class="column-3">{{$indirizzi->cap}}</td>
-        <td class="column-4">{{$indirizzi->via}}</td>
-        <td class="column-5">{{$indirizzi->civico}}</td>
+        <td class="column-1"></td>
+        <td class="column-2"></td>
+        <td class="column-3"></td>
+        <td class="column-4"></td>
+        <td class="column-5"></td>
     </tr>
-    @endforeach
-    @else
-    <tr class="table_row">
-        <td class="column-1"> </td>
-        <td class="column-2"> </td>
-        <td class="column-3"> </td>
-        <td class="column-4"> </td>
-        <td class="column-5"> </td>
-    </tr>
-    @endif
 </table>
-
 <form class="w-full p-t-41">
     <h5 class="mtext-108 cl2 p-b-7">
-        Inserisci un nuovo indirizzo:
+        Inserisci una carta:
     </h5>
     <label class="stext-102 cl3" for="name">I campi contrassegnati con (*) sono obbligatori</label>
 
     <div class="row p-b-25 p-t-10">
         <div class="col-sm-6 p-b-5">
-            <label class="stext-102 cl3" for="name">Città*</label>
+            <label class="stext-102 cl3" for="name">Nome*</label>
             <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="city" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
-            <label class="stext-102 cl3" for="name">Provincia*</label>
+            <label class="stext-102 cl3" for="name">Cognome*</label>
             <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="province" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
-            <label class="stext-102 cl3" for="name">CAP*</label>
+            <label class="stext-102 cl3" for="name">Numero carta*</label>
             <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="cap" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
-            <label class="stext-102 cl3" for="email">Via*</label>
+            <label class="stext-102 cl3" for="email">Scadenza*</label>
             <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="address" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
-            <label class="stext-102 cl3" for="email">Civico*</label>
+            <label class="stext-102 cl3" for="email">Cvv*</label>
             <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="civic" type="text">
         </div>
     </div>
