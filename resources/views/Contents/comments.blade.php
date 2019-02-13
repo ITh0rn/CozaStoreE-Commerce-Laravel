@@ -6,17 +6,17 @@
 
         <div class="size-207">
             <div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20">
-                                                        {{$comm->name}}
-													</span>
+                <span class="mtext-107 cl2 p-r-20">
+                    {{$comm->name}}
+                </span>
 
                 <span class="fs-18 cl11 js-star-comm" value="{{$comm->voto}}">
-														<i class="zmdi zmdi-star-outline"></i>
-														<i class="zmdi zmdi-star-outline"></i>
-														<i class="zmdi zmdi-star-outline"></i>
-														<i class="zmdi zmdi-star-outline"></i>
-														<i class="zmdi zmdi-star-outline"></i>
-													</span>
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
+                </span>
             </div>
 
             <p class="stext-102 cl6">
