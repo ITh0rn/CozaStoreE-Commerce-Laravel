@@ -4,19 +4,19 @@
 
 <table class="table-profile p-t-30">
     <tr class="table_head">
-        <th class="column-1">Città</th>
+        <th class="column-2 p-l-50">Città</th>
         <th class="column-2">Provincia</th>
-        <th class="column-3">CAP</th>
-        <th class="column-4">Via</th>
-        <th class="column-5">Civico</th>
+        <th class="column-2">CAP</th>
+        <th class="column-3">Via</th>
+        <th class="column-5 txt-right">Civico</th>
     </tr>
     @if($indirizzi!=null)
     @foreach($indirizzi as $indirizzi)
     <tr class="table_row">
-        <td class="column-1">{{$indirizzi->citta}}</td>
+        <td class="column-2 p-l-50">{{$indirizzi->citta}}</td>
         <td class="column-2">{{$indirizzi->provincia}}</td>
-        <td class="column-3">{{$indirizzi->cap}}</td>
-        <td class="column-4">{{$indirizzi->via}}</td>
+        <td class="column-2">{{$indirizzi->cap}}</td>
+        <td class="column-3">{{$indirizzi->via}}</td>
         <td class="column-5">{{$indirizzi->civico}}</td>
     </tr>
     @endforeach
