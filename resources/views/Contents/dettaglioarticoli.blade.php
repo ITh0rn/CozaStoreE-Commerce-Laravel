@@ -54,14 +54,6 @@
 									<span class="cl12 m-l-4 m-r-6">|</span>
 								</span>
 
-								<span>
-									StreetStyle, Fashion, Couple
-									<span class="cl12 m-l-4 m-r-6">|</span>
-								</span>
-
-								<span>
-									8 Comments
-								</span>
 							</span>
 
                         <h4 class="ltext-109 cl2 p-b-28">
@@ -71,22 +63,6 @@
                         <p class="stext-117 cl6 p-b-26">
                             {{$blog[0]->description}}
                         </p>
-                    </div>
-
-                    <div class="flex-w flex-t p-t-16">
-							<span class="size-216 stext-116 cl8 p-t-4">
-								Tags
-							</span>
-
-                        <div class="flex-w size-217">
-                            <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Streetstyle
-                            </a>
-
-                            <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Crafts
-                            </a>
-                        </div>
                     </div>
 
                     <!-- - -->
@@ -101,12 +77,12 @@
                         </h5>
 
                         <p class="stext-107 cl6 p-b-40">
-                            La tua email non sarà pubblicata. I campi obbligatori sono marcati da *
+                            La tua email non sarà pubblicata.
                         </p>
 
                         <form>
                             <div class="bor19 m-b-20">
-                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea>
+                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..." id="text"></textarea>
                             </div>
 
                             <div class="size-218 m-b-20">
@@ -124,7 +100,7 @@
                                 </span>
                             </div>
 
-                            <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+                            <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" id="pubblicaReview">
                                 Pubblica Commento
                             </button>
                         </form>

@@ -17,7 +17,8 @@ class UserController extends Controller
 
     public function indirizzi(Request $request){
         if($request->ajax()){
-            return Response()->json(view('Contents/indirizziUser')->render());
+            $indirizzi = DB::table('addresses')->where('addresses.IDusers', '=', Auth::user()->id)->get();
+            return Response()->json(view('Contents/indirizziUser')->with('indirizzi', $indirizzi)->render());
         }
     }
 
