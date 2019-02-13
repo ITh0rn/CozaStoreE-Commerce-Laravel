@@ -46,6 +46,7 @@ return array(
     'App\\Specifica_prodotto' => $baseDir . '/app/Specifica_prodotto.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\categorie' => $baseDir . '/app/categorie.php',
+    'App\\interazioni' => $baseDir . '/app/interazioni.php',
     'App\\product_comment' => $baseDir . '/app/product_comment.php',
     'App\\sub_categorie' => $baseDir . '/app/sub_categorie.php',
     'App\\taglie' => $baseDir . '/app/taglie.php',

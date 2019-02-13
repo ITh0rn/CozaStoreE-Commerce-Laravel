@@ -550,6 +550,7 @@ class ComposerStaticInit0ca6059117713ffa6b2a2e2e05c5a2fa
         'App\\Specifica_prodotto' => __DIR__ . '/../..' . '/app/Specifica_prodotto.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\categorie' => __DIR__ . '/../..' . '/app/categorie.php',
+        'App\\interazioni' => __DIR__ . '/../..' . '/app/interazioni.php',
         'App\\product_comment' => __DIR__ . '/../..' . '/app/product_comment.php',
         'App\\sub_categorie' => __DIR__ . '/../..' . '/app/sub_categorie.php',
         'App\\taglie' => __DIR__ . '/../..' . '/app/taglie.php',

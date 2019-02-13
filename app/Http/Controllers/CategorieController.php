@@ -48,7 +48,7 @@ class CategorieController extends Controller
     {
         if ($request->ajax()) {
             $filtered = DB::table('sub_categories')
-                ->join('products', 'products.id', '=', 'sub_categories.id')
+                ->join('products', 'products.id_subcategoria', '=', 'sub_categories.id')
                 ->where('nome_sub', $request->get('subcat'))
                 ->where('gender', $request->get('gender'))
                 ->get();

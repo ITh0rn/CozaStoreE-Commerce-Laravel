@@ -1,4 +1,3 @@
-
 @foreach($product as $product)
     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
         <!-- Block2 -->
@@ -12,7 +11,7 @@
 
             <div class="block2-txt flex-w flex-t p-t-14">
                 <div class="block2-txt-child1 flex-col-l ">
-                    <a href="{{route('dettaglio', ["nome_prodotto" => $product->nome, "id_prodotto" => $product->id])}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                    <a href="{{route('dettaglio', ["nome_prodotto" => $product->nome, "id_prodotto" => $product->id])}}, route()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                         {{$product->nome}}
                     </a>
 
@@ -31,4 +30,5 @@
         </div>
     </div>
 @endforeach
+
 

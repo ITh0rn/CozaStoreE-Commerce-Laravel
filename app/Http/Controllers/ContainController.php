@@ -38,6 +38,11 @@ class ContainController extends Controller
             $comment = DB::table('product_comments')->where('id_prodotto', $request->get('id_prodotto'))
                 ->join('users', 'users.id', '=', 'product_comments.id_utente')
                 ->Paginate(3);
+        if(Auth::check()){
+            DB::table('interazionis')->insert(
+                ['id_prodotto' => $request->get('id_prodotto'), 'id_utente' => Auth::user()->id]
+            );
+        }
             return view('Contents.dettaglioprodotto', compact('images', 'prodotto', 'productcart', 'taglie', 'comment'));
 
     }

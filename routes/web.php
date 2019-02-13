@@ -20,7 +20,10 @@ Route::get('/cart', 'CartItemsController@getUserCart');
 Route::post('/addtocart', 'ProductController@addToCart');
 Route::get('/listacarrello', 'ProductController@showcart')->name('listacart');
 Route::get('/{Utente}/carrello', 'ContainController@Carrello')->name('carrello');
-Route::get('/{Prodotto}/dettaglio', 'ContainController@DettaglioProdotto')->name('dettaglio');
+Route::get('/{Prodotto}/dettaglio', [
+    'uses' => 'ContainController@DettaglioProdotto',
+    'as' => 'dettaglio',
+]);
 Route::get('/getnumberitemcart', 'ProductController@getnumberCart');
 Route::get('/eliminaprodottocarrello', 'ProductController@eliminaprodcart');
 Route::get('/chi-siamo', 'ContainController@ChiSiamo')->name('chisiamo');

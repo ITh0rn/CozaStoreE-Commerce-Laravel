@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use http\Env\Response;
 use Illuminate\Http\Request;
-use App\Product as Product;
 use DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +21,60 @@ class ProductController extends Controller{
 
     public function show(){
 
-        $product = DB::table('products')->orderBy('id', 'desc')->take(12)->get();
-        $prodotti = null;
-        return view('layout/cozahome')->with('product', $product)->with('products', $prodotti);
+        if(Auth::check()){
+            $categorie = DB::table('products')
+                ->select('categories.nome_categoria', DB::raw('count(*) as total'), 'categories.id')
+                ->join('interazionis', 'interazionis.id_prodotto', '=', 'products.id')
+                ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
+                ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
+                ->groupBy('categories.nome_categoria')
+                ->where('interazionis.id_utente', '=', Auth::user()->id)
+                ->orderBy('total', 'dec')
+                ->get();
+
+            if($categorie) {
+
+            $query = DB::table('products')
+                ->select('products.*')
+                ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
+                ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
+                ->where('categories.nome_categoria', '=', array_first($categorie)->nome_categoria)
+                ->limit(8)
+                ->get();
+
+            $count = 0;
+
+            foreach ($categorie as $categoria){
+                $count++;
+            }
+
+                for($i = 1; $i < $count; $i++) {
+                    $categorie1 = DB::table('products')
+                        ->select('products.*')
+                        ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
+                        ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
+                        ->where('categories.nome_categoria', '=', $categorie[$i]->nome_categoria)
+                        ->limit(4)
+                        ->get();
+                    $query = $query->merge($categorie1);
+                }
+
+            } else {
+                //Piu acquistate entità acquisti
+            }
+            $query = $query->take(8);
+            return view('layout/cozahome')->with('product', $query);
+        }
+        else{
+
+            $query2 = DB::table('products')
+                ->select('products.*')
+                ->orderBy('created_at','dec')
+                ->take(8)
+                ->get();
+            return view('layout/cozahome')->with('product', $query2);
+        }
+
 
     }
 
@@ -84,6 +135,12 @@ class ProductController extends Controller{
             return response()->json(['error'=>$validator->errors()->all()]);
         }
 
+        if(Auth::check()){
+            DB::table('interazionis')->insert(
+                ['id_prodotto' => $request->get('id'), 'id_utente' => Auth::user()->id]
+            );
+        }
+
         $cart = Session::get('cart');
         if($request->ajax()) {
             if ($cart) {
@@ -123,6 +180,7 @@ class ProductController extends Controller{
 
             }
         }
+
     }
 
     public function showcart(Request $request){
@@ -217,6 +275,13 @@ class ProductController extends Controller{
             ['id_prodotto' => $request->get('idprod'), 'commento' => $request->get('comment'), 'voto' =>
             $request->get('voto'), 'id_utente' => Auth::user()->id]
         );
+
+        //Iterazione, commentando il prodotto, vuol dire che si ha avuto interesse
+        if(Auth::check()){
+            DB::table('interazionis')->insert(
+                ['id_prodotto' => $request->get('idprod'), 'id_utente' => Auth::user()->id]
+            );
+        }
 
     }
 
