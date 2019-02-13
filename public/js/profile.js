@@ -43,3 +43,18 @@ $(document).ready(function (e){
         });
     });
 });
+
+
+$(document).ready(function (e){
+    e.preventDefault;
+    $('.js-pagamento').click(function() {
+        console.log("Cliccato");
+        $.ajax({
+            url: '/opzioni-di-pagamento',
+            type: 'GET',
+            success: function (data) {
+                $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
+            }
+        });
+    });
+});

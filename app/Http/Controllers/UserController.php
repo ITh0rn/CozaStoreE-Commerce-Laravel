@@ -27,4 +27,10 @@ class UserController extends Controller
             return Response()->json(view('Contents/userinfo')->with('user', $user)->render());
         }
     }
+
+    public function opzionidipagamento(Request $request){
+        if($request->ajax()){
+            return Response()->json(view('Contents/opzionidipagamento')->render());
+        }
+    }
 }
