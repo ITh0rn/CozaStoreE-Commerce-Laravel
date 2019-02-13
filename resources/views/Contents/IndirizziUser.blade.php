@@ -10,13 +10,15 @@
         <th class="column-4">Via</th>
         <th class="column-5">Civico</th>
     </tr>
+    @foreach($indirizzi as $indirizzi)
     <tr class="table_row">
-        <td class="column-1"></td>
-        <td class="column-2"></td>
-        <td class="column-3"></td>
-        <td class="column-4"></td>
-        <td class="column-5"></td>
+        <td class="column-1">{{$indirizzi->citta}}</td>
+        <td class="column-2">{{$indirizzi->provincia}}</td>
+        <td class="column-3">{{$indirizzi->cap}}</td>
+        <td class="column-4">{{$indirizzi->via}}</td>
+        <td class="column-5">{{$indirizzi->civico}}</td>
     </tr>
+    @endforeach
 </table>
 
 <form class="w-full p-t-41">

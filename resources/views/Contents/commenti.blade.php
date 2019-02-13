@@ -3,7 +3,7 @@
 
     <div class="bor18 flex-w flex-t p-b-30 p-t-20">
         <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-            <img src="images/avatar-01.jpg" alt="AVATAR">
+            <img src="{{asset('img/avatar-01.jpg')}}" alt="AVATAR">
         </div>
 
         <div class="size-207">
@@ -12,12 +12,12 @@
                     {{$comment->nome}}
                 </span>
 
-                <span class="fs-18 cl11">
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star"></i>
-                    <i class="zmdi zmdi-star-half"></i>
+                <span class="fs-18 cl11 js-star-comm" value="{{$comment->stelle}}">
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
+                    <i class="zmdi zmdi-star-outline"></i>
                 </span>
             </div>
 

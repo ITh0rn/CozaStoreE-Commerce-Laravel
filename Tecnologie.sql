@@ -1,8 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.12, for macos10.13 (x86_64)
---
--- Host: localhost    Database: Tecnologie
--- ------------------------------------------------------
--- Server version	8.0.15
+drop database if exists Tecnologie;
+create database Tecnologie;
+use Tecnologie;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,33 +12,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `blogs`
---
-
-DROP TABLE IF EXISTS `blogs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `blogs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `img_dir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `IDusers` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `blogs_idusers_foreign` (`IDusers`),
-  CONSTRAINT `blogs_idusers_foreign` FOREIGN KEY (`IDusers`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `blogs`
---
-
-LOCK TABLES `blogs` WRITE;
-/*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `categories`
@@ -333,7 +304,7 @@ CREATE TABLE `product_comments` (
   KEY `fk_comment_user_idx` (`id_utente`),
   CONSTRAINT `fk_product_comment` FOREIGN KEY (`id_prodotto`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_utente_comment` FOREIGN KEY (`id_utente`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -685,4 +656,86 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-13 10:26:54
+CREATE TABLE blogs(
+  ID integer unsigned not null primary key auto_increment,
+  nome varchar(255) not null,
+  img_dir varchar(255) NOT NULL,
+  description varchar(255) NOT NULL,
+  data_inserimento timestamp,
+  IDusers integer unsigned NOT NULL,
+  constraint articolo_users foreign key(IDusers) references users(ID) on update cascade
+);
+
+LOCK TABLES `blogs` WRITE;
+/*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('1', '8 Inspiring Ways to Wear Dresses in the Winter', 'blog-04.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-01-21 00:00:01', '1');
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('2', 'The Great Big List of Men’s Gifts for the Holidays', 'blog-05.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-01-31 00:00:01', '2');
+INSERT INTO `tecnologie`.`blogs` (`ID`, `nome`, `img_dir`, `description`, `data_inserimento`, `IDusers`) VALUES ('3', '5 Winter-to-Spring Fashion Trends to Try Now', 'blog-06.jpg', 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius', '2019-02-02 00:00:01', '1');
+/*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+drop table if exists comments;
+create table comments(
+	ID integer unsigned not null primary key auto_increment,
+    commento text not null,
+    nome varchar(32) not null,
+    email varchar(32) not null,
+    stelle enum('1','2','3','4','5') not null,
+    IDusers integer unsigned not null,
+    IDblogs integer unsigned not null,
+    constraint recensione_blogs foreign key (IDblogs) references blogs(ID) on update cascade,
+    constraint recensione_users foreign key (IDusers) references users(ID) on update cascade
+);
+
+alter table `comments` disable keys;
+INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('1', 'Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos', 'Ariana Grande', 'email@email.com', '5', '1', '1');
+INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('2', 'Sopra la terra le squille suonano il mattutino. Passa una nuvola candida e sola. L’Italia! L’Italia che vola! che passa in alto con tutte l’anime nostre com’una sola grande anima!', 'Giovanni Pascoli', 'email@email.com', '2', '2', '2');
+INSERT INTO `tecnologie`.`comments` (`ID`, `commento`, `nome`, `email`, `stelle`, `IDusers`, `IDblogs`) VALUES ('3', 'Sempre caro mi fu quest’ermo colle, E questa siepe, che da tanta parte Dell’ultimo orizzonte il guardo esclude. Ma sedendo e mirando, interminati Spazi di là da quella, e sovrumani Silenzi, e profondissima quiete Io nel pensier mi fingo; ove per poco Il cor non si spaura. E come il vento Odo stormir tra queste piante, io quello Infinito silenzio a questa voce Vo comparando: e mi sovvien l’eterno,  E le morte stagioni, e la presente E viva, e il suon di lei. Così tra questa Immensità s’annega il pensier mio: E il naufragar m’è dolce in questo mare.', 'Giacomo Leopardi', 'email3@email.com', '4', '3', '2');
+alter table `comments` enable keys;
+
+drop table if exists addresses;
+create table addresses(
+	ID integer unsigned not null primary key auto_increment,
+    citta varchar(32) not null,
+    provincia varchar(32) not null,
+    cap varchar(32) not null,
+    via varchar(32) not null,
+    civico varchar(32) not null,
+    IDusers integer unsigned not null,
+    constraint indirizzi_users foreign key (IDusers) references users(ID) on update cascade
+);
+
+INSERT INTO `tecnologie`.`addresses` (`ID`, `citta`, `provincia`, `cap`, `via`, `civico`, `IDusers`) VALUES ('1', 'Castel di Ieri', 'L\'Aquila', '67020', 'San pio', '9', '3');
+INSERT INTO `tecnologie`.`addresses` (`ID`, `citta`, `provincia`, `cap`, `via`, `civico`, `IDusers`) VALUES ('2', 'L\'Aquila', 'AQ', '67100', 'Corrado IV', '40', '3');
+
+
+drop table if exists orders;
+create table orders(
+	ID integer unsigned not null primary key auto_increment,
+    prodotti integer not null,
+    sconto varchar(32) not null,
+    totale varchar(32) not null,
+    IDusers integer unsigned not null,
+    IDaddresses integer unsigned not null,
+    constraint orders_users foreign key (IDusers) references users(ID) on update cascade,
+    constraint orders_addresses foreign key (IDaddresses) references addresses(ID) on update cascade
+);
+
+drop table if exists boughtproducts;
+create table boughtproducts(
+	ID integer unsigned not null primary key auto_increment,
+	img_dir	varchar(255) NOT NULL,
+	nome varchar(255) NOT NULL,
+	gender varchar(255) NOT NULL,
+	price float NOT NULL,
+	id_subcategoria int(10) unsigned NOT NULL,
+	mini_descrizione varchar(255) NOT NULL,
+	grande_descrizione varchar(255) NOT NULL,
+	colore	varchar(255) NOT NULL,
+	dimensione	varchar(255) NOT NULL,
+	peso varchar(255) NOT NULL,
+	materiale varchar(255) NOT NULL
+);
+
+select * from users
