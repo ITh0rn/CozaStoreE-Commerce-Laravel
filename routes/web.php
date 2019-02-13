@@ -61,4 +61,9 @@ Route::get('/ajax', function (){
     return view('Contents.comments', compact('comment'));
 });
 
+Route::get('/womanfilter', 'CategorieController@WomanCategories');
+Route::get('/subcategoria', 'CategorieController@SubCategorie');
+Route::get('/subcategoryfilter', 'CategorieController@SubFiltering');
+
+
 
