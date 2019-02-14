@@ -37,10 +37,12 @@ class UserController extends Controller
 
     public function opzionidipagamento(Request $request){
         if($request->ajax()){
-            return Response()->json(view('Contents/opzionidipagamento')->render());
+            $pagamento = DB::table('payments')->where('payments.IDusers', '=', Auth::user()->id)->get();
+            return Response()->json(view('Contents/opzionidipagamento')->with('pagamento', $pagamento)->render());
         }
     }
 
+<<<<<<< HEAD
     public function addressAdd(Request $request){
 
         $messsages = array(
@@ -56,6 +58,25 @@ class UserController extends Controller
             'civic.required' => 'Civico: vuoto, inserisci un civico',
             'civic.numeric' => 'Civico: deve contenere solo numeri',
             'civic.digits_between' => 'Civico: Massimo 3 cifre'
+=======
+
+    public function aggiungicarta(Request $request){
+         DB::table('aggiugicarta')->insert(
+             ['nome' => $request->get('nome'),'cognome' => $request->get('cognome'),'numero' => $request->get('numero'),
+                 'scadenza' => $request->get('scadenza'),'cvv' => $request->get('cvv')]
+         );
+    }
+}
+
+    public function addAddress(Request $request){
+        DB::table('addresses')->insert(
+            [   'citta' => $request->get('city'),
+                'provincia' => $request->get('province'),
+                'cap' => $request->get('cap'),
+                'via' => $request->get('address'),
+                'civico' => $request->get('civic'),
+                $request->get('voto'), 'IDusers' => Auth::user()->id]
+>>>>>>> 7103e5caba75c41887a4e45d5d25fd7dfb3b6fb2
         );
 
         $rules = array(
@@ -86,3 +107,4 @@ class UserController extends Controller
             DB::table('addresses')->where('ID', $request->get('id'))->delete();
         }
 }
+

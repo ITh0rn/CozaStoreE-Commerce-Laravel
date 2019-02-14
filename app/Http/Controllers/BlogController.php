@@ -46,12 +46,20 @@ class BlogController extends Controller
         $timestamp = $anno.'-'.date('m', strtotime($mese)).'%';
         //$blogData = DB::select('select * from blogs where MONTHNAME(data_inserimento)='.'$mese'.', YEAR(data_inserimento)='.'$anno');
         $user = DB::table('users')->get();
-        $rowUtente = DB::table('blogs')->where(function ($query) use ($timestamp) {
+        
+        $rowUtente = DB::table('blogs')
+            ->select('blogs.data_inserimento', 'blogs.nome', 'blogs.description', 'users.name', 'users.id', 'blogs.IDusers', 'blogs.id as ID', 'blogs.img_dir',
+                DB::raw('count(comments.id) as num'))
+            ->leftjoin('comments', 'comments.IDblogs', '=', 'blogs.id')
+            ->join('users', 'blogs.IDusers', '=', 'users.id')
+            ->groupBy('blogs.id')
+            ->where(function ($query) use ($timestamp) {
             $query->where('data_inserimento', 'like', $timestamp);
-        })->join('users', 'blogs.IDusers', '=', 'users.id')->get();
-        $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) as anno from blogs group by mese, anno');
-        return view('Contents/articoli', compact('rowUtente', 'data'));
+        })->get();
 
+
+        $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) as anno from blogs group by mese, anno');
+        return view('Contents/articoli', compact('rowUtente', 'data', 'num'));
     }
 
     public function addReview(Request $request){

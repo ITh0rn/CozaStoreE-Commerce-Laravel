@@ -11,13 +11,15 @@
         <th class="column-5">Cvv</th>
     </tr>
 
+    @foreach($pagamento as $pagamento)
     <tr class="table_row">
-        <td class="column-1"></td>
-        <td class="column-2"></td>
-        <td class="column-3"></td>
-        <td class="column-4"></td>
-        <td class="column-5"></td>
+        <td class="column-1">{{$pagamento->nome}}</td>
+        <td class="column-2">{{$pagamento->cognome}}</td>
+        <td class="column-3">{{$pagamento->numero}}</td>
+        <td class="column-4">{{$pagamento->scadenza}}</td>
+        <td class="column-5">{{$pagamento->cvv}}</td>
     </tr>
+    @endforeach
 </table>
 <form class="w-full p-t-41">
     <h5 class="mtext-108 cl2 p-b-7">
@@ -28,27 +30,27 @@
     <div class="row p-b-25 p-t-10">
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="name">Nome*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="city" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="nome" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="name">Cognome*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="province" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="cognome" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="name">Numero carta*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="cap" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" name="numero" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="email">Scadenza*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="address" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="scadenza" type="text">
         </div>
 
         <div class="col-sm-6 p-b-5">
             <label class="stext-102 cl3" for="email">Cvv*</label>
-            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="civic" type="text">
+            <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" name="cvv" type="text">
         </div>
     </div>
 
