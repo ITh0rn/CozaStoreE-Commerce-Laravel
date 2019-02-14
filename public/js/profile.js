@@ -36,9 +36,6 @@ $(document).ready(function (e){
             type: 'GET',
             success: function (data) {
                 $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
-            },
-            error: function () {
-              alert('errore AJAX');
             }
         });
     });
@@ -141,20 +138,6 @@ $(document).on('click', '.js-remove-address', function (e) {
         });
 });
 
-$(document).ready(function (e){
-    e.preventDefault;
-    $('.js-pagamento').click(function() {
-        console.log("Cliccato");
-        $.ajax({
-            url: '/opzioni-di-pagamento',
-            type: 'GET',
-            success: function (data) {
-                $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
-            }
-        });
-    });
-});
-
 $(document).on('click', '.js-aggiungicarta', function (e){
     e.preventDefault();
     $nome = $('.js-aggiungicarta-nome').val();
@@ -162,20 +145,18 @@ $(document).on('click', '.js-aggiungicarta', function (e){
     $numero = $('.js-aggiungicarta-numero').val();
     $scadenza = $('.js-aggiungicarta-scadenza').val();
     $cvv = $('.js-aggiungicarta-cvv').val();
-    console.log($nome, $cognome, $numero, $scadenza, $cvv);
     $.ajaxSetup({
         headers: {
             'X-CSRF-Token': $('meta[name="_token"]').attr('content')
         }
     });
     $.ajax({
-        type: "POST",
         url: '/aggiungicarta',
+        type: "POST",
         data: {'nome': $nome, 'cognome': $cognome, 'numero': $numero, 'scadenza': $scadenza, 'cvv': $cvv},
         success: function (data) {
             if($.isEmptyObject(data.error)){
-                console.log('inserito');
-                $(".print-error-msg-review").find("ul").html('');
+                $('.print-error-msg-address').css('visibility', 'hidden');
                 swal({
                     title: "Carta Inserita",
                     text: "Grazie per la collaborazione",

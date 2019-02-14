@@ -95,24 +95,24 @@ class UserController extends Controller
         public function aggiungicarta(Request $request){
 
             $messsages = array(
-                'nome.required' => 'Città: vuoto, inserisci una città',
-                'nome.string' => 'Città: non può contenere valori alfa-numerici',
-                'cognome.required' => 'Provincia: vuoto, inserisci una città',
-                'cognome.string' => 'Provincia: non può contenere valori alfa-numerici',
-                'numero.digits' => 'Provincia: massimo 2 caratteri',
-                'numero.required' => 'CAP: vuoto, inserisci un CAP',
-                'scadenza.required' => 'Via: vuoto, inserisci un indirizzo valido',
-                'scadenza.string' => 'Via: vuoto, inserisci un indirizzo valido',
-                'cvv.required' => 'Civico: vuoto, inserisci un civico',
-                'cvv.numeric' => 'Civico: deve contenere solo numeri',
-                'civic.digits' => 'Civico: Massimo 3 cifre'
+                'nome.required' => 'Nome: vuoto, inserisci una nome',
+                'nome.string' => 'Nome: non può contenere valori alfa-numerici',
+                'cognome.required' => 'Cognome: vuoto, inserisci una città',
+                'cognome.string' => 'Cognome: non può contenere valori alfa-numerici',
+                'numero.digits' => 'Numero: formato non valido, inserisci 16 caratteri',
+                'numero.required' => 'Numero: vuoto, inserisci una carta',
+                'scadenza.required' => 'Scadenza: vuoto, inserisci data scadenza della carta',
+                'scadenza.date_format' => 'Scadenza: formato errato. inserisci data formato es YYYY-mm-dd',
+                'cvv.required' => 'Cvv: vuoto, inserisci il codice cvv',
+                'cvv.numeric' => 'Cvv: deve contenere solo numeri',
+                'civic.digits' => 'Cvv: formato errato. massimo 3 cifre'
             );
 
             $rules = array(
                 'nome' => 'required|string',
                 'cognome' => 'required|string',
                 'numero' => 'required|numeric|digits:16',
-                'scadenza' => 'required|string',
+                'scadenza' => 'required|date_format:Y-m-d',
                 'cvv' => 'required|numeric|digits:3'
             );
 
@@ -123,8 +123,12 @@ class UserController extends Controller
             }
 
             DB::table('payments')->insert(
-                ['nome' => $request->get('nome'),'cognome' => $request->get('cognome'),'numero' => $request->get('numero'),
-                    'scadenza' => $request->get('scadenza'),'cvv' => $request->get('cvv')]
+                ['nome' => $request->get('nome'),
+                    'cognome' => $request->get('cognome'),
+                    'numero' => $request->get('numero'),
+                    'scadenza' => $request->get('scadenza'),
+                    'cvv' => $request->get('cvv'),
+                    'IDusers' => Auth::user()->id]
             );
         }
 }

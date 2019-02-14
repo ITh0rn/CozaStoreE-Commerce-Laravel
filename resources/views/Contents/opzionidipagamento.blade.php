@@ -2,7 +2,7 @@
     Le tue opzioni di pagamento:
 </h5>
 
-<table class="table-profile p-t-30">
+<table class="table-profile p-t-30 m-b-30">
     <tr class="table_head">
         <th class="column-1">Nome</th>
         <th class="column-2">Cognome</th>
