@@ -10,17 +10,17 @@
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+            <a href="#" class="stext-109 cl8 hov-cl1 trans-04">
                 {{$prodotto[0]->gender}}
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+            <a class="stext-109 cl8 hov-cl1 trans-04">
                 {{$prodotto[0]->nome_categoria}}
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+            <a class="stext-109 cl8 hov-cl1 trans-04">
                 {{$prodotto[0]->nome_sub}}
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
