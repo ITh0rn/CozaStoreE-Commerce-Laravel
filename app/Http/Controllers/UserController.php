@@ -40,6 +40,7 @@ class UserController extends Controller
         }
     }
 
+
     public function aggiungicarta(Request $request){
          DB::table('aggiugicarta')->insert(
              ['nome' => $request->get('nome'),'cognome' => $request->get('cognome'),'numero' => $request->get('numero'),
@@ -47,3 +48,16 @@ class UserController extends Controller
          );
     }
 }
+
+    public function addAddress(Request $request){
+        DB::table('addresses')->insert(
+            [   'citta' => $request->get('city'),
+                'provincia' => $request->get('province'),
+                'cap' => $request->get('cap'),
+                'via' => $request->get('address'),
+                'civico' => $request->get('civic'),
+                $request->get('voto'), 'IDusers' => Auth::user()->id]
+        );
+    }
+}
+

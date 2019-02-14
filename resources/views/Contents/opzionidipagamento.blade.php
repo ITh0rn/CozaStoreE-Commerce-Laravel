@@ -10,6 +10,7 @@
         <th class="column-4">Scadenza</th>
         <th class="column-5">Cvv</th>
     </tr>
+
     @foreach($pagamento as $pagamento)
     <tr class="table_row">
         <td class="column-1">{{$pagamento->nome}}</td>

@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+    <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 js-addAddress">
         Inserisci
     </button>
 </form>
