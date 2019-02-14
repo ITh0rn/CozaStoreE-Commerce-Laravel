@@ -95,12 +95,8 @@
 								<a href="{{route('coza')}}">Home</a>
 							</li>
 
-							<li>
-								<a href="{{ route('shop') }}" class="flex-c-m trans-04 p-lr-25">Shop</a>
-							</li>
-
 							<li class="label1" data-label1="hot">
-								<a href="shopping-cart.html">In Evidenza</a>
+								<a href="{{ route('shop') }}">Shop</a>
 							</li>
 
 							<li>
