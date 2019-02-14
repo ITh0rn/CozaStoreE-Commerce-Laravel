@@ -54,4 +54,11 @@ class BlogController extends Controller
 
     }
 
+    public function addReview(Request $request){
+        DB::table('comments')->insert(
+            ['IDblog' => $request->get('IDblog'), 'commento' => $request->get('comment'), 'voto' =>
+                $request->get('voto'), 'id_utente' => Auth::user()->id]
+        );
+    }
+
 }
