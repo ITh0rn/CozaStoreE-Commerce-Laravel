@@ -93,7 +93,36 @@ class UserController extends Controller
         }
 
         public function aggiungicarta(Request $request){
-            DB::table('aggiugicarta')->insert(
+
+            $messsages = array(
+                'nome.required' => 'Città: vuoto, inserisci una città',
+                'nome.string' => 'Città: non può contenere valori alfa-numerici',
+                'cognome.required' => 'Provincia: vuoto, inserisci una città',
+                'cognome.string' => 'Provincia: non può contenere valori alfa-numerici',
+                'numero.digits' => 'Provincia: massimo 2 caratteri',
+                'numero.required' => 'CAP: vuoto, inserisci un CAP',
+                'scadenza.required' => 'Via: vuoto, inserisci un indirizzo valido',
+                'scadenza.string' => 'Via: vuoto, inserisci un indirizzo valido',
+                'cvv.required' => 'Civico: vuoto, inserisci un civico',
+                'cvv.numeric' => 'Civico: deve contenere solo numeri',
+                'civic.digits' => 'Civico: Massimo 3 cifre'
+            );
+
+            $rules = array(
+                'nome' => 'required|string',
+                'cognome' => 'required|string',
+                'numero' => 'required|numeric|digits:16',
+                'scadenza' => 'required|string',
+                'cvv' => 'required|numeric|digits:3'
+            );
+
+            $validator = Validator::make($request->all(), $rules, $messsages);
+
+            if ($validator->fails()) {
+                return Response()->json(['error' => $validator->errors()->all()]);
+            }
+
+            DB::table('payments')->insert(
                 ['nome' => $request->get('nome'),'cognome' => $request->get('cognome'),'numero' => $request->get('numero'),
                     'scadenza' => $request->get('scadenza'),'cvv' => $request->get('cvv')]
             );

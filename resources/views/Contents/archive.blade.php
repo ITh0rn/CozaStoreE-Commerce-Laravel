@@ -4,7 +4,7 @@
         <span>
             {{ $blog->mese }} {{ $blog->anno }}
         </span>
-            {{ $blog->num }}
+            ({{ $blog->num }})
         <span>
 
         </span>
