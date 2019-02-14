@@ -739,11 +739,13 @@ create table boughtproducts(
 	peso varchar(255) NOT NULL,
 	materiale varchar(255) NOT NULL,
     created_at timestamp NULL DEFAULT NULL,
-	updated_at timestamp NULL DEFAULT NULL
+	updated_at timestamp NULL DEFAULT NULL,
+    IDorders integer unsigned not null,
+    constraint boughtproducts_orders foreign key (IDorders) references orders(ID) on update cascade
 );
 
-INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`) VALUES ('1', 'products/February2019/siMxT0aqedcC8BkdUrJ5.jpg', 'Cappotto Doppiopetto', 'uomo', '39.99', '1', 'Giubbotto Lungo Doppiopetto da uomo', 'Giubbotto Lungo Doppiopetto da uomo', 'Nero', '50x50x80', '1.8', '100% Lana', '2019-02-07 17:29:00', '2019-02-07 17:31:28');
-INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`) VALUES ('2', 'products/February2019/jPv41WfFvmmnXQeZ1pXE.jpg', 'Giubbotto Velluto', 'donna', '29.99', '2', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Marrone', '40x40x60', '1.3', '100% Lana', '2019-02-09 11:47:00', '2019-02-09 11:47:38');
+INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`, `IDorders`) VALUES ('1', 'products/February2019/siMxT0aqedcC8BkdUrJ5.jpg', 'Cappotto Doppiopetto', 'uomo', '39.99', '1', 'Giubbotto Lungo Doppiopetto da uomo', 'Giubbotto Lungo Doppiopetto da uomo', 'Nero', '50x50x80', '1.8', '100% Lana', '2019-02-07 17:29:00', '2019-02-07 17:31:28', '1');
+INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`, `IDorders`) VALUES ('2', 'products/February2019/jPv41WfFvmmnXQeZ1pXE.jpg', 'Giubbotto Velluto', 'donna', '29.99', '2', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Marrone', '40x40x60', '1.3', '100% Lana', '2019-02-09 11:47:00', '2019-02-09 11:47:38', '1');
 
 
 drop table if exists payments;
@@ -760,6 +762,27 @@ create table payments(
 
 INSERT INTO `tecnologie`.`payments` (`ID`, `nome`, `cognome`, `numero`, `scadenza`, `cvv`, `IDusers`) VALUES ('1', 'Mario', 'Rossi', '****7890', '01/2022', '123', '2');
 
+DROP TABLE IF EXISTS `interazionis`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `interazionis` (
+  `id_prodotto` int(11) unsigned NOT NULL,
+  `id_utente` int(11) unsigned NOT NULL,
+  KEY `fk_iterazione_prodotto_idx` (`id_prodotto`),
+  KEY `fk_iterazione_user_idx` (`id_utente`),
+  CONSTRAINT `fk_iterazione_prodotto` FOREIGN KEY (`id_prodotto`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_iterazione_user` FOREIGN KEY (`id_utente`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `interazionis`
+--
+
+LOCK TABLES `interazionis` WRITE;
+/*!40000 ALTER TABLE `interazionis` DISABLE KEYS */;
+INSERT INTO `interazionis` VALUES (7,1),(8,1),(8,1),(9,1),(9,1),(5,1),(5,1),(8,1),(8,1),(8,1),(3,1),(1,1),(1,1),(7,1),(7,1),(7,1),(7,1),(7,1),(6,1),(2,1),(2,1),(2,1);
+/*!40000 ALTER TABLE `interazionis` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
