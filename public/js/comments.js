@@ -57,6 +57,8 @@ $(document).ready(function () {
           data : {'idprod': $idprod, 'comment': $idcommento, 'voto': $voto},
           success: function (data) {
               if($.isEmptyObject(data.error)){
+                  $(".print-error-msg-review").find("ul").html('');
+                  $(".print-error-msg-review").find("ul").html('');
                   swal({
                       title: "Commento Inserito",
                       text: "Grazie per la collaborazione",

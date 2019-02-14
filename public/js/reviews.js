@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     var baseUrl = window.location.pathname;
     console.log(baseUrl+'/reviewed');
     var numeroReview = 0;
@@ -19,7 +19,7 @@ $(document).ready(function(){
             itemid = $(this).attr('itemid');
         });
 
-    divApp = $('.totalist').attr(itemid)
+    divApp = $('.totalist').attr(itemid);
     $('#pubblicaReview').click(function(){ //nome bottone
         var testo = $('#text').val(); //nome commento
         var iduser = $('#userid').attr('title');
@@ -38,4 +38,4 @@ $(document).ready(function(){
             {
         //nome div della include
     });
-});
+});*/
