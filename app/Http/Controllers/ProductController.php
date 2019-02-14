@@ -18,6 +18,8 @@ class ProductController extends Controller{
         return $product = Product::all();
     }
 
+    //Utente è schedato in base alle sue interazioni con i prodotti, se l'utente è registrato ed è interagito con il sistema, allora vengono
+    //suggeriti nella home prodotti di categoria simile
 
     public function show(){
 
@@ -32,7 +34,7 @@ class ProductController extends Controller{
                 ->orderBy('total', 'dec')
                 ->get();
 
-            if($categorie) {
+            if(!$categorie->isEmpty()) {
 
             $query = DB::table('products')
                 ->select('products.*')
@@ -60,7 +62,12 @@ class ProductController extends Controller{
                 }
 
             } else {
-                //Piu acquistate entità acquisti
+                $query2 = DB::table('products')
+                    ->select('products.*')
+                    ->orderBy('created_at','dec')
+                    ->take(8)
+                    ->get();
+                return view('layout/cozahome')->with('product', $query2);
             }
             $query = $query->take(8);
             return view('layout/cozahome')->with('product', $query);
@@ -75,18 +82,8 @@ class ProductController extends Controller{
             return view('layout/cozahome')->with('product', $query2);
         }
 
-
     }
 
-    /*
-    public static function showall(){
-
-        $product = Product::all();
-        $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
-
-    }
-    */
     public function Shop(){
 
         $product = DB::table('products')->get();
