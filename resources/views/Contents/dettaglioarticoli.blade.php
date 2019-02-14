@@ -82,7 +82,7 @@
 
                         <form>
                             <div class="bor19 m-b-20">
-                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..." id="text"></textarea>
+                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea><!-- id="text" -->
                             </div>
 
                             <div class="size-218 m-b-20">
@@ -100,7 +100,7 @@
                                 </span>
                             </div>
 
-                            <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" id="pubblicaReview">
+                            <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04"><!-- id="pubblicaReview" -->
                                 Pubblica Commento
                             </button>
                         </form>

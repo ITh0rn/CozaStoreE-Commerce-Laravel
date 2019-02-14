@@ -22,7 +22,7 @@
             <h4 class="p-b-15">
                 <button onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="ltext-108 cl2 hov-cl1 trans-04">
                     {{$blog->nome}}
-                </a>
+                </button>
             </h4>
 
             <p class="stext-117 cl6">

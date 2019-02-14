@@ -58,3 +58,23 @@ $(document).ready(function (e){
         });
     });
 });
+
+$(document).on('click', function (e){
+    e.preventDefault;
+    $('.js-addAddress').click(function() {
+        console.log("Cliccato");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/addAddress',
+            type: 'POST',
+            data: {'city': $city, 'province': $province, 'cap': $cap, 'address': $address, 'civic': $civic}
+            success: function (data) {
+                $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
+            }
+        });
+    });
+});

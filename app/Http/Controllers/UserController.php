@@ -38,4 +38,15 @@ class UserController extends Controller
             return Response()->json(view('Contents/opzionidipagamento')->render());
         }
     }
+
+    public function addAddress(Request $request){
+        DB::table('addresses')->insert(
+            [   'citta' => $request->get('city'),
+                'provincia' => $request->get('province'),
+                'cap' => $request->get('cap'),
+                'via' => $request->get('address'),
+                'civico' => $request->get('civic'),
+                $request->get('voto'), 'IDusers' => Auth::user()->id]
+        );
+    }
 }
