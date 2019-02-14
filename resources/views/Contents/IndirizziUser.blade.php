@@ -2,7 +2,7 @@
     I tuoi indirizzi di spedizione:
 </h5>
 
-<table class="table-profile p-t-30">
+<table class="table-profile p-t-30 m-b-30">
     <tr class="table_head">
         <th class="column-2 p-l-50">Città</th>
         <th class="column-2">Provincia</th>

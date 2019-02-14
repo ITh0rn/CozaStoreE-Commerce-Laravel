@@ -103,9 +103,11 @@
                                 <div class="rs1-select2 bor8 bg0 size-116">
                                     <select class="js-select2" id="addreselect" name="time">
                                         <option>Seleziona Indirizzo</option>
+                                        @if($indirizzi!=null)
                                         @foreach($indirizzi as $indirizzo)
                                         <option>{{$indirizzo->citta}}({{$indirizzo->provincia}}) ,Via {{$indirizzo->via}} {{$indirizzo->civico}}</option>
                                             @endforeach
+                                            @endif
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -121,9 +123,11 @@
                                 <div class="rs1-select2 bor8 bg0 size-116">
                                     <select class="js-select2" id="addreselect" name="time">
                                         <option>Seleziona Pagamento</option>
+                                        @if($payments!=null)
                                         @foreach($payments as $metodo)
                                         <option>{{$metodo->numero}}</option>
                                             @endforeach
+                                            @endif
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>

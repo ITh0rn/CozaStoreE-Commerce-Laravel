@@ -79,7 +79,7 @@ $(document).on('click', '.js-addAddress', function (e){
             success: function (data) {
                 if($.isEmptyObject(data.error)){
                     console.log('inserito');
-                    $(".print-error-msg-review").find("ul").html('');
+                    $('.print-error-msg-address').css('visibility', 'hidden');
                     swal({
                         title: "Indiririzzo Inserito",
                         text: "Grazie per la collaborazione",
