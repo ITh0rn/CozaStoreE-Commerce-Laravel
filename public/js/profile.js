@@ -140,3 +140,65 @@ $(document).on('click', '.js-remove-address', function (e) {
             }
         });
 });
+
+$(document).ready(function (e){
+    e.preventDefault;
+    $('.js-pagamento').click(function() {
+        console.log("Cliccato");
+        $.ajax({
+            url: '/opzioni-di-pagamento',
+            type: 'GET',
+            success: function (data) {
+                $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
+            }
+        });
+    });
+});
+
+$(document).on('click', '.js-aggiungicarta', function (e){
+    e.preventDefault();
+    $nome = $('.js-aggiungicarta-nome').val();
+    $cognome = $('.js-aggiungicarta-cognome').val();
+    $numero = $('.js-aggiungicarta-numero').val();
+    $scadenza = $('.js-aggiungicarta-scadenza').val();
+    $cvv = $('.js-aggiungicarta-cvv').val();
+    console.log($nome, $cognome, $numero, $scadenza, $cvv);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: '/aggiungicarta',
+        data: {'nome': $nome, 'cognome': $cognome, 'numero': $numero, 'scadenza': $scadenza, 'cvv': $cvv},
+        success: function (data) {
+            if($.isEmptyObject(data.error)){
+                console.log('inserito');
+                $(".print-error-msg-review").find("ul").html('');
+                swal({
+                    title: "Carta Inserita",
+                    text: "Grazie per la collaborazione",
+                    icon: "success",
+                    button: false,
+                    timer: 1500
+                }).then(() => {
+                    $.ajax({
+                        url: '/opzioni-di-pagamento',
+                        type: 'GET',
+                        success: function (data) {
+                            $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
+                        }
+                    });
+                });
+            }
+            else {
+                $(".print-error-msg-address").find("ul").html('');
+                $.each(data.error, function (key, value) {
+                    $('.print-error-msg-address').find('ul').append('<li>' + value + '</li>');
+                    $('.print-error-msg-address').css('visibility', 'visible');
+                });
+            }
+        }
+    });
+});
