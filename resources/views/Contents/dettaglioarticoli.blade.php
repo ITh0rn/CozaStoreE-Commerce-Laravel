@@ -76,21 +76,22 @@
                             Lascia un commento
                         </h5>
 
-                        <p class="stext-107 cl6 p-b-40">
-                            La tua email non sarà pubblicata.
-                        </p>
+                        <form class="w-full">
 
-                        <form>
-                            <div class="bor19 m-b-20">
-                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea><!-- id="text" -->
+                            <p class="stext-102 cl6 p-b-20">
+                                Fai sapere agli altri utenti se ti è piaciuto l'articolo!
+                            </p>
+
+                            <div class="alert alert-danger print-error-msg-review" style="visibility: hidden">
+                                <ul></ul>
                             </div>
 
-                            <div class="size-218 m-b-20">
-                                <span class="stext-111 cl2 plh3 size-116 p-lr-18">
+                            <div class="flex-w flex-m p-t-20 p-b-23">
+                                <span class="stext-102 cl3 m-r-16">
                                     Il tuo voto
                                 </span>
 
-                                <span class="wrap-rating fs-18 cl11 pointer">
+                                <span class="wrap-rating fs-18 cl11 pointer js-addstarreview">
                                     <i class="item-rating pointer zmdi zmdi-star-outline"></i>
                                     <i class="item-rating pointer zmdi zmdi-star-outline"></i>
                                     <i class="item-rating pointer zmdi zmdi-star-outline"></i>
@@ -100,8 +101,15 @@
                                 </span>
                             </div>
 
-                            <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04"><!-- id="pubblicaReview" -->
-                                Pubblica Commento
+                            <div class="row p-b-25">
+                                <div class="col-12 p-b-5">
+                                    <label class="stext-102 cl3" for="review">La tua Recensione</label>
+                                    <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
+                                </div>
+                            </div>
+
+                            <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 js-add-review" value="{{$blog[0]->ID}}">
+                                Invia
                             </button>
                         </form>
                     </div>
