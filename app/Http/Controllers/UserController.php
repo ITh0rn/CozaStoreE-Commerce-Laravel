@@ -35,7 +35,15 @@ class UserController extends Controller
 
     public function opzionidipagamento(Request $request){
         if($request->ajax()){
-            return Response()->json(view('Contents/opzionidipagamento')->render());
+            $pagamento = DB::table('payments')->where('payments.IDusers', '=', Auth::user()->id)->get();
+            return Response()->json(view('Contents/opzionidipagamento')->with('pagamento', $pagamento)->render());
         }
+    }
+
+    public function aggiungicarta(Request $request){
+         DB::table('aggiugicarta')->insert(
+             ['nome' => $request->get('nome'),'cognome' => $request->get('cognome'),'numero' => $request->get('numero'),
+                 'scadenza' => $request->get('scadenza'),'cvv' => $request->get('cvv')]
+         );
     }
 }
