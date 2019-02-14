@@ -744,3 +744,22 @@ create table boughtproducts(
 
 INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`) VALUES ('1', 'products/February2019/siMxT0aqedcC8BkdUrJ5.jpg', 'Cappotto Doppiopetto', 'uomo', '39.99', '1', 'Giubbotto Lungo Doppiopetto da uomo', 'Giubbotto Lungo Doppiopetto da uomo', 'Nero', '50x50x80', '1.8', '100% Lana', '2019-02-07 17:29:00', '2019-02-07 17:31:28');
 INSERT INTO `tecnologie`.`boughtproducts` (`ID`, `img_dir`, `nome`, `gender`, `price`, `id_subcategoria`, `mini_descrizione`, `grande_descrizione`, `colore`, `dimensione`, `peso`, `materiale`, `created_at`, `updated_at`) VALUES ('2', 'products/February2019/jPv41WfFvmmnXQeZ1pXE.jpg', 'Giubbotto Velluto', 'donna', '29.99', '2', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile', 'Marrone', '40x40x60', '1.3', '100% Lana', '2019-02-09 11:47:00', '2019-02-09 11:47:38');
+
+
+drop table if exists payments;
+create table payments(
+	ID integer unsigned not null primary key auto_increment,
+    nome varchar(32) not null,
+    cognome varchar(32) not null,
+    numero varchar(16) not null,
+    scadenza varchar(7) not null,
+    cvv varchar(3) not null,
+    IDusers integer unsigned not null,
+    constraint payments_users foreign key (IDusers) references users(ID) on update cascade
+);
+
+INSERT INTO `tecnologie`.`payments` (`ID`, `nome`, `cognome`, `numero`, `scadenza`, `cvv`, `IDusers`) VALUES ('1', 'Mario', 'Rossi', '****7890', '01/2022', '123', '2');
+
+
+
+
