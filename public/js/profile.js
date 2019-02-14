@@ -38,7 +38,7 @@ $(document).ready(function (e){
                 $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
             },
             error: function () {
-              alert('errore AJAX')
+              alert('errore AJAX');
             }
         });
     });
@@ -81,7 +81,7 @@ $(document).on('click', '.js-addAddress', function (e){
                     console.log('inserito');
                     $(".print-error-msg-review").find("ul").html('');
                     swal({
-                        title: "Commento Inserito",
+                        title: "Indiririzzo Inserito",
                         text: "Grazie per la collaborazione",
                         icon: "success",
                         button: false,

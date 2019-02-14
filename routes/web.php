@@ -46,13 +46,10 @@ Route::post('/prova', 'ProductController@prova');
 Route::get('/blog-', 'BlogController@DataArticoli')->name('data');
 Route::post('/addreview', 'ProductController@addreview')->name('addreview');
 Route::get('/opzioni-di-pagamento', 'UserController@opzionidipagamento')->name('opzionidipagamento');
-<<<<<<< HEAD
 Route::post('/addressadding', 'UserController@addressAdd')->name('addressadd');
 Route::get('/removeaddress', 'UserController@removeadd')->name('removeadd');
-=======
 Route::post('/aggiungicarta', 'UserController@aggiungicarta')->name('aggiungicarta');
 Route::post('/addAddress', 'UserController@addAddress')->name('addAddress');
->>>>>>> 7103e5caba75c41887a4e45d5d25fd7dfb3b6fb2
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {
