@@ -46,6 +46,7 @@ Route::post('/prova', 'ProductController@prova');
 Route::get('/blog-', 'BlogController@DataArticoli')->name('data');
 Route::post('/addreview', 'ProductController@addreview')->name('addreview');
 Route::get('/opzioni-di-pagamento', 'UserController@opzionidipagamento')->name('opzionidipagamento');
+Route::post('/aggiungicarta', 'UserController@aggiungicarta')->name('aggiungicarta');
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {
