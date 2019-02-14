@@ -1,7 +1,7 @@
 
 @foreach($comment as $comment)
 
-    <div class="bor18 flex-w flex-t p-b-30 p-t-20">
+    <div class="bor18 flex-w flex-t p-b-30 p-t-20 js-comment-div">
         <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
             <img src="{{asset('img/avatar-01.jpg')}}" alt="AVATAR">
         </div>
