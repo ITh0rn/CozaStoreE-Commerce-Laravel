@@ -19,7 +19,13 @@ class ContainController extends Controller
     public function Carrello(){
         $cart = Session::get('cart');
         $price = Session::get('price');
-        return view('Contents/carrello')->with('prodotti', $cart)->with('prezzo', $price);
+        $indirizzi = DB::table('addresses')->where('IDusers', Auth::user()->id)->get();
+        $payments = DB::table('payments')->where('IDusers', Auth::user()->id)->get();
+        return view('Contents/carrello')
+            ->with('prodotti', $cart)
+            ->with('prezzo', $price)
+            ->with('indirizzi', $indirizzi)
+            ->with('payments', $payments);
     }
 
     public function DettaglioProdotto(Request $request){
