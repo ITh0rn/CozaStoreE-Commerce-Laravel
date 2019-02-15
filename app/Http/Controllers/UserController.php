@@ -105,7 +105,8 @@ class UserController extends Controller
                 'scadenza.date_format' => 'Scadenza: formato errato. inserisci data formato es YYYY-mm-dd',
                 'cvv.required' => 'Cvv: vuoto, inserisci il codice cvv',
                 'cvv.numeric' => 'Cvv: deve contenere solo numeri',
-                'civic.digits' => 'Cvv: formato errato. massimo 3 cifre'
+                'civic.digits' => 'Cvv: formato errato. massimo 3 cifre',
+                'circuito.required' => 'Circuito: campo vuoto, inserisci fornitore del servizio'
             );
 
             $rules = array(
@@ -113,7 +114,8 @@ class UserController extends Controller
                 'cognome' => 'required|string',
                 'numero' => 'required|numeric|digits:16',
                 'scadenza' => 'required|date_format:Y-m-d',
-                'cvv' => 'required|numeric|digits:3'
+                'cvv' => 'required|numeric|digits:3',
+                'circuito' => 'required'
             );
 
             $validator = Validator::make($request->all(), $rules, $messsages);
@@ -128,8 +130,13 @@ class UserController extends Controller
                     'numero' => $request->get('numero'),
                     'scadenza' => $request->get('scadenza'),
                     'cvv' => $request->get('cvv'),
-                    'IDusers' => Auth::user()->id]
+                    'IDusers' => Auth::user()->id,
+                    'circuito' => $request->get('circuito')]
             );
+        }
+
+        public function removepayment(Request $request){
+        DB::table('payments')->where('ID', $request->get('id'))->delete();
         }
 }
 

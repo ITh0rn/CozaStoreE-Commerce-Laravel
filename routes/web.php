@@ -51,6 +51,8 @@ Route::get('/removeaddress', 'UserController@removeadd')->name('removeadd');
 Route::post('/aggiungicarta', 'UserController@aggiungicarta')->name('aggiungicarta');
 Route::post('/addAddress', 'UserController@addAddress')->name('addAddress');
 Route::post('/addReviewBlog', 'BlogController@addReviewBlog')->name('addReviewBlog');
+Route::get('/removepayment', 'UserController@removepayment')->name('removepayment');
+
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {

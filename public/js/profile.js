@@ -145,6 +145,7 @@ $(document).on('click', '.js-aggiungicarta', function (e){
     $numero = $('.js-aggiungicarta-numero').val();
     $scadenza = $('.js-aggiungicarta-scadenza').val();
     $cvv = $('.js-aggiungicarta-cvv').val();
+    $circuito = $('.js-aggiungicarta-circuito').val();
     $.ajaxSetup({
         headers: {
             'X-CSRF-Token': $('meta[name="_token"]').attr('content')
@@ -153,7 +154,7 @@ $(document).on('click', '.js-aggiungicarta', function (e){
     $.ajax({
         url: '/aggiungicarta',
         type: "POST",
-        data: {'nome': $nome, 'cognome': $cognome, 'numero': $numero, 'scadenza': $scadenza, 'cvv': $cvv},
+        data: {'nome': $nome, 'cognome': $cognome, 'numero': $numero, 'scadenza': $scadenza, 'cvv': $cvv, 'circuito': $circuito},
         success: function (data) {
             if($.isEmptyObject(data.error)){
                 $('.print-error-msg-address').css('visibility', 'hidden');
@@ -182,4 +183,38 @@ $(document).on('click', '.js-aggiungicarta', function (e){
             }
         }
     });
+});
+
+$(document).on('click', '.js-remove-payment', function (e) {
+    e.preventDefault();
+    $id= $(this).attr('data');
+    swal({
+        title: "Sei sicuro?",
+        text: "Una volta cancellato non sarà più possibile recuperare il metodo di pagamento",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: '/removepayment',
+                    type: "GET",
+                    data: {'id': $id}
+                });
+                swal("Metodo di pagamento cancellato correttamente", {
+                    icon: "success",
+                }).then(() => {
+                    $.ajax({
+                        url: '/opzioni-di-pagamento',
+                        type: 'GET',
+                        success: function (data) {
+                            $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
+                        }
+                    });
+                });
+            } else {
+                swal("Operazione annullata");
+            }
+        });
 });
