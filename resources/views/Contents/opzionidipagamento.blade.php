@@ -4,7 +4,7 @@
 
 <table class="table-profile p-t-30 m-b-30">
     <tr class="table_head">
-        <th class="column-1">Nome</th>
+        <th class="column-2 p-l-50">Nome</th>
         <th class="column-2">Cognome</th>
         <th class="column-3">Numero carta</th>
         <th class="column-4">Scadenza</th>
@@ -13,7 +13,7 @@
     @if($pagamento!=null)
     @foreach($pagamento as $pagamento)
     <tr class="table_row">
-        <td class="column-1">{{$pagamento->nome}}</td>
+        <td class="column-2 p-l-50">{{$pagamento->nome}}</td>
         <td class="column-2">{{$pagamento->cognome}}</td>
         <td class="column-3">{{$pagamento->numero}}</td>
         <td class="column-4">{{$pagamento->scadenza}}</td>
