@@ -20,9 +20,9 @@ class CreatePaymentsTable extends Migration
             $table->bigInteger('numero');
             $table->varchar('scadenza');
             $table->integer('cvv');
-            $table->unsignedInteger('id_users')->nullable(false);
+            $table->unsignedInteger('IDusers')->nullable(false);
             $table->string('circuito');
-            $table->foreign('id_users')
+            $table->foreign('IDusers')
                 ->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

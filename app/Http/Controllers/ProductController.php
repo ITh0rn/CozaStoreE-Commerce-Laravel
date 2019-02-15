@@ -91,6 +91,60 @@ class ProductController extends Controller{
         return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
     }
 
+    public function shopuomo(){
+
+        $product = DB::table('products')->where('gender', '=', 'uomo')->get();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+    }
+
+    public function nuoviarriviuomo(){
+
+        $product = DB::table('products')->where('gender', '=', 'uomo')->where('created_at', 'like', '2019%')->get();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+    }
+
+
+    public function giaccheecappottiuomo(){
+
+        $product = DB::table('products')
+            ->join('sub_categories', 'sub_categories.id', '=', 'id_subcategoria')
+            ->join('categories', 'categories.id', '=', 'id_category')
+            ->where('categories.nome_categoria', '=','giubbotto')
+            ->orWhere('categories.nome_categoria', '=','giubbino')
+            ->orWhere('categories.nome_categoria', '=','cappotto')
+            ->orWhere('categories.nome_categoria', '=','giacca')
+            ->where('gender', '=', 'uomo')
+            ->get();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+    }
+    public function shopdonna(){
+
+        $product = DB::table('products')->where('gender', '=', 'donna')->get();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+    }
+
+    public function nuovastagionedonna(){
+
+        $product = DB::table('products')->where('gender', '=', 'donna')->where('created_at', 'like', '2019%')->get();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+    }
+
+    public function shopaccessori(){
+
+        $product = DB::table('products')
+            ->join('sub_categories', 'sub_categories.id', '=', 'id_subcategoria')
+            ->join('categories', 'categories.id', '=', 'id_category')
+            ->where('categories.nome_categoria', 'accessori')
+            ->get();
+        $prodotti = null;
+        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+    }
+
     public function filter(Request $request){
 
         if($request->ajax()) {
