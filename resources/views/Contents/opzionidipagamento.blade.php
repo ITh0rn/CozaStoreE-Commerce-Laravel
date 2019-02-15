@@ -11,7 +11,7 @@
         <th class="column-5">Circuito</th>
         <th class="column-6 p-l-50">Elimina</th>
     </tr>
-    @if($pagamento!=null)
+    @if(count($pagamento) > 0)
     @foreach($pagamento as $pagamento)
     <tr class="table_row">
         <td class="column-2 p-l-50">{{$pagamento->nome}}</td>
@@ -26,10 +26,10 @@
         <tr class="table_row">
             <td class="column-2 p-l-50"> </td>
             <td class="column-2"> </td>
+            <td class="column-2"> </td>
             <td class="column-3"> </td>
-            <td class="column-4"> </td>
             <td class="column-5"> </td>
-            <th class="column-6"> </th>
+            <th class="column-5"> </th>
         </tr>
     @endif
 

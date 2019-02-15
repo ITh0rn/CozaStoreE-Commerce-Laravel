@@ -11,7 +11,7 @@
         <th class="column-5 txt-right">Civico</th>
         <th class="column-6 p-l-50">Elimina</th>
     </tr>
-    @if($indirizzi!=null)
+    @if($indirizzi)
     @foreach($indirizzi as $indirizzi)
     <tr class="table_row">
         <td class="column-2 p-l-50">{{$indirizzi->citta}}</td>
@@ -24,10 +24,11 @@
     @endforeach
     @else
     <tr class="table_row">
-        <td class="column-1"> </td>
+        <td class="column-2"> </td>
+        <td class="column-2"> </td>
         <td class="column-2"> </td>
         <td class="column-3"> </td>
-        <td class="column-4"> </td>
+        <td class="column-5"> </td>
         <td class="column-5"> </td>
     </tr>
     @endif

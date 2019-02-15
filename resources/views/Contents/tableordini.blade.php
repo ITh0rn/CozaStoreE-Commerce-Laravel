@@ -11,7 +11,7 @@
         <th class="column-2 p-l-50">Indirizzo</th>
         <th class="column-1">vedi di più</th>
     </tr>
-    @if($ordini!=null)
+    @if(count($ordini) > 0)
     @foreach($ordini as $ordine)
     <tr href=class="table_row">
         <td class="column-1">{{$ordine->ID}}</td>
