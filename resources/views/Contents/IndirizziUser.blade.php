@@ -11,7 +11,7 @@
         <th class="column-5 txt-right">Civico</th>
         <th class="column-6 p-l-50">Elimina</th>
     </tr>
-    @if($indirizzi)
+    @if(count($indirizzi) > 0)
     @foreach($indirizzi as $indirizzi)
     <tr class="table_row">
         <td class="column-2 p-l-50">{{$indirizzi->citta}}</td>

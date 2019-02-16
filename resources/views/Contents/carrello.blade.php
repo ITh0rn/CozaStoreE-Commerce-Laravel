@@ -125,7 +125,7 @@
                                         <option>Seleziona Pagamento</option>
                                         @if($payments!=null)
                                         @foreach($payments as $metodo)
-                                        <option>{{$metodo->numero}}</option>
+                                        <option>***{{substr($metodo->numero, 12)}}</option>
                                             @endforeach
                                             @endif
                                     </select>

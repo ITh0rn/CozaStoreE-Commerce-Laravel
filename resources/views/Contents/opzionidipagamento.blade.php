@@ -16,7 +16,7 @@
     <tr class="table_row">
         <td class="column-2 p-l-50">{{$pagamento->nome}}</td>
         <td class="column-2">{{$pagamento->cognome}}</td>
-        <td class="column-3">{{$pagamento->numero}}</td>
+        <td class="column-3">***{{substr($pagamento->numero, 12)}}</td>
         <td class="column-4">{{$pagamento->scadenza}}</td>
         <td class="column-5">{{$pagamento->circuito}}</td>
         <td class="column-5"><i class="icon-header-item hov-cl1 cl2 zmdi zmdi-minus-circle js-remove-payment" data="{{$pagamento->ID}}"></i></td>

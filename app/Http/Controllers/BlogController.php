@@ -53,7 +53,7 @@ class BlogController extends Controller
                 $query->where('data_inserimento', 'like', $timestamp);
             })->get();
         $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) as anno from blogs group by mese, anno');
-        return view('Contents/articoli', compact('rowUtente', 'data', 'num'));
+        return view('Contents/articoli', compact('rowUtente', 'data'));
     }
 
     public function addReviewBlog(Request $request){

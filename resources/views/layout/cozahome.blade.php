@@ -177,7 +177,7 @@
                     @endauth
                     @guest
                             <h3 class="ltext-103 cl5">
-                                Più acquistati
+                                Ultimi Inseriti
                             </h3>
                     @endguest
             </div>

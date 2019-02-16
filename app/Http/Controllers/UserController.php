@@ -13,16 +13,12 @@ class UserController extends Controller
 {
     public function ordini(Request $request){
         if($request->ajax()){
+            $ordini = null;
             $ordini = DB::table('orders')
                 ->join('addresses', 'orders.IDaddresses', '=', 'addresses.id')
                 ->where('orders.IDusers', '=', Auth::user()->id)
                 ->get();
-            if($ordini->isEmpty()) {
-                return Response()->json(view('Contents/tableordini')->render());
-            }
-            else {
                 return Response()->json(view('Contents/tableordini')->with('ordini', $ordini)->render());
-            }
         }
     }
 

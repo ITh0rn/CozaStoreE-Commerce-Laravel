@@ -63,7 +63,7 @@ class ContainController extends Controller
 
     public function getprofile(){
 
-        if (!(Auth::user()->hasRole('admin'))){
+        if (!(Auth::user()->hasRole('admin')) || (!(Auth::user()->hasRole('Gestore Prodotti')))){
             return view('Contents/Profile');
         }
         else return redirect('/admin');
