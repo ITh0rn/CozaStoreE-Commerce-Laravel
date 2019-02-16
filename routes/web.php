@@ -52,7 +52,12 @@ Route::post('/aggiungicarta', 'UserController@aggiungicarta')->name('aggiungicar
 Route::post('/addAddress', 'UserController@addAddress')->name('addAddress');
 Route::post('/addReviewBlog', 'BlogController@addReviewBlog')->name('addReviewBlog');
 Route::get('/removepayment', 'UserController@removepayment')->name('removepayment');
-
+Route::get('/shop-uomo', 'ProductController@shopuomo')->name('shopuomo');
+Route::get('/shop-donna', 'ProductController@shopdonna')->name('shopdonna');
+Route::get('/shop-accessori', 'ProductController@shopaccessori')->name('shopaccessori');
+Route::get('/shop-nuovi-arrivi', 'ProductController@nuoviarriviuomo')->name('nuoviarriviuomo');
+Route::get('/shop-giacche-cappotti', 'ProductController@giaccheecappottiuomo')->name('giaccheecappottiuomo');
+Route::get('/shop-nuova-stagione', 'ProductController@nuovastagionedonna')->name('nuovastagionedonna');
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {

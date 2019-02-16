@@ -23,7 +23,7 @@
                             </div>
 
                             <div class= data-delay="0">
-                                <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                <a href="{{ route('nuovastagionedonna') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Acquista
                                 </a>
                             </div>
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class= data-delay="0">
-                                <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                <a href="{{ route('giaccheecappottiuomo') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Acquista
                                 </a>
                             </div>
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class= data-delay="0">
-                                <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                <a href="{{ route('nuoviarriviuomo') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Acquista
                                 </a>
                             </div>
@@ -92,7 +92,7 @@
                     <div class="block1 wrap-pic-w">
                         <img src="{{URL::asset('img/banner-01.jpg')}}" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="{{ route('shopdonna') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Donna
@@ -117,7 +117,7 @@
                     <div class="block1 wrap-pic-w">
                         <img src="{{URL::asset('img/banner-02.jpg')}}" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="{{ route('shopuomo') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Uomo
@@ -142,7 +142,7 @@
                     <div class="block1 wrap-pic-w">
                         <img src="{{URL::asset('img/banner-03.jpg')}}" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="{{ route('shopaccessori') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Accessori

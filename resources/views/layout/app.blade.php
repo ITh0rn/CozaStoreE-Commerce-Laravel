@@ -283,28 +283,23 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04" data-filter=".women" value="donna">
+							<a href="{{ route('shopdonna') }}" class="stext-107 cl7 hov-cl1 trans-04" data-filter=".women" value="donna">
 								Donna
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ route('shopuomo') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								Uomo
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04">
-								Scarpe
+							<a href="{{ route('shopaccessori') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Accessori
 							</a>
 						</li>
 
-						<li class="p-b-10">
-							<a href="{{ route('shop') }}" class="stext-107 cl7 hov-cl1 trans-04">
-								Orologi
-							</a>
-						</li>
 					</ul>
 				</div>
 
