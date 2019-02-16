@@ -66,7 +66,7 @@
                     </div>
 
                     <!-- - -->
-                    <div class="bor18 p-b-30 m-t-60 m-lr-15-sm">
+                    <div class="bor18 p-b-30 m-t-60 m-lr-15-sm js-comments">
                         @include('Contents.commenti')
                     </div>
 

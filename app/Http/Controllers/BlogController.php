@@ -29,7 +29,7 @@ class BlogController extends Controller
         $blogs = null;
         $rowsUtente = null;
         $rowUtente = DB::table('users')->where('id', $request->get('id_user'))->select('name')->get();
-        $comment = DB::table('comments')->where('idblogs', $request->get('id_articolo'))->get();
+        $comment = DB::table('comments')->where('idblogs', $request->get('id_articolo'))->Paginate(3);
         //$numComment = DB::select('select count(*) as ')
         $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
                   as anno from blogs group by mese, anno');
