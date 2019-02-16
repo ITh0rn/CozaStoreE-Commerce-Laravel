@@ -37,7 +37,13 @@
                                             </span>
 
 											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
+
+                                            <span class="cl4">
+                                                {{  date('d M, Y', strtotime($blog->data_inserimento)) }}
+                                            </span>
+
+                                            <span class="cl12 m-l-4 m-r-6">|</span>
+                                        </span>
 
 										<span>
 											{{ $blog->num }} Commenti

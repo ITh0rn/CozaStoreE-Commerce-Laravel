@@ -51,7 +51,6 @@
 
 								<span>
 									{{  date('d M, Y', strtotime($blog[0]->data_inserimento)) }}
-									<span class="cl12 m-l-4 m-r-6">|</span>
 								</span>
 
 							</span>
