@@ -21,7 +21,8 @@ class BlogController extends Controller
                                 order by blogs.id desc');
         $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
                   as anno from blogs group by mese, anno');
-        return view('Contents/articoli', compact('rowUtente', 'data'));
+        $news = DB::table('products')->orderBy('created_at', 'desc')->limit(5)->get();
+        return view('Contents/articoli', compact('rowUtente', 'data', 'news'));
     }
     public function DettaglioArticoli(Request $request){
         $blog = DB::table('blogs')->where('id', $request->get('id_articolo'))->get();
@@ -34,7 +35,8 @@ class BlogController extends Controller
         $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
                   as anno from blogs group by mese, anno');
         $comments = null;
-        return view('Contents/dettaglioarticoli', compact('blog','blogs', 'user', 'rowUtente', 'comment', 'comments', 'data'));
+        $news = DB::table('products')->orderBy('created_at', 'desc')->limit(5)->get();
+        return view('Contents/dettaglioarticoli', compact('blog','blogs', 'user', 'rowUtente', 'comment', 'comments', 'data', 'news'));
     }
     public function DataArticoli(Request $request){
         $mese = $request->get('mese');
@@ -52,8 +54,9 @@ class BlogController extends Controller
             ->where(function ($query) use ($timestamp) {
                 $query->where('data_inserimento', 'like', $timestamp);
             })->get();
+        $news = DB::table('products')->orderBy('created_at', 'desc')->limit(5)->get();
         $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) as anno from blogs group by mese, anno');
-        return view('Contents/articoli', compact('rowUtente', 'data'));
+        return view('Contents/articoli', compact('rowUtente', 'data', 'news'));
     }
 
     public function addReviewBlog(Request $request){
