@@ -103,4 +103,10 @@ class ContainController extends Controller
         return view('Contents/FAQs');
     }
 
+    /*
+    public function slider(){
+        $slider = DB::table('sliders')->select('sliders.*')->get();
+        return view('Contents/slider')->with('slider', $slider);
+    }
+    */
 }

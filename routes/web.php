@@ -64,6 +64,7 @@ Route::get('/shop-giacche-cappotti', 'ProductController@giaccheecappottiuomo')->
 Route::get('/shop-nuova-stagione', 'ProductController@nuovastagionedonna')->name('nuovastagionedonna');
 Route::get('/dettagliordine', 'UserController@dettagliOrdine')->name('dettagliordine');
 Route::post('/pagamento', 'ProductController@pagamento')->name('pagamento');
+Route::get('/slider', 'ContainController@slider')->name('slider');
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {
