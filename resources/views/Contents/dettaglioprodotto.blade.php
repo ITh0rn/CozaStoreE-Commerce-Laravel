@@ -40,7 +40,7 @@
                         <div class="wrap-slick3-dots"></div>
                         <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
-                        <div class="slick3 gallery-lb">
+                        <div class="slick3 gallery-lb js-get-image-cart" value="{{$images[0]->img_dir}}">
                             @foreach($images as $image)
                             <div class="item-slick3" data-thumb="{{asset('storage/'.$image->img_dir)}}">
                                 <div class="wrap-pic-w pos-relative">

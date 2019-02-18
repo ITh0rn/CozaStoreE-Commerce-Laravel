@@ -88,7 +88,11 @@
 
                         <div class="size-209">
 								<span class="mtext-110 cl2 js-price-total">
-									€ {{$prezzo}}
+									@if($prezzo != 0)
+                                        $ {{$prezzo}}
+                                    @else
+                                        $ {{0}}
+                                    @endif
 								</span>
                         </div>
                     </div>
@@ -121,7 +125,7 @@
 
                             <div class="size-116 respon6-next">
                                 <div class="rs1-select2 bor8 bg0 size-116">
-                                    <select class="js-select2" id="addreselect" name="time">
+                                    <select class="js-select2" id="payselect" name="time">
                                         <option>Seleziona Pagamento</option>
                                         @if($payments!=null)
                                         @foreach($payments as $metodo)
@@ -145,7 +149,7 @@
                         <div class="size-209 p-t-1">
 								<span class="mtext-110 cl2">
                                     @if($prezzo != 0)
-									$ {{$prezzo + 15}}
+									$ {{$prezzo}}
                                         @else
                                         $ {{0}}
                                         @endif
@@ -153,9 +157,16 @@
                         </div>
                     </div>
 
-                    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                    <div class="p-b-60">
+                    <a href="#" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer js-effettua-pagamento">
                         Procedi al Pagamento
-                    </button>
+                    </a>
+                    </div>
+
+                    <div class="alert alert-danger print-error-msg" style="visibility: hidden">
+                        <ul></ul>
+                    </div>
+
                 </div>
             </div>
         </div>

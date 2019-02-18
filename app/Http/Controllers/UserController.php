@@ -15,7 +15,6 @@ class UserController extends Controller
         if($request->ajax()){
             $ordini = null;
             $ordini = DB::table('orders')
-                ->join('addresses', 'orders.IDaddresses', '=', 'addresses.id')
                 ->where('orders.IDusers', '=', Auth::user()->id)
                 ->get();
                 return Response()->json(view('Contents/tableordini')->with('ordini', $ordini)->render());

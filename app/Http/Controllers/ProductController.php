@@ -214,6 +214,7 @@ class ProductController extends Controller{
                         "immagine_path" => $productcart[0]->img_dir,
                         "prezzo" => $productcart[0]->price,
                         "qty" => $request->get('quantità'),
+                        "img" => $request->get('img')
                     );
 
                     Session::put('cart', $cart);
@@ -229,6 +230,7 @@ class ProductController extends Controller{
                     "immagine_path" => $productcart1[0]->img_dir,
                     "prezzo" => $productcart1[0]->price,
                     "qty" => $request->get('quantità'),
+                    "img" => $request->get('img')
                 );
 
                 Session::put('cart', $cart1);
@@ -339,6 +341,69 @@ class ProductController extends Controller{
             );
         }
 
+    }
+
+    public function pagamento(Request $request){
+
+        $messsages = array(
+            'indirizzo.not_in'=>'Inserisci un indirizzo di spedizione',
+            'pagamento.not_in'=>'Inserisci un metodo di pagamento',
+        );
+
+        $rules = array(
+            'indirizzo' => 'required|string|not_in:Seleziona Indirizzo',
+            'pagamento' => 'required|string|not_in:Seleziona Pagamento',
+        );
+
+        $validator = Validator::make($request->all(), $rules, $messsages);
+
+        if(!(Auth::check())) {
+            $validator->after(function ($validator) {
+                $validator->errors()->add('Auth', 'Effettua l\'accesso al sistema');
+            });
+        }
+
+        if(!(Session::get('cart'))){
+            $validator->after(function ($validator) {
+                $validator->errors()->add('Prod', 'Carrello vuoto, non puoi procedere con l\'ordine');
+            });
+        }
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
+
+
+        $cart = Session::get('cart');
+        $totale = 0;
+        if($cart) {
+            foreach ($cart as $prodotto) {
+                $totale += $prodotto["qty"] * $prodotto["prezzo"];
+            }
+            $date = date('Y-m-d H:i:s');
+
+            //Creo ordine nel DB
+            DB::table('orders')->insert(
+                ['totale' => $totale, 'created_at' => $date, 'IDusers' =>
+                    Auth::user()->id]);
+
+            $last_order = DB::table('orders')
+                ->select('orders.ID')
+                ->where('IDUsers', Auth::user()->id)
+                ->orderBy('orders.created_at', 'dec')
+                ->limit(1)
+                ->get();
+
+            $id = $last_order[0]->ID;
+
+            foreach ($cart as $prodotto) {
+                DB::table('boughtproducts')->insert(
+                    ['img_dir' => $prodotto["img"], 'nome' => $prodotto["nome_prodotto"], 'price' =>
+                        $prodotto["prezzo"], 'IDorders' => $id]);
+            }
+
+            session()->forget('cart');
+        }
     }
 
 }

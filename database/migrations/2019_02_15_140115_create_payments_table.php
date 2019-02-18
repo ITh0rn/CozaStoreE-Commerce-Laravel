@@ -27,6 +27,7 @@ class CreatePaymentsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();
+            $table->unique('numero', 'numero');
         });
     }
 

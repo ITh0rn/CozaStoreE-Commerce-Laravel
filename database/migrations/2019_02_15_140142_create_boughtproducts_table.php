@@ -17,16 +17,12 @@ class CreateBoughtproductsTable extends Migration
             $table->increments('id');
             $table->string('img_dir');
             $table->string('nome');
-            $table->string('gender');
             $table->float('price');
-            $table->unsignedInteger('id_subcategoria')->references('id')->on('sub_categories');
-            $table->string('mini_descrizione');
-            $table->string('grande_descrizione');
-            $table->string('colore');
-            $table->string('dimensione');
-            $table->string('peso');
-            $table->string('materiale');
-            $table->unsignedInteger('IDorders')->references('ID')->on('orders');
+            $table->unsignedInteger('IDorders');
+            $table->foreign('product_id')
+                ->references('ID')->on('orders')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
