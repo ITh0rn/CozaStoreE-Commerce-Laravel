@@ -129,7 +129,7 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-wish-cart">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
 
@@ -267,6 +267,22 @@
 			</div>
             <div class="header-cart-content flex-w js-pscroll">
             </div>
+		</div>
+	</div>
+
+	<div class="wrap-header-wish js-panel-wish">
+		<div class="s-full js-hide-wish"></div>
+		<div class="header-wish flex-col-l p-l-65 p-r-25">
+			<div class="header-wish-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Wishlist
+				</span>
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-wish">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			<div class="header-wish-content flex-w js-pscroll">
+			</div>
 		</div>
 	</div>
 	<!-- FineHeader -->

@@ -14,10 +14,6 @@ use Validator;
 
 class ProductController extends Controller{
 
-    public function index(){
-        return $product = Product::all();
-    }
-
     //Utente è schedato in base alle sue interazioni con i prodotti, se l'utente è registrato ed è interagito con il sistema, allora vengono
     //suggeriti nella home prodotti di categoria simile
 
@@ -252,6 +248,22 @@ class ProductController extends Controller{
             }
             return view('Contents/cartlist')->with('products', $products)->with('prezzo', $price);
         }
+    }
+
+    public function showish(Request $request){
+
+        if($request->ajax()) {
+            $products = DB::table('wishlists')
+                ->select('products.*')
+                ->join('products', 'products.id', '=', 'wishlists.IDproducts')
+                ->where('wishlists.IDusers', Auth::user()->id)
+                ->get();
+            return view('Contents/wishlist')->with('products', $products);
+        }
+    }
+
+    public function addToWish(Request $request){
+
     }
 
     public function ExistMultidimensional($cart, $id){

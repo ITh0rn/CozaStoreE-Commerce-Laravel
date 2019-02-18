@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart', 'CartItemsController@getUserCart');
 Route::post('/addtocart', 'ProductController@addToCart');
 Route::get('/listacarrello', 'ProductController@showcart')->name('listacart');
+Route::get('/wishlist', 'ProductController@showish')->name('listawish');
+Route::post('/addtowish', 'ProductController@addToWish');
 Route::get('/{Utente}/carrello', 'ContainController@Carrello')->name('carrello');
 Route::get('/{Prodotto}/dettaglio', [
     'uses' => 'ContainController@DettaglioProdotto',

@@ -22,11 +22,6 @@ $(document).ready(function(){
 $('.js-show-cart').click(function(e){
     e.preventDefault();
     $('.js-panel-cart').addClass('show-header-cart');
-    $.ajaxSetup({
-       headers: {
-           'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-       }
-    });
     $.ajax({
         url : "/listacarrello",
         type: "GET",
