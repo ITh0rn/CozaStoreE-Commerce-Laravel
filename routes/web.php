@@ -60,6 +60,7 @@ Route::get('/shop-accessori', 'ProductController@shopaccessori')->name('shopacce
 Route::get('/shop-nuovi-arrivi', 'ProductController@nuoviarriviuomo')->name('nuoviarriviuomo');
 Route::get('/shop-giacche-cappotti', 'ProductController@giaccheecappottiuomo')->name('giaccheecappottiuomo');
 Route::get('/shop-nuova-stagione', 'ProductController@nuovastagionedonna')->name('nuovastagionedonna');
+Route::get('/dettagliordine', 'UserController@dettagliOrdine')->name('dettagliordine');
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {
