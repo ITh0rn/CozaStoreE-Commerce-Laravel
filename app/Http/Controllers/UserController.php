@@ -141,7 +141,6 @@ class UserController extends Controller
                     ->join('boughtproducts', 'boughtproducts.IDorders', '=', 'orders.ID')
                     ->where('orders.ID', $request->get('idordine'))
                     ->get();
-                //return Response()->json(view('Contents/dettagliordine')->with('ordini', $ordini))->render();
                 return Response()->json(view('Contents/dettagliordine')->with('ordini', $ordini)->render());
 
             }

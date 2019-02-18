@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `Tecnologie` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `Tecnologie`;
 -- MySQL dump 10.13  Distrib 8.0.12, for macos10.13 (x86_64)
 --
 -- Host: localhost    Database: Tecnologie
@@ -35,7 +33,7 @@ CREATE TABLE `addresses` (
   PRIMARY KEY (`ID`),
   KEY `indirizzi_users` (`IDusers`),
   CONSTRAINT `indirizzi_users` FOREIGN KEY (`IDusers`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +42,7 @@ CREATE TABLE `addresses` (
 
 LOCK TABLES `addresses` WRITE;
 /*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
-INSERT INTO `addresses` VALUES (27,'Avezzano','AQ','67051','XX Settembre','13',2);
+INSERT INTO `addresses` VALUES (28,'Avezzano','AQ','67051','XX Settembre','13',2),(29,'Sulmona','AQ','67040','Roma','12',2);
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,22 +87,13 @@ CREATE TABLE `boughtproducts` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `img_dir` varchar(255) NOT NULL,
   `nome` varchar(255) NOT NULL,
-  `gender` varchar(255) NOT NULL,
   `price` float NOT NULL,
-  `id_subcategoria` int(10) unsigned NOT NULL,
-  `mini_descrizione` varchar(255) NOT NULL,
-  `grande_descrizione` varchar(255) NOT NULL,
-  `colore` varchar(255) NOT NULL,
-  `dimensione` varchar(255) NOT NULL,
-  `peso` varchar(255) NOT NULL,
-  `materiale` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
   `IDorders` int(10) unsigned NOT NULL,
+  `quantita` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `boughtproducts_orders` (`IDorders`),
   CONSTRAINT `boughtproducts_orders` FOREIGN KEY (`IDorders`) REFERENCES `orders` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,6 +102,7 @@ CREATE TABLE `boughtproducts` (
 
 LOCK TABLES `boughtproducts` WRITE;
 /*!40000 ALTER TABLE `boughtproducts` DISABLE KEYS */;
+INSERT INTO `boughtproducts` VALUES (22,'specifica-prodottos/February2019/LihjI8YUC58nwXWqQ0Jt.jpg','Giubbotto Velluto',59.98,18,2),(23,'specifica-prodottos/February2019/LihjI8YUC58nwXWqQ0Jt.jpg','Giubbotto Velluto',29.99,19,1),(24,'specifica-prodottos/February2019/rvZTcUioIXkDY1e3SQAU.jpg','Maglia Con Cappuccio',51.9,19,2),(25,'specifica-prodottos/February2019/jesvO5nlDE9xAqu7egYb.jpg','Giubbotto Scamosciato',79.9,19,2);
 /*!40000 ALTER TABLE `boughtproducts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +120,7 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nome_categoria_UNIQUE` (`nome_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +129,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Giubbino','2019-02-07 16:21:53','2019-02-07 16:21:53'),(2,'Felpa','2019-02-09 10:53:02','2019-02-09 10:53:02'),(3,'Pantaloni','2019-02-13 13:14:48','2019-02-13 13:14:48'),(4,'Gonna','2019-02-13 14:47:38','2019-02-13 14:47:38');
+INSERT INTO `categories` VALUES (1,'Giubbino','2019-02-07 16:21:53','2019-02-07 16:21:53'),(2,'Felpa','2019-02-09 10:53:02','2019-02-09 10:53:02'),(3,'Pantaloni','2019-02-13 13:14:48','2019-02-13 13:14:48'),(4,'Gonna','2019-02-13 14:47:38','2019-02-13 14:47:38'),(5,'Accessori','2019-02-16 08:24:27','2019-02-16 08:24:27'),(6,'Maglione','2019-02-18 13:30:27','2019-02-18 13:30:27'),(7,'Maglie/Maglioni','2019-02-18 13:34:42','2019-02-18 13:34:42');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +153,7 @@ CREATE TABLE `comments` (
   KEY `recensione_users` (`IDusers`),
   CONSTRAINT `recensione_blogs` FOREIGN KEY (`IDblogs`) REFERENCES `blogs` (`ID`) ON UPDATE CASCADE,
   CONSTRAINT `recensione_users` FOREIGN KEY (`IDusers`) REFERENCES `users` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +162,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos','Ariana Grande','email@email.com','5',1,1),(2,'Sopra la terra le squille suonano il mattutino. Passa una nuvola candida e sola. L’Italia! L’Italia che vola! che passa in alto con tutte l’anime nostre com’una sola grande anima!','Giovanni Pascoli','email@email.com','2',2,2),(3,'Sempre caro mi fu quest’ermo colle, E questa siepe, che da tanta parte Dell’ultimo orizzonte il guardo esclude. Ma sedendo e mirando, interminati Spazi di là da quella, e sovrumani Silenzi, e profondissima quiete Io nel pensier mi fingo; ove per poco Il cor non si spaura. E come il vento Odo stormir tra queste piante, io quello Infinito silenzio a questa voce Vo comparando: e mi sovvien l’eterno,  E le morte stagioni, e la presente E viva, e il suon di lei. Così tra questa Immensità s’annega il pensier mio: E il naufragar m’è dolce in questo mare.','Giacomo Leopardi','email3@email.com','4',2,1);
+INSERT INTO `comments` VALUES (1,'Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos','Ariana Grande','email@email.com','5',1,1),(2,'Sopra la terra le squille suonano il mattutino. Passa una nuvola candida e sola. L’Italia! L’Italia che vola! che passa in alto con tutte l’anime nostre com’una sola grande anima!','Giovanni Pascoli','email@email.com','2',2,2),(3,'Sempre caro mi fu quest’ermo colle, E questa siepe, che da tanta parte Dell’ultimo orizzonte il guardo esclude. Ma sedendo e mirando, interminati Spazi di là da quella, e sovrumani Silenzi, e profondissima quiete Io nel pensier mi fingo; ove per poco Il cor non si spaura. E come il vento Odo stormir tra queste piante, io quello Infinito silenzio a questa voce Vo comparando: e mi sovvien l’eterno,  E le morte stagioni, e la presente E viva, e il suon di lei. Così tra questa Immensità s’annega il pensier mio: E il naufragar m’è dolce in questo mare.','Giacomo Leopardi','email3@email.com','4',2,1),(4,'Bell\'articolo, interessante','Test','testin123@gmail.com','4',2,1),(5,'Prova commento blog, vediamooo','Test','testin123@gmail.com','3',2,2),(6,'Prova n° 2, secondo tentativo','Test','testin123@gmail.com','5',2,2),(7,'Prova paginate, vediamo','Test','testin123@gmail.com','1',2,2),(8,'prova paginate articolo id 1','Test','testin123@gmail.com','4',2,1);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +265,7 @@ CREATE TABLE `interazionis` (
 
 LOCK TABLES `interazionis` WRITE;
 /*!40000 ALTER TABLE `interazionis` DISABLE KEYS */;
-INSERT INTO `interazionis` VALUES (7,1),(8,1),(8,1),(9,1),(9,1),(5,1),(5,1),(8,1),(8,1),(8,1),(3,1),(1,1),(1,1),(7,1),(7,1),(7,1),(7,1),(7,1),(6,1),(2,1),(2,1),(2,1),(9,1),(9,1),(8,1),(5,2),(1,2),(5,2),(5,2),(5,2),(5,2),(5,2),(5,2),(5,2),(5,2),(1,2),(6,2),(1,2),(1,2);
+INSERT INTO `interazionis` VALUES (7,1),(8,1),(8,1),(9,1),(9,1),(5,1),(5,1),(8,1),(8,1),(8,1),(3,1),(1,1),(1,1),(7,1),(7,1),(7,1),(7,1),(7,1),(6,1),(2,1),(2,1),(2,1),(9,1),(9,1),(8,1),(5,2),(1,2),(5,2),(5,2),(5,2),(5,2),(5,2),(5,2),(5,2),(5,2),(1,2),(6,2),(1,2),(1,2),(9,2),(3,2),(1,2),(2,2),(1,2),(1,2),(1,2),(5,2),(5,2),(8,2),(8,2),(10,1),(10,1),(5,2),(5,2),(10,2),(5,2),(5,2),(10,2),(10,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(5,2),(10,2),(10,2),(5,2),(5,2),(10,2),(10,2),(6,2),(10,2),(10,2),(10,2),(5,2),(5,2),(5,2),(1,2),(1,2),(1,2),(1,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(8,2),(6,2),(6,2),(6,2),(6,2),(9,2),(9,2),(5,2),(6,2),(6,2),(6,2),(6,2),(4,2),(8,2),(9,2),(9,1),(8,1),(1,1),(7,1),(7,1),(7,1),(7,1),(1,1),(1,1),(1,1),(1,1),(2,1),(2,1),(2,1),(2,1),(2,1),(9,1),(1,1),(4,2),(4,2),(4,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(3,2),(1,2),(1,2),(1,2),(1,2),(2,2),(1,2),(1,2),(1,2),(2,2),(3,2),(6,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(2,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(2,2),(1,2),(2,2),(1,2),(2,2),(2,2),(2,2),(2,2),(10,2),(10,2),(1,1),(12,4),(12,4),(12,4),(12,4),(12,4),(2,2),(2,2),(2,2),(2,2),(2,2),(1,2),(1,2),(1,2),(1,2),(2,2),(2,2),(3,2),(3,2),(6,2),(6,2),(2,2),(2,2),(3,2),(3,2),(3,2),(3,2),(6,2),(6,2),(2,2),(2,2),(5,2),(5,2),(1,2),(1,2),(3,2),(3,2),(1,2),(1,2),(2,2),(2,2),(4,2),(4,2),(2,2),(2,2),(2,2),(2,2),(3,2),(3,2),(7,2),(7,2);
 /*!40000 ALTER TABLE `interazionis` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,7 +293,7 @@ CREATE TABLE `menu_items` (
   PRIMARY KEY (`id`),
   KEY `menu_items_menu_id_foreign` (`menu_id`),
   CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +302,7 @@ CREATE TABLE `menu_items` (
 
 LOCK TABLES `menu_items` WRITE;
 /*!40000 ALTER TABLE `menu_items` DISABLE KEYS */;
-INSERT INTO `menu_items` VALUES (1,1,'Dashboard','','_self','voyager-boat',NULL,NULL,1,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.dashboard',NULL),(2,1,'Media','','_self','voyager-images',NULL,NULL,5,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.media.index',NULL),(3,1,'Users','','_self','voyager-person',NULL,NULL,3,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.users.index',NULL),(4,1,'Roles','','_self','voyager-lock',NULL,NULL,2,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.roles.index',NULL),(5,1,'Tools','','_self','voyager-tools',NULL,NULL,9,'2019-02-07 16:09:50','2019-02-07 16:09:50',NULL,NULL),(6,1,'Menu Builder','','_self','voyager-list',NULL,5,10,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.menus.index',NULL),(7,1,'Database','','_self','voyager-data',NULL,5,11,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.database.index',NULL),(8,1,'Compass','','_self','voyager-compass',NULL,5,12,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.compass.index',NULL),(9,1,'BREAD','','_self','voyager-bread',NULL,5,13,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.bread.index',NULL),(10,1,'Settings','','_self','voyager-settings',NULL,NULL,14,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.settings.index',NULL),(11,1,'Hooks','','_self','voyager-hook',NULL,5,13,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.hooks',NULL),(12,1,'Categorie','','_self','voyager-list-add',NULL,NULL,15,'2019-02-07 16:11:20','2019-02-07 16:11:20','voyager.categories.index',NULL),(14,1,'Sotto-Categorie','','_self','voyager-list',NULL,NULL,16,'2019-02-07 16:14:11','2019-02-07 16:14:11','voyager.sub-categories.index',NULL),(15,1,'Prodotti','','_self','voyager-bag',NULL,NULL,17,'2019-02-07 16:19:13','2019-02-07 16:19:13','voyager.products.index',NULL),(16,1,'Specifica Prodotti','','_self','voyager-camera',NULL,NULL,18,'2019-02-07 16:35:47','2019-02-07 16:35:47','voyager.specifica-prodottos.index',NULL);
+INSERT INTO `menu_items` VALUES (1,1,'Dashboard','','_self','voyager-boat',NULL,NULL,1,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.dashboard',NULL),(2,1,'Media','','_self','voyager-images',NULL,NULL,5,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.media.index',NULL),(3,1,'Users','','_self','voyager-person',NULL,NULL,3,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.users.index',NULL),(4,1,'Roles','','_self','voyager-lock',NULL,NULL,2,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.roles.index',NULL),(5,1,'Tools','','_self','voyager-tools',NULL,NULL,9,'2019-02-07 16:09:50','2019-02-07 16:09:50',NULL,NULL),(6,1,'Menu Builder','','_self','voyager-list',NULL,5,10,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.menus.index',NULL),(7,1,'Database','','_self','voyager-data',NULL,5,11,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.database.index',NULL),(8,1,'Compass','','_self','voyager-compass',NULL,5,12,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.compass.index',NULL),(9,1,'BREAD','','_self','voyager-bread',NULL,5,13,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.bread.index',NULL),(10,1,'Settings','','_self','voyager-settings',NULL,NULL,14,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.settings.index',NULL),(11,1,'Hooks','','_self','voyager-hook',NULL,5,13,'2019-02-07 16:09:50','2019-02-07 16:09:50','voyager.hooks',NULL),(12,1,'Categorie','','_self','voyager-list-add',NULL,NULL,15,'2019-02-07 16:11:20','2019-02-07 16:11:20','voyager.categories.index',NULL),(14,1,'Sotto-Categorie','','_self','voyager-list',NULL,NULL,16,'2019-02-07 16:14:11','2019-02-07 16:14:11','voyager.sub-categories.index',NULL),(15,1,'Prodotti','','_self','voyager-bag',NULL,NULL,17,'2019-02-07 16:19:13','2019-02-07 16:19:13','voyager.products.index',NULL),(16,1,'Specifica Prodotti','','_self','voyager-camera',NULL,NULL,18,'2019-02-07 16:35:47','2019-02-07 16:35:47','voyager.specifica-prodottos.index',NULL),(17,2,'Dashboard','','_self','voyager-boat','#000000',NULL,1,'2019-02-18 12:30:01','2019-02-18 13:28:40','voyager.dashboard','{\r\n\"key\": \"gestore\"\r\n}');
 /*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +320,7 @@ CREATE TABLE `menus` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `menus_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -339,7 +329,7 @@ CREATE TABLE `menus` (
 
 LOCK TABLES `menus` WRITE;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
-INSERT INTO `menus` VALUES (1,'admin','2019-02-07 16:09:50','2019-02-07 16:09:50');
+INSERT INTO `menus` VALUES (1,'admin','2019-02-07 16:09:50','2019-02-07 16:09:50'),(2,'gestore','2019-02-15 15:50:00','2019-02-15 15:50:00');
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,17 +367,14 @@ DROP TABLE IF EXISTS `orders`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `orders` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `prodotti` int(11) NOT NULL,
-  `sconto` int(11) NOT NULL,
   `totale` float NOT NULL,
   `IDusers` int(10) unsigned NOT NULL,
-  `IDaddresses` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `address` longtext NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `orders_addresses` (`IDaddresses`),
   KEY `orders_users` (`IDusers`),
-  CONSTRAINT `orders_addresses` FOREIGN KEY (`IDaddresses`) REFERENCES `addresses` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orders_users` FOREIGN KEY (`IDusers`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,6 +383,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (18,59.98,2,'2019-02-18 17:37:39','Avezzano(AQ) ,Via XX Settembre 13'),(19,161.79,2,'2019-02-18 17:41:52','Sulmona(AQ) ,Via Roma 12');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,7 +431,7 @@ CREATE TABLE `payments` (
   UNIQUE KEY `numero_UNIQUE` (`numero`),
   KEY `payments_users` (`IDusers`),
   CONSTRAINT `payments_users` FOREIGN KEY (`IDusers`) REFERENCES `users` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -452,6 +440,7 @@ CREATE TABLE `payments` (
 
 LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+INSERT INTO `payments` VALUES (17,'Angelo','D\'Alfonso',4023600612344321,'2020-12-12',433,2,'MasterCard'),(40,'Francesco','D\'Alfonso',4023600612345678,'2020-12-12',322,2,'MasterCard');
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,7 +468,7 @@ CREATE TABLE `permission_role` (
 
 LOCK TABLES `permission_role` WRITE;
 /*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
-INSERT INTO `permission_role` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(27,1),(28,1),(29,1),(30,1),(31,1),(37,1),(38,1),(39,1),(40,1),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,1),(50,1),(51,1);
+INSERT INTO `permission_role` VALUES (1,1),(1,3),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(27,1),(27,3),(28,1),(28,3),(29,1),(29,3),(30,1),(30,3),(31,1),(31,3),(37,1),(37,3),(38,1),(38,3),(39,1),(39,3),(40,1),(40,3),(41,1),(41,3),(42,1),(42,3),(43,1),(43,3),(44,1),(44,3),(45,1),(45,3),(46,1),(46,3),(47,1),(47,3),(48,1),(48,3),(49,1),(49,3),(50,1),(50,3),(51,1),(51,3);
 /*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -530,7 +519,7 @@ CREATE TABLE `product_comments` (
   KEY `fk_comment_user_idx` (`id_utente`),
   CONSTRAINT `fk_product_comment` FOREIGN KEY (`id_prodotto`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_utente_comment` FOREIGN KEY (`id_utente`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -539,7 +528,7 @@ CREATE TABLE `product_comments` (
 
 LOCK TABLES `product_comments` WRITE;
 /*!40000 ALTER TABLE `product_comments` DISABLE KEYS */;
-INSERT INTO `product_comments` VALUES (15,1,'Non c\'è male, ottimo prodotto A+','5',1),(16,1,'Mi aspettavo di meglio, qualità scadente','2',2),(17,1,'Perfetto, tempi di consegna veloci','4',1),(18,1,'Consegna rapida e veloce, prodotto conforme A+','5',1),(19,1,'Prodotto scadente, taglie non corrispondenti al vero','2',2),(20,1,'Niente di eccezionale, mi aspettavo qualcosa di meglio','3',1),(27,4,'Veramente soddisfatto A++','5',1),(28,3,'A+,  prodotto bello elegante e di qualità','5',1),(29,3,'Sono un cliente abituale, mi aspettavo decisamente di meglio...peccato','2',1),(30,7,'Prodotto veramente di qualità! sito come al solito perfetto','4',1),(31,2,'Prodotto ben fatto A++, sito sempre al top','5',1),(32,5,'Modella molto bella, complimenti','4',2);
+INSERT INTO `product_comments` VALUES (15,1,'Non c\'è male, ottimo prodotto A+','5',1),(16,1,'Mi aspettavo di meglio, qualità scadente','2',2),(17,1,'Perfetto, tempi di consegna veloci','4',1),(18,1,'Consegna rapida e veloce, prodotto conforme A+','5',1),(19,1,'Prodotto scadente, taglie non corrispondenti al vero','2',2),(20,1,'Niente di eccezionale, mi aspettavo qualcosa di meglio','3',1),(27,4,'Veramente soddisfatto A++','5',1),(28,3,'A+,  prodotto bello elegante e di qualità','5',1),(29,3,'Sono un cliente abituale, mi aspettavo decisamente di meglio...peccato','2',1),(30,7,'Prodotto veramente di qualità! sito come al solito perfetto','4',1),(31,2,'Prodotto ben fatto A++, sito sempre al top','5',1),(32,5,'Modella molto bella, complimenti','4',2),(33,1,'Bell\'articolo, interessante','4',2),(34,2,'Prova commento blog, vediamooo','3',2),(35,2,'Prova n° 2, secondo tentativo','5',2),(36,2,'Prova paginate, vediamo','1',2),(37,1,'prova paginate articolo id 1','4',2),(38,12,'Gran bel prodotto, sonno soddisfatta','4',4);
 /*!40000 ALTER TABLE `product_comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -568,7 +557,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `fk_subcategories_idx` (`id_subcategoria`),
   CONSTRAINT `fk_subcategories` FOREIGN KEY (`id_subcategoria`) REFERENCES `sub_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -577,7 +566,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'products/February2019/siMxT0aqedcC8BkdUrJ5.jpg','Cappotto Doppiopetto','uomo',39.99,1,'Giubbotto Lungo Doppiopetto da uomo','Giubbotto Lungo Doppiopetto da uomo','Nero','50x50x80','1.8','100% Lana','2019-02-07 16:29:00','2019-02-07 16:31:28'),(2,'products/February2019/jPv41WfFvmmnXQeZ1pXE.jpg','Giubbotto Velluto','donna',29.99,2,'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile','Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile','Marrone','40x40x60','1.3','100% Lana','2019-02-09 10:47:00','2019-02-09 10:47:38'),(3,'products/February2019/6SzEVlOakrxsJgtUCpQ0.jpg','Maglia Con Cappuccio','uomo',25.95,3,'Felpa con cappuccio, maniche lunghe (fantasia)','Felpa con cappuccio, maniche lunghe (fantasia)','Viola','60x30x30','0.88','100% Sintetico','2019-02-09 10:54:00','2019-02-09 10:54:35'),(4,'products/February2019/Q7duIM3UlbIoBfHz86qm.jpg','Giubbino Con Cappuccio','donna',49.95,4,'Giubbino con cappuccio stile bomberino, 100 grammi','Giubbino con cappuccio stile bomberino, 100 grammi','Blue Notte','50x50x80','1.3','100% Sintetico','2019-02-09 10:59:00','2019-02-09 10:59:44'),(5,'products/February2019/SjpYGQaSYX7EDilMpVTg.jpg','Bermuda Paperbag Con Bottoni','donna',39.95,5,'Bermuda paperbag con bottone (Fantasia)','Bermuda paperbag con bottone (Fantasia)','Verde','60x30x30','0.88','100% Sintetico','2019-02-13 13:17:00','2019-02-13 13:43:04'),(6,'products/February2019/bQGANE7iA5WePRq8A75E.jpg','Giubbino Imbottito','uomo',59.95,4,'Giubbotto Imbottito da uomo 100 grammi, adatto per il cambio di stagione','Giubbotto Imbottito da uomo 100 grammi, adatto per il cambio di stagione','Blue','50x50x80','2.1','100% Sintetico','2019-02-13 14:35:00','2019-02-13 14:35:34'),(7,'products/February2019/E2bABEQG0rpFVhqXU92n.jpg','Giubbotto Scamosciato','uomo',39.95,6,'Giubbotto in Pelle color Marrone, bello elegante e versatile','Giubbotto in Pelle color Marrone, bello elegante e versatile','Marrone','50x50x80','1.8','80% Pelle','2019-02-13 14:39:00','2019-02-13 14:41:52'),(8,'products/February2019/51DQEKGFXofJOwE4dp3U.jpg','Gonna Plissè','donna',19.95,7,'Gonna Plissè color Marrone','Gonna Plissè color Marrone','Marrone','40x40x60','0.88','100% Sintetico','2019-02-13 14:49:00','2019-02-13 14:49:19'),(9,'products/February2019/zJteQCFITxRq9K9txQL1.jpg','Gonna A Tubino Con Fibbia','donna',25.95,7,'Gonna a tubino con dettaglio di fibbia metallica sulla parte anteriore. Chiusura posteriore con cerniera nascosta nella cucitura.','Gonna a tubino con dettaglio di fibbia metallica sulla parte anteriore. Chiusura posteriore con cerniera nascosta nella cucitura.','Rosa','30x30x60','0.88','100% Sintetico','2019-02-13 14:57:00','2019-02-13 14:57:39');
+INSERT INTO `products` VALUES (1,'products/February2019/siMxT0aqedcC8BkdUrJ5.jpg','Cappotto Doppiopetto','uomo',39.99,1,'Giubbotto Lungo Doppiopetto da uomo','Giubbotto Lungo Doppiopetto da uomo','Nero','50x50x80','1.8','100% Lana','2019-02-07 16:29:00','2019-02-07 16:31:28'),(2,'products/February2019/jPv41WfFvmmnXQeZ1pXE.jpg','Giubbotto Velluto','donna',29.99,2,'Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile','Giubbotto in Velluto color Marrone, adatto per ogni stagione. Elegante pratico e versatile','Marrone','40x40x60','1.3','100% Lana','2019-02-09 10:47:00','2019-02-09 10:47:38'),(3,'products/February2019/6SzEVlOakrxsJgtUCpQ0.jpg','Maglia Con Cappuccio','uomo',25.95,3,'Felpa con cappuccio, maniche lunghe (fantasia)','Felpa con cappuccio, maniche lunghe (fantasia)','Viola','60x30x30','0.88','100% Sintetico','2019-02-09 10:54:00','2019-02-09 10:54:35'),(4,'products/February2019/Q7duIM3UlbIoBfHz86qm.jpg','Giubbino Con Cappuccio','donna',49.95,4,'Giubbino con cappuccio stile bomberino, 100 grammi','Giubbino con cappuccio stile bomberino, 100 grammi','Blue Notte','50x50x80','1.3','100% Sintetico','2019-02-09 10:59:00','2019-02-09 10:59:44'),(5,'products/February2019/SjpYGQaSYX7EDilMpVTg.jpg','Bermuda Paperbag Con Bottoni','donna',39.95,5,'Bermuda paperbag con bottone (Fantasia)','Bermuda paperbag con bottone (Fantasia)','Verde','60x30x30','0.88','100% Sintetico','2019-02-13 13:17:00','2019-02-13 13:43:04'),(6,'products/February2019/bQGANE7iA5WePRq8A75E.jpg','Giubbino Imbottito','uomo',59.95,4,'Giubbotto Imbottito da uomo 100 grammi, adatto per il cambio di stagione','Giubbotto Imbottito da uomo 100 grammi, adatto per il cambio di stagione','Blue','50x50x80','2.1','100% Sintetico','2019-02-13 14:35:00','2019-02-13 14:35:34'),(7,'products/February2019/E2bABEQG0rpFVhqXU92n.jpg','Giubbotto Scamosciato','uomo',39.95,6,'Giubbotto in Pelle color Marrone, bello elegante e versatile','Giubbotto in Pelle color Marrone, bello elegante e versatile','Marrone','50x50x80','1.8','80% Pelle','2019-02-13 14:39:00','2019-02-13 14:41:52'),(8,'products/February2019/51DQEKGFXofJOwE4dp3U.jpg','Gonna Plissè','donna',19.95,7,'Gonna Plissè color Marrone','Gonna Plissè color Marrone','Marrone','40x40x60','0.88','100% Sintetico','2019-02-13 14:49:00','2019-02-13 14:49:19'),(9,'products/February2019/zJteQCFITxRq9K9txQL1.jpg','Gonna A Tubino Con Fibbia','donna',25.95,7,'Gonna a tubino con dettaglio di fibbia metallica sulla parte anteriore. Chiusura posteriore con cerniera nascosta nella cucitura.','Gonna a tubino con dettaglio di fibbia metallica sulla parte anteriore. Chiusura posteriore con cerniera nascosta nella cucitura.','Rosa','30x30x60','0.88','100% Sintetico','2019-02-13 14:57:00','2019-02-13 14:57:39'),(10,'products/February2019/33vnOMEwb7xBDHyP6dnS.jpg','Portachiavi Animale','donna',5.95,8,'Portachiavi Style (Animale) - accessorio Donna','Portachiavi Style (Animale) - accessorio Donna','Rosso','05x05x09','0.23','80% Pelle','2019-02-16 08:26:00','2019-02-16 08:26:30'),(11,'products/February2019/uMjck3CrL3D147Q6iusH.jpg','Pullover Sottile In Lana','uomo',29.95,9,'Pullover Sottile In Lana (uomo)','Pullover Sottile In Lana (uomo)','Blue','40x40x60','1.3','100% Lana','2019-02-18 13:32:00','2019-02-18 13:32:10'),(12,'products/February2019/j4ShXnHxCVoGc2n18hnc.jpg','Top Basic In Maglia','donna',19.95,10,'Top Basic In Maglia (rigato) da donna','Top Basic In Maglia (rigato) da donna','Bianco/Nero','60x30x30','1.8','100% Sintetico','2019-02-18 13:36:00','2019-02-18 13:36:00');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -596,7 +585,7 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -605,7 +594,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'admin','Administrator','2019-02-07 16:07:32','2019-02-07 16:07:32'),(2,'user','Normal User','2019-02-07 16:09:50','2019-02-07 16:09:50');
+INSERT INTO `roles` VALUES (1,'admin','Administrator','2019-02-07 16:07:32','2019-02-07 16:07:32'),(2,'user','Normal User','2019-02-07 16:09:50','2019-02-07 16:09:50'),(3,'Gestore Prodotti','Gestore','2019-02-15 15:40:41','2019-02-15 15:40:41');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -684,7 +673,7 @@ CREATE TABLE `specifica_prodottos` (
   PRIMARY KEY (`id`),
   KEY `specifica_prodottos_id_prodotto_foreign` (`id_prodotto`),
   CONSTRAINT `specifica_prodottos_id_prodotto_foreign` FOREIGN KEY (`id_prodotto`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -693,7 +682,7 @@ CREATE TABLE `specifica_prodottos` (
 
 LOCK TABLES `specifica_prodottos` WRITE;
 /*!40000 ALTER TABLE `specifica_prodottos` DISABLE KEYS */;
-INSERT INTO `specifica_prodottos` VALUES (1,'specifica-prodottos/February2019/p6diohP7K5abfkx2TF0Q.jpg',1,1,'2019-02-07 16:37:03','2019-02-07 16:37:03'),(2,'specifica-prodottos/February2019/8YCwzlKbOktEAMunvhcM.jpg',1,2,'2019-02-07 16:37:13','2019-02-07 16:37:13'),(3,'specifica-prodottos/February2019/ARfNHXqLB8TYPB1vCc4D.jpg',1,3,'2019-02-07 16:37:26','2019-02-07 16:37:26'),(4,'specifica-prodottos/February2019/LihjI8YUC58nwXWqQ0Jt.jpg',2,1,'2019-02-09 10:48:11','2019-02-09 10:48:11'),(5,'specifica-prodottos/February2019/mHq2o0yBWb6h3rkx8m1s.jpg',2,2,'2019-02-09 10:48:29','2019-02-09 10:48:29'),(6,'specifica-prodottos/February2019/4Ns9YHVCxusMv14x3KDH.jpg',2,3,'2019-02-09 10:48:42','2019-02-09 10:48:42'),(7,'specifica-prodottos/February2019/rvZTcUioIXkDY1e3SQAU.jpg',3,1,'2019-02-09 10:54:48','2019-02-09 10:54:48'),(8,'specifica-prodottos/February2019/A7sl2Pm7HxwuL5nu2rhk.jpg',3,2,'2019-02-09 10:55:07','2019-02-09 10:55:07'),(9,'specifica-prodottos/February2019/ah7OlVuVdi2RuTcC0wgc.jpg',3,3,'2019-02-09 10:55:19','2019-02-09 10:55:19'),(10,'specifica-prodottos/February2019/CIAbAaOxf0xIHzbKcBQc.jpg',4,1,'2019-02-09 10:59:59','2019-02-09 10:59:59'),(11,'specifica-prodottos/February2019/eyRjBc9NScvz2YgbvTEH.jpg',4,2,'2019-02-09 11:00:14','2019-02-09 11:00:14'),(12,'specifica-prodottos/February2019/xMRk087kT5quiFJ9xUvu.jpg',4,3,'2019-02-09 11:00:27','2019-02-09 11:00:27'),(13,'specifica-prodottos/February2019/ax87BEnXbnJc50AmjNJZ.jpg',5,1,'2019-02-13 13:42:00','2019-02-13 13:42:00'),(14,'specifica-prodottos/February2019/a19TGVJSLowUDXHw53OB.jpg',5,2,'2019-02-13 13:42:13','2019-02-13 13:42:13'),(15,'specifica-prodottos/February2019/9MU0yZH1Juu2FLmyALGy.jpg',5,3,'2019-02-13 13:42:27','2019-02-13 13:42:27'),(16,'specifica-prodottos/February2019/O2mQ63MX1WQuyM3mygLD.jpg',6,1,'2019-02-13 14:42:17','2019-02-13 14:42:17'),(17,'specifica-prodottos/February2019/Qk1hiA9hjRqeko0QLHrv.jpg',6,2,'2019-02-13 14:43:25','2019-02-13 14:43:25'),(18,'specifica-prodottos/February2019/n9PViNFDUFNYC6gjJjyo.jpg',6,3,'2019-02-13 14:43:49','2019-02-13 14:43:49'),(19,'specifica-prodottos/February2019/jesvO5nlDE9xAqu7egYb.jpg',7,1,'2019-02-13 14:44:37','2019-02-13 14:44:37'),(20,'specifica-prodottos/February2019/VHcolNsfVZJuJE9ZM589.jpg',7,2,'2019-02-13 14:44:54','2019-02-13 14:44:54'),(21,'specifica-prodottos/February2019/x95CRXTM5aMq3KnD207o.jpg',7,3,'2019-02-13 14:45:09','2019-02-13 14:45:09'),(22,'specifica-prodottos/February2019/UPHDYgAFnMdOgeiak0Qi.jpg',9,1,'2019-02-13 14:58:23','2019-02-13 14:58:23'),(23,'specifica-prodottos/February2019/WuVc1EXKxEtVxBqWYgVv.jpg',9,2,'2019-02-13 14:58:35','2019-02-13 14:58:35'),(24,'specifica-prodottos/February2019/P4PZyYtPOewpRrSqF8ZH.jpg',9,3,'2019-02-13 14:58:47','2019-02-13 14:58:47'),(25,'specifica-prodottos/February2019/WwI87BJeUR4yZgXQ8GLO.jpg',8,1,'2019-02-13 15:00:19','2019-02-13 15:00:19'),(26,'specifica-prodottos/February2019/fW5T9dRFJQpTxflRvw4x.jpg',8,2,'2019-02-13 15:00:36','2019-02-13 15:00:36'),(27,'specifica-prodottos/February2019/uC8DivmflpgXrRxBkX3T.jpg',8,3,'2019-02-13 15:00:52','2019-02-13 15:00:52');
+INSERT INTO `specifica_prodottos` VALUES (1,'specifica-prodottos/February2019/p6diohP7K5abfkx2TF0Q.jpg',1,1,'2019-02-07 16:37:03','2019-02-07 16:37:03'),(2,'specifica-prodottos/February2019/8YCwzlKbOktEAMunvhcM.jpg',1,2,'2019-02-07 16:37:13','2019-02-07 16:37:13'),(3,'specifica-prodottos/February2019/ARfNHXqLB8TYPB1vCc4D.jpg',1,3,'2019-02-07 16:37:26','2019-02-07 16:37:26'),(4,'specifica-prodottos/February2019/LihjI8YUC58nwXWqQ0Jt.jpg',2,1,'2019-02-09 10:48:11','2019-02-09 10:48:11'),(5,'specifica-prodottos/February2019/mHq2o0yBWb6h3rkx8m1s.jpg',2,2,'2019-02-09 10:48:29','2019-02-09 10:48:29'),(6,'specifica-prodottos/February2019/4Ns9YHVCxusMv14x3KDH.jpg',2,3,'2019-02-09 10:48:42','2019-02-09 10:48:42'),(7,'specifica-prodottos/February2019/rvZTcUioIXkDY1e3SQAU.jpg',3,1,'2019-02-09 10:54:48','2019-02-09 10:54:48'),(8,'specifica-prodottos/February2019/A7sl2Pm7HxwuL5nu2rhk.jpg',3,2,'2019-02-09 10:55:07','2019-02-09 10:55:07'),(9,'specifica-prodottos/February2019/ah7OlVuVdi2RuTcC0wgc.jpg',3,3,'2019-02-09 10:55:19','2019-02-09 10:55:19'),(10,'specifica-prodottos/February2019/CIAbAaOxf0xIHzbKcBQc.jpg',4,1,'2019-02-09 10:59:59','2019-02-09 10:59:59'),(11,'specifica-prodottos/February2019/eyRjBc9NScvz2YgbvTEH.jpg',4,2,'2019-02-09 11:00:14','2019-02-09 11:00:14'),(12,'specifica-prodottos/February2019/xMRk087kT5quiFJ9xUvu.jpg',4,3,'2019-02-09 11:00:27','2019-02-09 11:00:27'),(13,'specifica-prodottos/February2019/ax87BEnXbnJc50AmjNJZ.jpg',5,1,'2019-02-13 13:42:00','2019-02-13 13:42:00'),(14,'specifica-prodottos/February2019/a19TGVJSLowUDXHw53OB.jpg',5,2,'2019-02-13 13:42:13','2019-02-13 13:42:13'),(15,'specifica-prodottos/February2019/9MU0yZH1Juu2FLmyALGy.jpg',5,3,'2019-02-13 13:42:27','2019-02-13 13:42:27'),(16,'specifica-prodottos/February2019/O2mQ63MX1WQuyM3mygLD.jpg',6,1,'2019-02-13 14:42:17','2019-02-13 14:42:17'),(17,'specifica-prodottos/February2019/Qk1hiA9hjRqeko0QLHrv.jpg',6,2,'2019-02-13 14:43:25','2019-02-13 14:43:25'),(18,'specifica-prodottos/February2019/n9PViNFDUFNYC6gjJjyo.jpg',6,3,'2019-02-13 14:43:49','2019-02-13 14:43:49'),(19,'specifica-prodottos/February2019/jesvO5nlDE9xAqu7egYb.jpg',7,1,'2019-02-13 14:44:37','2019-02-13 14:44:37'),(20,'specifica-prodottos/February2019/VHcolNsfVZJuJE9ZM589.jpg',7,2,'2019-02-13 14:44:54','2019-02-13 14:44:54'),(21,'specifica-prodottos/February2019/x95CRXTM5aMq3KnD207o.jpg',7,3,'2019-02-13 14:45:09','2019-02-13 14:45:09'),(22,'specifica-prodottos/February2019/UPHDYgAFnMdOgeiak0Qi.jpg',9,1,'2019-02-13 14:58:23','2019-02-13 14:58:23'),(23,'specifica-prodottos/February2019/WuVc1EXKxEtVxBqWYgVv.jpg',9,2,'2019-02-13 14:58:35','2019-02-13 14:58:35'),(24,'specifica-prodottos/February2019/P4PZyYtPOewpRrSqF8ZH.jpg',9,3,'2019-02-13 14:58:47','2019-02-13 14:58:47'),(25,'specifica-prodottos/February2019/WwI87BJeUR4yZgXQ8GLO.jpg',8,1,'2019-02-13 15:00:19','2019-02-13 15:00:19'),(26,'specifica-prodottos/February2019/fW5T9dRFJQpTxflRvw4x.jpg',8,2,'2019-02-13 15:00:36','2019-02-13 15:00:36'),(27,'specifica-prodottos/February2019/uC8DivmflpgXrRxBkX3T.jpg',8,3,'2019-02-13 15:00:52','2019-02-13 15:00:52'),(28,'specifica-prodottos/February2019/gfrnmvQ8VvhcR8vdseAL.jpg',10,1,'2019-02-16 08:27:09','2019-02-16 08:27:09'),(29,'specifica-prodottos/February2019/AlaCjmdb5kcENrzLj4yC.jpg',10,2,'2019-02-16 08:27:22','2019-02-16 08:27:22'),(30,'specifica-prodottos/February2019/WP8zRWRb35qqFLLftO0X.jpg',10,3,'2019-02-16 08:27:37','2019-02-16 08:27:37'),(31,'specifica-prodottos/February2019/kvSGjuTzPtjbomETVG9t.jpg',11,1,'2019-02-18 13:33:12','2019-02-18 13:33:12'),(32,'specifica-prodottos/February2019/6fhmR9XQVAKb0U4hUbC3.jpg',11,2,'2019-02-18 13:33:26','2019-02-18 13:33:26'),(33,'specifica-prodottos/February2019/nFUbo5XtU14c49JPLWIG.jpg',11,3,'2019-02-18 13:33:45','2019-02-18 13:33:45'),(34,'specifica-prodottos/February2019/aWcvMLXrVWjIR5eMIRUW.jpg',12,1,'2019-02-18 13:37:05','2019-02-18 13:37:05'),(35,'specifica-prodottos/February2019/tK3IEAR2X4VTHut3Jr81.jpg',12,2,'2019-02-18 13:37:19','2019-02-18 13:37:19'),(36,'specifica-prodottos/February2019/vDIkfGuKOYyvgUOlxIiz.jpg',12,3,'2019-02-18 13:37:34','2019-02-18 13:37:34');
 /*!40000 ALTER TABLE `specifica_prodottos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -714,7 +703,7 @@ CREATE TABLE `sub_categories` (
   UNIQUE KEY `nome_sub_UNIQUE` (`nome_sub`),
   KEY `sub_categories_id_category_foreign` (`id_category`),
   CONSTRAINT `sub_categories_id_category_foreign` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -723,7 +712,7 @@ CREATE TABLE `sub_categories` (
 
 LOCK TABLES `sub_categories` WRITE;
 /*!40000 ALTER TABLE `sub_categories` DISABLE KEYS */;
-INSERT INTO `sub_categories` VALUES (1,'Lungo',1,'2019-02-07 16:26:16','2019-02-07 16:26:16'),(2,'Tessuto',1,'2019-02-09 10:46:43','2019-02-09 10:46:43'),(3,'Maniche Lunghe',2,'2019-02-09 10:53:14','2019-02-09 10:53:14'),(4,'Bomberino',1,'2019-02-09 10:56:57','2019-02-09 10:56:57'),(5,'Bermuda',3,'2019-02-13 13:15:05','2019-02-13 13:15:05'),(6,'Pelle',1,'2019-02-13 14:38:57','2019-02-13 14:38:57'),(7,'Fantasia',4,'2019-02-13 14:47:52','2019-02-13 14:47:52');
+INSERT INTO `sub_categories` VALUES (1,'Lungo',1,'2019-02-07 16:26:16','2019-02-07 16:26:16'),(2,'Tessuto',1,'2019-02-09 10:46:43','2019-02-09 10:46:43'),(3,'Maniche Lunghe',2,'2019-02-09 10:53:14','2019-02-09 10:53:14'),(4,'Bomberino',1,'2019-02-09 10:56:57','2019-02-09 10:56:57'),(5,'Bermuda',3,'2019-02-13 13:15:05','2019-02-13 13:15:05'),(6,'Pelle',1,'2019-02-13 14:38:57','2019-02-13 14:38:57'),(7,'Fantasia',4,'2019-02-13 14:47:52','2019-02-13 14:47:52'),(8,'Portachiavi',5,'2019-02-16 08:24:37','2019-02-16 08:24:37'),(9,'Pullover',6,'2019-02-18 13:30:39','2019-02-18 13:30:39'),(10,'Top',7,'2019-02-18 13:34:52','2019-02-18 13:34:52');
 /*!40000 ALTER TABLE `sub_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -743,7 +732,7 @@ CREATE TABLE `taglie_prodottis` (
   KEY `fk_taglie_taglie_id_idx` (`taglie_id`),
   CONSTRAINT `fk_taglie_prodotto_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_taglie_taglie_id` FOREIGN KEY (`taglie_id`) REFERENCES `taglies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -752,7 +741,7 @@ CREATE TABLE `taglie_prodottis` (
 
 LOCK TABLES `taglie_prodottis` WRITE;
 /*!40000 ALTER TABLE `taglie_prodottis` DISABLE KEYS */;
-INSERT INTO `taglie_prodottis` VALUES (1,1,3),(2,1,4),(3,1,5),(4,2,2),(5,2,3),(6,2,6),(7,3,3),(8,3,4),(9,3,5),(10,4,2),(11,5,2),(12,6,3),(13,6,4),(14,7,2),(15,8,2),(16,8,3),(17,8,4),(18,8,6),(19,9,2);
+INSERT INTO `taglie_prodottis` VALUES (1,1,3),(2,1,4),(3,1,5),(4,2,2),(5,2,3),(6,2,6),(7,3,3),(8,3,4),(9,3,5),(10,4,2),(11,5,2),(12,6,3),(13,6,4),(14,7,2),(15,8,2),(16,8,3),(17,8,4),(18,8,6),(19,9,2),(20,10,2),(21,11,2),(22,12,2),(23,12,3);
 /*!40000 ALTER TABLE `taglie_prodottis` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -860,7 +849,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_role_id_foreign` (`role_id`),
   CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -869,7 +858,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'Angelo','angelo.dalfonso@student.univaq.it','users/default.png',NULL,'$2y$10$Bu0eE/kjssGbmmQk6y2F/ObRovk9idOymrufHNDgC3oJlcyL0ioC6','di4dn8rNioJDivMLPdL6Jgvl3AZfgkARI1tzmoLeL459eSYoGtbP2m6K0IAt',NULL,'2019-02-07 16:06:40','2019-02-07 16:07:32'),(2,2,'Test','testin123@gmail.com','users/default.png',NULL,'$2y$10$s3SlI3C3oNqr7SqbjdFLDexKsgyDEu1CTz48nqfRSF0aHKD2XggwS','HLbHbqnEWSNCceLIxyeTqDbaz1nVahyVufnNYZzFZ3KkoMhGwVf3VtHtc13d',NULL,'2019-02-07 16:38:03','2019-02-07 16:38:03');
+INSERT INTO `users` VALUES (1,1,'Angelo','angelo.dalfonso@student.univaq.it','users/default.png',NULL,'$2y$10$Bu0eE/kjssGbmmQk6y2F/ObRovk9idOymrufHNDgC3oJlcyL0ioC6','Rt5jXC8KKZH8s8oHXI1Xuv81jyIjLFhBCHdF7Of41QPlSKpdWwgmULn9bSUQ',NULL,'2019-02-07 16:06:40','2019-02-07 16:07:32'),(2,2,'Test','testin123@gmail.com','users/default.png',NULL,'$2y$10$s3SlI3C3oNqr7SqbjdFLDexKsgyDEu1CTz48nqfRSF0aHKD2XggwS','LgUFLj7oNYEaZcBRhtR6pvwJUrWK7akpV3kUzyaTc7BqG10zTmJAS9yKDORV',NULL,'2019-02-07 16:38:03','2019-02-07 16:38:03'),(4,3,'gestore','gestore123@gmail.com','users/default.png',NULL,'$2y$10$Q1p1NnJne3kMwFTIhsxh3eA.qGvWliQqadVs6zqTN3YfxkcJMBYj.','z1Qt0x0S1ESTcdO9Kvhv5nQmrRFQfjQs819dHcBpTV4tltidlmWGe0ZpScjR','{\"locale\":\"en\"}','2019-02-18 12:24:28','2019-02-18 12:24:59');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -882,4 +871,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-15 15:55:38
+-- Dump completed on 2019-02-18 19:45:55

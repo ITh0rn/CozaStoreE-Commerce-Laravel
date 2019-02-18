@@ -399,7 +399,7 @@ class ProductController extends Controller{
             foreach ($cart as $prodotto) {
                 DB::table('boughtproducts')->insert(
                     ['img_dir' => $prodotto["img"], 'nome' => $prodotto["nome_prodotto"], 'price' =>
-                        $prodotto["prezzo"], 'IDorders' => $id]);
+                        $prodotto["prezzo"] * $prodotto["qty"], 'IDorders' => $id, 'quantita' => $prodotto["qty"]]);
             }
 
             session()->forget('cart');
