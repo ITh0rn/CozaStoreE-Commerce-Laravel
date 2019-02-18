@@ -87,62 +87,67 @@ class ProductController extends Controller{
     public function Shop(){
 
         $product = DB::table('products')->get();
-        $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+        return view('Contents/shop')->with('product', $product);
     }
 
     public function shopuomo(){
 
-        $product = DB::table('products')->where('gender', '=', 'uomo')->get();
-        $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+        $product = DB::table('products')
+            ->select('products.*')
+            ->where('gender', '=', 'uomo')
+            ->get();
+        return view('Contents/shop')->with('product', $product);
     }
 
     public function nuoviarriviuomo(){
 
-        $product = DB::table('products')->where('gender', '=', 'uomo')->where('created_at', 'like', '2019%')->get();
-        $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+        $product = DB::table('products')
+            ->select('products.*')
+            ->where('gender', '=', 'uomo')
+            ->orderBy('created_at', 'dec')
+            ->get();
+        return view('Contents/shop')->with('product', $product);
     }
 
 
     public function giaccheecappottiuomo(){
 
         $product = DB::table('products')
-            ->join('sub_categories', 'sub_categories.id', '=', 'id_subcategoria')
-            ->join('categories', 'categories.id', '=', 'id_category')
-            ->where('categories.nome_categoria', '=','giubbotto')
-            ->orWhere('categories.nome_categoria', '=','giubbino')
-            ->orWhere('categories.nome_categoria', '=','cappotto')
-            ->orWhere('categories.nome_categoria', '=','giacca')
-            ->where('gender', '=', 'uomo')
+            ->select('products.*')
+            ->join('sub_categories', 'sub_categories.id', '=', 'products.id_subcategoria')
+            ->join('categories', 'categories.id', '=', 'sub_categories.id_category')
+            ->where('categories.nome_categoria', '=','giubbino')
+            ->where('products.gender', '=', 'uomo')
             ->get();
         $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+        return view('Contents/shop')->with('product', $product);
     }
     public function shopdonna(){
 
-        $product = DB::table('products')->where('gender', '=', 'donna')->get();
-        $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+        $product = DB::table('products')
+            ->where('gender', '=', 'donna')
+            ->get();
+        return view('Contents/shop')->with('product', $product);
     }
 
     public function nuovastagionedonna(){
 
-        $product = DB::table('products')->where('gender', '=', 'donna')->where('created_at', 'like', '2019%')->get();
-        $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+        $product = DB::table('products')
+            ->where('gender', '=', 'donna')
+            ->orderBy('created_at','dec')
+            ->get();
+        return view('Contents/shop')->with('product', $product);
     }
 
     public function shopaccessori(){
 
         $product = DB::table('products')
+            ->select('products.*')
             ->join('sub_categories', 'sub_categories.id', '=', 'id_subcategoria')
             ->join('categories', 'categories.id', '=', 'id_category')
             ->where('categories.nome_categoria', 'accessori')
             ->get();
-        $prodotti = null;
-        return view('Contents/shop')->with('product', $product)->with('products', $prodotti);
+        return view('Contents/shop')->with('product', $product);
     }
 
     public function filter(Request $request){

@@ -1,6 +1,6 @@
 //script al primo caricamento per gestire la visualizzazione del voto in formato stella
 $(document).ready(function () {
-    $('.js-comments').find('.js-comment-div-start').each(function () {
+    $('.js-comments-blog').find('.js-comment-div-start').each(function () {
         $num = $(this).find('.js-startcomment').attr('value');
         console.log($num);
         var i = 0;
@@ -17,16 +17,18 @@ $(document).ready(function () {
 $(document).on('click', '.pagination a', function (e) {
     e.preventDefault();
     $url = $(this).attr('href').split('page=')[1];
+    $idblog = $('.js-comments-blog').attr('value');
+    console.log($idblog);
     $.ajax({
-        url: '/ajax?page=' +$url
+        url: '/ajaxblog?page=' +$url,
+        data: {'idblog': $idblog}
 
     }).done(function (data) {
-        $('.js-comments').hide().html(data).fadeIn(1000);
-        $('.js-comments').find('.js-comment-div').each(function () {
-            $num = $(this).find('.js-star-comm').attr('value');
-            console.log($num);
+        $('.js-comments-blog').hide().html(data).fadeToggle(600);
+        $('.js-comments-blog').find('.js-comment-div-start').each(function () {
+            $num = $(this).find('.js-startcomment').attr('value');
             var i = 0;
-            $(this).find('.js-star-comm').children('i').each(function () {
+            $(this).find('.js-startcomment').children('i').each(function () {
                 if (i < $num) {
                     $(this).addClass('zmdi zmdi-star');
                     i++;

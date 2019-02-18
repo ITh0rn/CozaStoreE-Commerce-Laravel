@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Auth::routes();
 Route::get('/', 'ProductController@show')->name('coza');
 Route::get('/filter', 'ProductController@filter');
@@ -69,11 +71,22 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/ajax', function (){
-    $comment = DB::table('product_comments')->where('id_prodotto', 1)
+Route::get('/ajax', function (Request $request){
+    $comment = DB::table('product_comments')
+        ->select('product_comments.*', 'users.name')
         ->join('users', 'users.id', '=', 'product_comments.id_utente')
+        ->where('product_comments.id_prodotto', $request->get('idprod'))
         ->Paginate(3);
-    return view('Contents.comments', compact('comment'));
+     return view('Contents.comments', compact('comment'));
+});
+
+Route::get('/ajaxblog', function (Request $request){
+    $comment = DB::table('comments')
+        ->select('comments.*', 'users.name')
+        ->join('users', 'users.id', '=', 'comments.IDusers')
+        ->where('IDblogs', $request->get('idblog'))
+        ->Paginate(3);
+    return view('Contents.commenti', compact('comment'));
 });
 
 Route::get('/womanfilter', 'CategorieController@WomanCategories');

@@ -15,8 +15,8 @@ class BlogController extends Controller
         $rowUtente = DB::select('select blogs.data_inserimento, blogs.nome, blogs.description, users.name, users.id, blogs.IDusers, blogs.id as ID, blogs.img_dir, 
                                 count(comments.id) as num 
                                 from blogs 
-                                left join comments on comments.IDblogs=blogs.id 
-                                left join users on users.id=blogs.IDusers 
+                                left join comments on comments.IDblogs = blogs.id 
+                                left join users on users.id = blogs.IDusers 
                                 group by blogs.id
                                 order by blogs.id desc');
         $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
@@ -29,7 +29,7 @@ class BlogController extends Controller
         $blogs = null;
         $rowsUtente = null;
         $rowUtente = DB::table('users')->where('id', $request->get('id_user'))->select('name')->get();
-        $comment = DB::table('comments')->where('idblogs', $request->get('id_articolo'))->Paginate(3);
+        $comment = DB::table('comments')->where('IDblogs', $request->get('id_articolo'))->Paginate(3);
         //$numComment = DB::select('select count(*) as ')
         $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) 
                   as anno from blogs group by mese, anno');

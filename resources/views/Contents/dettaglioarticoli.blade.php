@@ -66,7 +66,7 @@
                     </div>
 
                     <!-- - -->
-                    <div class="bor18 p-b-30 m-t-60 m-lr-15-sm js-comments">
+                    <div class="bor18 p-b-30 m-t-60 m-lr-15-sm js-comments-blog" value="{{$blog[0]->ID}}">
                         @include('Contents.commenti')
                     </div>
 
