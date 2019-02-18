@@ -385,7 +385,7 @@ class ProductController extends Controller{
             //Creo ordine nel DB
             DB::table('orders')->insert(
                 ['totale' => $totale, 'created_at' => $date, 'IDusers' =>
-                    Auth::user()->id]);
+                    Auth::user()->id, 'address' => $request->get('indirizzo')]);
 
             $last_order = DB::table('orders')
                 ->select('orders.ID')
