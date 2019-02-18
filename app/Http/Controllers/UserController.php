@@ -133,5 +133,18 @@ class UserController extends Controller
         public function removepayment(Request $request){
         DB::table('payments')->where('ID', $request->get('id'))->delete();
         }
+
+        public function dettagliOrdine(Request $request){
+            if($request->ajax()) {
+                $ordini = DB::table('orders')
+                    ->select('boughtproducts.*')
+                    ->join('boughtproducts', 'boughtproducts.IDorders', '=', 'orders.ID')
+                    ->where('orders.ID', $request->get('idordine'))
+                    ->get();
+                //return Response()->json(view('Contents/dettagliordine')->with('ordini', $ordini))->render();
+                return Response()->json(view('Contents/dettagliordine')->with('ordini', $ordini)->render());
+
+            }
+        }
 }
 

@@ -218,3 +218,21 @@ $(document).on('click', '.js-remove-payment', function (e) {
             }
         });
 });
+$(document).on('click', '.js-dettagli-ordine', function (e) {
+    e.preventDefault;
+    $idordine = $('.js-dettagli-ordine').attr('value');
+    console.log($idordine);
+    $.ajax({
+        url: '/dettagliordine',
+        type: 'GET',
+        data: {'idordine': $idordine},
+        dataType: 'json',
+        success: function (data) {
+        console.log(data);
+            $('.js-profilo-utente').hide().html(data).fadeToggle(1200);
+        },
+        error: function () {
+            alert('error');
+        }
+    });
+});
