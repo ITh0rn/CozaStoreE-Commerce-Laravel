@@ -22,6 +22,7 @@ class ProductController extends Controller{
     //suggeriti nella home prodotti di categoria simile
 
     public function show(){
+        $sliders = DB::table('sliders')->get();
 
         if(Auth::check()){
             $categorie = DB::table('products')
@@ -67,10 +68,10 @@ class ProductController extends Controller{
                     ->orderBy('created_at','dec')
                     ->take(8)
                     ->get();
-                return view('layout/cozahome')->with('product', $query2);
+                return view('layout/cozahome')->with('product', $query2)->with('sliders', $sliders);
             }
             $query = $query->take(8);
-            return view('layout/cozahome')->with('product', $query);
+            return view('layout/cozahome')->with('product', $query)->with('sliders', $sliders);
         }
         else{
 
@@ -79,7 +80,7 @@ class ProductController extends Controller{
                 ->orderBy('created_at','dec')
                 ->take(8)
                 ->get();
-            return view('layout/cozahome')->with('product', $query2);
+            return view('layout/cozahome')->with('product', $query2)->with('sliders', $sliders);
         }
 
     }
