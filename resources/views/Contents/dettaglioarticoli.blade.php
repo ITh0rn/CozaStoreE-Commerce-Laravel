@@ -1,4 +1,5 @@
 @extends ('Contents.blog')
+@section('pageTitle', $blog[0]->nome)
 @section('blog')
 
 <!-- breadcrumb -->
@@ -64,8 +65,12 @@
                         </p>
                     </div>
 
+                    <h5 class="mtext-113 cl2 p-t-60">
+                        Commenti
+                    </h5>
+
                     <!-- - -->
-                    <div class="bor18 p-b-30 m-t-60 m-lr-15-sm js-comments-blog" value="{{$blog[0]->ID}}">
+                    <div class="p-b-30 m-t-60 m-lr-15-sm js-comments-blog" value="{{$blog[0]->ID}}">
                         @include('Contents.commenti')
                     </div>
 

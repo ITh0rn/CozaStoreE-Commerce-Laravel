@@ -15,8 +15,8 @@ class CreateTaglieProdottisTable extends Migration
     {
         Schema::create('taglie_prodottis', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('product_id')->references('id')->on('products');
-            $table->unsignedInteger('taglie_id')->references('id')->on('taglies');
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('taglie_id');
             $table->foreign('product_id')
                 ->references('id')->on('products')
                 ->onDelete('cascade')

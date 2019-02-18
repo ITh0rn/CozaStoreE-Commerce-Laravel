@@ -8,6 +8,8 @@ $(document).ready(function(){
         $taglia = $('#taglieselct').val();
         $numb = $('.num-product').val();
         $color = $('#colorselect').val();
+        $imagedir = $('.js-get-image-cart').attr('value');
+        console.log($imagedir);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -16,7 +18,7 @@ $(document).ready(function(){
         $.ajax({
             url : "/addtocart",
             type: "POST",
-            data: {'id': $value, 'quantità': $numb, 'colore': $color, 'taglia': $taglia},
+            data: {'id': $value, 'quantità': $numb, 'colore': $color, 'taglia': $taglia, 'img': $imagedir},
             success: function (data) {
                 console.log($nome);
                 if($.isEmptyObject(data.error)){
@@ -149,4 +151,41 @@ $(document).ready(function() {
     })
 });
 
+//Effettua pagamento
+$(document).ready(function () {
+    $('.js-effettua-pagamento').on('click', function () {
+        $indirizzo = $('#addreselect').val();
+        $pagamento = $('#payselect').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/pagamento',
+            type: "POST",
+            data: {'indirizzo': $indirizzo, 'pagamento': $pagamento},
+            success: function (data) {
+                if ($.isEmptyObject(data.error)) {
+                    console.log('inserito');
+                    $('.print-error-msg-address').css('visibility', 'hidden');
+                    swal({
+                        title: "Pagamento effettuato con successo",
+                        text: "Entra nel tuo profilo per visualizzare lo storico ordini",
+                        icon: "success",
+                        timer: 3000
+                    }).then(() => {
+                        window.location.href = '/';
+                    });
+                } else {
+                    $(".print-error-msg").find("ul").html('');
+                    $.each(data.error, function (key, value) {
+                        $('.print-error-msg').find('ul').append('<li>' + value + '</li>');
+                        $('.print-error-msg').css('visibility', 'visible');
+                    });
+                }
+            }
+        });
+    });
+});
 

@@ -19,7 +19,11 @@ class CreateProductsTable extends Migration
             $table->string('nome');
             $table->string('gender');
             $table->float('price');
-            $table->unsignedInteger('id_subcategoria')->references('id')->on('sub_categories');
+            $table->unsignedInteger('id_subcategoria')->nullable(false);;
+            $table->foreign('id_subcategoria')
+                ->references('id')->on('sub_categories')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('mini_descrizione');
             $table->string('grande_descrizione');
             $table->string('colore');
