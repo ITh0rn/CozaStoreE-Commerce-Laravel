@@ -17,7 +17,7 @@
                 <td class="column-2 p-l-50">#{{$ordine->ID}}</td>
                 <td class="column-2">{{$ordine->address}}</td>
                 <td class="column-2">{{$ordine->created_at}}</td>
-                <td class="column-3">{{$ordine->totale}}</td>
+                <td class="column-3">{{$ordine->totale}}€</td>
                 <td class="column-5"><i class="icon-header-item hov-cl1 cl2 zmdi zmdi-assignment-o p-l-30 js-dettagli-ordine" value="{{$ordine->ID}}"></i></td>
             </tr>
     @endforeach

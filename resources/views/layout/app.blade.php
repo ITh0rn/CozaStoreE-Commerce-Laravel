@@ -503,6 +503,7 @@
 	<script src="{{URL::asset('js/profile.js')}}"></script>
 	<script src="{{URL::asset('js/comments.js')}}"></script>
 	<script src="{{URL::asset('js/reviews.js')}}"></script>
+	<script src="{{URL::asset('js/wish.js')}}"></script>
 	<script>
       var map;
       function initMap() {

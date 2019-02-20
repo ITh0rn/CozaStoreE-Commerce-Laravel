@@ -19,7 +19,6 @@ class CreateSlidersTable extends Migration
             $table->string('sottotitolo');
             $table->string('img_dir');
             $table->string('route');
-            $table->timestamps();
         });
     }
 

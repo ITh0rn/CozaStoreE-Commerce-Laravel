@@ -97,6 +97,9 @@ Route::get('/ajaxblog', function (Request $request){
 Route::get('/womanfilter', 'CategorieController@WomanCategories');
 Route::get('/subcategoria', 'CategorieController@SubCategorie');
 Route::get('/subcategoryfilter', 'CategorieController@SubFiltering');
+Route::get('/addwish', 'ProductController@wishadd');
+Route::get('/remwish', 'ProductController@wishrem');
+Route::get('/wishprec', 'ProductController@wishprec');
 
 
 
