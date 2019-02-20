@@ -84,6 +84,10 @@ class ContainController extends Controller
             return menu('gestore');
         }
 
+        if (Auth::user()->hasRole('blog')) {
+            return menu('blog');
+        }
+
         return view('Contents/Profile');
     }
 
