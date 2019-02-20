@@ -69,7 +69,6 @@ $(document).ready(function(){
     });
 });
 
- $(document).ready(function(){
      $(document).on('click', '.header-wish-item-img', function(e){
          $id = $(this).attr('value');
          $.ajax({
@@ -115,6 +114,5 @@ $(document).ready(function(){
              }
          });
      });
- });
 
 
