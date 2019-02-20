@@ -419,4 +419,38 @@ class ProductController extends Controller{
         }
     }
 
+    public function wishprec(Request $request){
+
+        if($request->ajax()) {
+            $wish = null;
+            $wish = DB::table('wishlists')
+                ->select('*')
+                ->where('IDproducts', $request->get('id'))
+                ->where('IDusers', Auth::user()->id)
+                ->get();
+
+            if ($wish->isEmpty()) {
+                return Response()->json(["esiste" => 0]);
+            }
+            else {
+                return Response()->json(["esiste" => 1]);
+            }
+        }
+    }
+
+    public function wishrem(Request $request){
+        if($request->ajax()){
+            DB::table('wishlists')
+                ->where('IDproducts', $request->get('id'))
+                ->delete();
+        }
+    }
+
+    public function wishadd(Request $request){
+        if($request->ajax()){
+            DB::table('wishlists')->insert(
+                ['IDproducts' => $request->get('id'), 'IDusers' => Auth::user()->id]);
+        }
+    }
+
 }

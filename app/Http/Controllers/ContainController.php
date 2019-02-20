@@ -84,6 +84,10 @@ class ContainController extends Controller
             return menu('gestore');
         }
 
+        if(Auth::user()->hasRole('Gestore Sito')){
+            return menu('sito');
+        }
+
         return view('Contents/Profile');
     }
 
