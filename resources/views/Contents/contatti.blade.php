@@ -5,7 +5,7 @@
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92 m-tb-84" style="background-image: url({{asset('img/bg-01.jpg')}});">
         <h2 class="ltext-105 cl0 txt-center">
-            Contact
+            Contatti
         </h2>
     </section>
 
@@ -17,20 +17,20 @@
                 <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
                     <form>
                         <h4 class="mtext-105 cl2 txt-center p-b-30">
-                            Send Us A Message
+                            Inviaci un messaggio
                         </h4>
 
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Your Email Address">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Il tuo indirizzo mail">
                             <img class="how-pos4 pointer-none" src="{{asset('img/icons/icon-email.png')}}" alt="ICON">
                         </div>
 
                         <div class="bor8 m-b-30">
-                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
+                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Come posso aiutarti?"></textarea>
                         </div>
 
                         <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-                            Submit
+                            Invia
                         </button>
                     </form>
                 </div>
@@ -43,11 +43,11 @@
 
                         <div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Address
+								Indirizzo
 							</span>
 
                             <p class="stext-115 cl6 size-213 p-t-18">
-                                Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
+                                Coza Store, Viale Corrado IV 30 L'aquila 67050
                             </p>
                         </div>
                     </div>
@@ -59,11 +59,11 @@
 
                         <div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Lets Talk
+								Telefono
 							</span>
 
                             <p class="stext-115 cl1 size-213 p-t-18">
-                                +1 800 1236879
+                                +39 0862 121212
                             </p>
                         </div>
                     </div>
@@ -75,11 +75,11 @@
 
                         <div class="size-212 p-t-2">
 							<span class="mtext-110 cl2">
-								Sale Support
+								Contattaci per mail
 							</span>
 
                             <p class="stext-115 cl1 size-213 p-t-18">
-                                contact@example.com
+                                cozastore@help.it
                             </p>
                         </div>
                     </div>

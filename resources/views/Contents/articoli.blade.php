@@ -5,7 +5,7 @@
     <!-- item blog -->
     <div class="p-b-63">
         <a href="#" onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="hov-img0 how-pos5-parent">
-            <img src="{{asset('img/'.$blog->img_dir)}}" alt="IMG-BLOG">
+            <img src="{{asset('storage/'.$blog->img_dir)}}" alt="IMG-BLOG">
 
             <div class="flex-col-c-m size-123 bg9 how-pos5">
                 <span class="ltext-107 cl2 txt-center">
@@ -20,7 +20,7 @@
 
         <div class="p-t-32">
             <h4 class="p-b-15">
-                <button onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="ltext-108 cl2 hov-cl1 trans-04">
+                <button onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->id, "id_user" => $blog->IDusers]) }}'" class="ltext-108 cl2 hov-cl1 trans-04">
                     {{$blog->nome}}
                 </button>
             </h4>
@@ -50,7 +50,7 @@
 										</span>
 									</span>
 
-                <button onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->ID, "id_user" => $blog->IDusers]) }}'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+                <button onclick="window.location='{{ route('dettaglioarticoli', ["id_articolo" => $blog->id, "id_user" => $blog->IDusers]) }}'" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
                     Continua a leggere
                 </button>
             </div>

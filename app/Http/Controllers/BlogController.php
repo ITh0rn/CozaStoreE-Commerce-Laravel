@@ -10,8 +10,7 @@ use Validator;
 
 class BlogController extends Controller
 {
-    public function show()
-    {
+    public function show(){
         $rowUtente = DB::select('select blogs.data_inserimento, blogs.nome, blogs.description, users.name, users.id, blogs.IDusers, blogs.id as ID, blogs.img_dir, 
                                 count(comments.id) as num 
                                 from blogs 
@@ -24,6 +23,7 @@ class BlogController extends Controller
         $news = DB::table('products')->orderBy('created_at', 'desc')->limit(5)->get();
         return view('Contents/articoli', compact('rowUtente', 'data', 'news'));
     }
+
     public function DettaglioArticoli(Request $request){
         $blog = DB::table('blogs')->where('id', $request->get('id_articolo'))->get();
         $user = DB::table('users')->get();
@@ -38,6 +38,7 @@ class BlogController extends Controller
         $news = DB::table('products')->orderBy('created_at', 'desc')->limit(5)->get();
         return view('Contents/dettaglioarticoli', compact('blog','blogs', 'user', 'rowUtente', 'comment', 'comments', 'data', 'news'));
     }
+
     public function DataArticoli(Request $request){
         $mese = $request->get('mese');
         $anno = $request->get('anno');

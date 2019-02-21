@@ -74,6 +74,7 @@ class ContainController extends Controller
         return view('Contents/chisiamo');
     }
 
+    //Metodo di gestione Ruolo->Admin. Gestore X o User classico
     public function getprofile(){
 
         if (Auth::user()->hasRole('admin')){
@@ -84,14 +85,13 @@ class ContainController extends Controller
             return menu('gestore');
         }
 
-
-        if (Auth::user()->hasRole('blog')) {
-            return menu('blog');
-        }
-
         if(Auth::user()->hasRole('Gestore Sito')){
             return menu('sito');
+        }
 
+
+        if(Auth::user()->hasRole('Gestore Blog')){
+            return menu('blog');
         }
 
         return view('Contents/Profile');

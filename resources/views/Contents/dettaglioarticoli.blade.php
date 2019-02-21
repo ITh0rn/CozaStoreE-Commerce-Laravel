@@ -30,7 +30,7 @@
                 <div class="p-r-45 p-r-0-lg">
                     <!--  -->
                     <div class="wrap-pic-w how-pos5-parent">
-                        <img src="{{asset('img/'.$blog[0]->img_dir)}}" alt="IMG-BLOG">
+                        <img src="{{asset('storage/'.$blog[0]->img_dir)}}" alt="IMG-BLOG">
 
                         <div class="flex-col-c-m size-123 bg9 how-pos5">
 								<span class="ltext-107 cl2 txt-center">
@@ -70,7 +70,7 @@
                     </h5>
 
                     <!-- - -->
-                    <div class="p-b-30 m-t-60 m-lr-15-sm js-comments-blog" value="{{$blog[0]->ID}}">
+                    <div class="p-b-30 m-t-60 m-lr-15-sm js-comments-blog" value="{{$blog[0]->id}}">
                         @include('Contents.commenti')
                     </div>
 
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
 
-                            <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 js-add-review" value="{{$blog[0]->ID}}">
+                            <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 js-add-review" value="{{$blog[0]->id}}">
                                 Invia
                             </button>
                         </form>
