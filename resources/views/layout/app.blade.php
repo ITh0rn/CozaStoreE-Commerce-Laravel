@@ -242,11 +242,11 @@
 					<img src="{{asset('img/icons/icon-close2.png')}}" alt="CLOSE">
 				</button>
 
-				<form class="wrap-search-header flex-w p-l-15">
+				<form class="wrap-search-header flex-w p-l-15" action="{{route('search')}}" method="POST" role="search">
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search" placeholder="Cerca...">
+					<input class="plh3 js-ricerca-sito" type="text" name="search" placeholder="Cerca...">
 				</form>
 			</div>
 		</div>

@@ -91,7 +91,7 @@ class ContainController extends Controller
 
 
         if(Auth::user()->hasRole('Gestore Blog')){
-            return menu('blog');
+            return redirect('/admin');
         }
 
         return view('Contents/Profile');

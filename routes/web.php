@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Auth::routes();
 Route::get('/', 'ProductController@show')->name('coza');
 Route::get('/filter', 'ProductController@filter');
-Route::get('/search', 'ProductController@search');
+Route::post('/search', 'ProductController@search')->name('search');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart', 'CartItemsController@getUserCart');
 Route::post('/addtocart', 'ProductController@addToCart');
@@ -65,6 +65,7 @@ Route::get('/shop-nuova-stagione', 'ProductController@nuovastagionedonna')->name
 Route::get('/dettagliordine', 'UserController@dettagliOrdine')->name('dettagliordine');
 Route::post('/pagamento', 'ProductController@pagamento')->name('pagamento');
 Route::get('/slider', 'ContainController@slider')->name('slider');
+Route::post('/searchblog', 'BlogController@search')->name('searchblog');
 
 //Pagine che richiedono obbligatoriamente l'accesso come profilo, procedi pagamento ecc
 Route::group(['middleware' => 'auth'], function () {

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\Array_;
 use Session;
 use Validator;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller{
 
@@ -163,15 +164,12 @@ class ProductController extends Controller{
         }
 
 
-    public function search(Request $request){
-        if($request->ajax()){
-            $terms = $request->get('name');
+    public function search(){
+            $terms = Input::get('search');
             $productlive = DB::table('products')->where('nome', 'like' , '%' . $terms .'%')->get();
-            if ($productlive){
-                return Response()->json(view('Contents/productlist')->with('product', $productlive)->render());
+            if ($productlive) {
+                return view('Contents/shop')->with('product', $productlive);
             }
-            else return response()->json(['errore' => 'errore']);
-        }
 
     }
 

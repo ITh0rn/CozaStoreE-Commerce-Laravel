@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Blog as Blog;
 use DB;
 use Validator;
+use Illuminate\Support\Facades\Input;
 
 class BlogController extends Controller
 {
@@ -89,5 +90,19 @@ class BlogController extends Controller
             ['IDblogs' => $request->get('idarticolo'), 'commento' => $request->get('comment'), 'stelle' =>
                 $request->get('voto'), 'IDusers' => Auth::user()->id, 'nome' => Auth::user()->name, 'email' => Auth::user()->email]
         );
+    }
+
+    public function search(){
+        $terms = Input::get('search');
+        $rowUtente = DB::table('blogs')
+            ->select('blogs.data_inserimento', 'blogs.nome', 'blogs.description', 'users.name', 'users.id', 'blogs.IDusers', 'blogs.id as ID', 'blogs.img_dir',
+                DB::raw('count(comments.id) as num'))
+            ->leftjoin('comments', 'comments.IDblogs', '=', 'blogs.id')
+            ->join('users', 'blogs.IDusers', '=', 'users.id')
+            ->groupBy('blogs.id')
+            ->where('blogs.nome', 'like' , '%' . $terms .'%')->get();
+        $news = DB::table('products')->orderBy('created_at', 'desc')->limit(5)->get();
+        $data = DB::select('select count(*) as num, MONTHNAME(data_inserimento) as mese, YEAR(data_inserimento) as anno from blogs group by mese, anno');
+        return view('Contents/articoli', compact('rowUtente', 'data', 'news'));
     }
 }
